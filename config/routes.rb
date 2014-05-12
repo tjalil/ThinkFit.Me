@@ -1,5 +1,8 @@
 Thinkfitme::Application.routes.draw do
-  resources :users
+  resources :users do
+    get 'dashboard'
+  end
+
   resources :user_sessions, only: [:new, :create, :destroy]
   
   root 'users#index'
