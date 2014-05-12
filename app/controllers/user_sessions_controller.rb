@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
     if @user = login(params[:email], params[:password])
       redirect_to "/users/#{@user.id}/dashboard", notice: 'Much Success!! Logged in.'
     else
-      flash.now[:alert] = 'Login failed'
+      flash.now[:alert] = 'Invalid email or password'
       render :new
     end
   end
