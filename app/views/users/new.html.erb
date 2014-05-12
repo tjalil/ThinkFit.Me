@@ -1,6 +1,19 @@
+<%= link_to "Back to Homepage", users_path %>
 <h1>SIGN UP</h1>
 
 <%= form_for(@user) do |user| %>
+
+	<% if @user.errors.any? %>
+		<div class = "error_messages">
+			<h2>Form is invalid</h2>
+			<ul>
+				<% for message in @user.errors.full_messages %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
 	<div class="field">
 		<%= user.label :name %><br>
 		<%= user.text_field :name %>
