@@ -1,46 +1,6 @@
 <%= link_to "Back to Homepage", users_path %>
 <h1>SIGN UP</h1>
 
-<%= form_for(@user) do |user| %>
-
-	<% if @user.errors.any? %>
-		<div class = "error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in @user.errors.full_messages %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
-
-	<div class="field">
-		<%= user.label :name %><br>
-		<%= user.text_field :name %>
-	</div>
-	<div class="field">
-		<%= user.label :email %><br>
-		<%= user.text_field :email %>
-	</div>
-	<div class="field">
-		<%= user.label :password %><br>
-		<%= user.password_field :password %>
-	</div>
-	<div class="field">
-		<%= user.label :height %><br>
-		<%= user.number_field :height %>
-	</div>
-	<div class="field">
-		<%= user.label :weight %><br>
-		<%= user.number_field :weight %>
-	</div>
-	<div class="field">
-		<%= user.label(:gender, "male")%>
-		<%= user.radio_button(:gender,"male")%><br>
-		<%= user.label(:gender, "female")%>
-		<%= user.radio_button(:gender,"female")%><br>
-	</div>
-	<div class="action">
-		<%= user.submit %>
-	</div>
-<% end %>
+<div class="user_form">
+	<%= render 'userform' %>
+</div>
