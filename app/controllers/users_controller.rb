@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login(@user) 
-      redirect_to :index
+      redirect_to users_path, notice: "You've logged in! YAY!"
     else
       render :new
     end
