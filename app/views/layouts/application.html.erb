@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Thinkfitme</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Thinkfitme</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= yield %>
+    <div class = "flash">
+      <% if flash[:notice] %>
+        <p id = "notice", style="color:green"><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p id = "alert", style="color:red"><%= flash[:alert] %></p>
+      <% end %>
+    </div>
 
-</body>
+    <%= yield %>
+
+  </body>
 </html>
