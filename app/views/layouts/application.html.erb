@@ -8,6 +8,14 @@
   </head>
   <body>
 
+    <div class = "userinfo", style= "float: right">
+      <% if current_user %>
+        Signed in as <%= current_user.name %> | <%= link_to "Logout", user_session_path("current"), method: :delete %>
+      <% else %>
+        <%= link_to "Log In", new_user_session_path %> | <%= link_to "Sign Up", new_user_path %>
+      <% end %>
+    </div>
+
     <div class = "flash">
       <% if flash[:notice] %>
         <p id = "notice", style="color:green"><%= flash[:notice] %></p>
