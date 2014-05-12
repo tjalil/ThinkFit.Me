@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   def index
   end
 
+  def dashboard # users stats 
+
+  end
+
   def new
     @user = User.new
   end
@@ -13,7 +17,7 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login(@user) 
-      redirect_to users_path, notice: "You've logged in! YAY!"
+      redirect_to "/users/#{@user.id}/dashboard", notice: "You've logged in! YAY!"
     else
       render :new
     end
