@@ -1,2 +1,33 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>SIGN UP</h1>
+
+<%= form_for(@user) do |user| %>
+	<div class="field">
+		<%= user.label :name %><br>
+		<%= user.text_field :name %>
+	</div>
+	<div class="field">
+		<%= user.label :email %><br>
+		<%= user.text_field :email %>
+	</div>
+	<div class="field">
+		<%= user.label :password %><br>
+		<%= user.password_field :password %>
+	</div>
+	<div class="field">
+		<%= user.label :height %><br>
+		<%= user.number_field :height %>
+	</div>
+	<div class="field">
+		<%= user.label :weight %><br>
+		<%= user.number_field :weight %>
+	</div>
+	<div class="field">
+		<%= user.label(:gender, "male")%>
+		<%= user.radio_button(:gender,"male")%><br>
+		<%= user.label(:gender, "female")%>
+		<%= user.radio_button(:gender,"female")%><br>
+	</div>
+	<div class="action">
+		<%= user.submit %>
+	</div>
+<% end %>
