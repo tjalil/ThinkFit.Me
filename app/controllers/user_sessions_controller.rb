@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      redirect_to dashboard_user_path, notice: 'Much Success!! Logged in.'
+      redirect_to dashboard_user_path(@user), notice: 'Much Success!! Logged in.'
     else
       flash.now[:alert] = 'Invalid email or password'
       render :new

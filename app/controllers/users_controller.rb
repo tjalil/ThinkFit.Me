@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login(@user) 
-      redirect_to dashboard_user_path, notice: "You've logged in! YAY!"
+      redirect_to dashboard_user_path(@user), notice: "You've logged in! YAY!"
     else
       render :new
     end
