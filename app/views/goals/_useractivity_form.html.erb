@@ -1,5 +1,12 @@
 <%= form_for ([current_user, @goal]) do |f| %>
 
+  <%#= f.fields_for :goals do |goal| %>
+    <%#= render 'goals_fields', f: goal %>
+    <!-- <div class = "links"> -->
+      <%#= link_to_add_association 'Add Another Activity', f, :goals %>
+    <!-- </div> -->
+  <%# end %>
+
   <div class = "field">
     <%= f.label :activity_name %><br>
     <%= f.select :activity_id, options_from_collection_for_select(Activity.order(:name), :id, :name), include_blank: true %>
@@ -8,10 +15,6 @@
   <div class = "field">
     <%= f.label :weekly_goal %><br>
     <%= f.number_field :weekly_goal %>
-  </div>
-
-  <div class = "links">
-    <p style = "text-decoration: underline; cursor: pointer">Add Another Activity</p>
   </div>
 
   <div class = "action">
