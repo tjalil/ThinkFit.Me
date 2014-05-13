@@ -5,6 +5,7 @@ Thinkfitme::Application.routes.draw do
       get 'dashboard'
     end
     resources :goals, only: [:new, :create]
+    resources :teams
   end
 
   resources :user_sessions, only: [:new, :create, :destroy]

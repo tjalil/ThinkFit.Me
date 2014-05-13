@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
 
 #Use postgres as database instead
 gem 'pg'
@@ -35,18 +33,19 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use sorcery for user model auth
-gem 'sorcery'
-
-group :development, :test do
-  gem 'rspec-rails', '~> 2.0'
-end
+# CanCanCan for user access
+gem 'cancancan', '~> 1.8'
 
 # Use cocoon for nesting forms
 gem "cocoon"
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# Rspec for testing
+group :development, :test do
+  gem 'rspec-rails', '~> 2.0'
+end
+
+# Use sorcery for user model auth
+gem 'sorcery'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -56,3 +55,6 @@ gem "cocoon"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+

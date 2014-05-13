@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
   # accepts_nested_attributes_for :goals, reject_if: :all_blank, allow_destroy: true 
 
   has_many :activities, through: :goals
+  has_many :teams
 
 end
