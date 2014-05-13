@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login(@user) 
-      redirect_to new_user_goal_path(@user)
+      redirect_to new_user_goal_path(@user), notice: "Welcome to ThinkFit.Me!"
     else
       render :new
     end
