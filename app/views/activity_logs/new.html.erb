@@ -11,9 +11,13 @@
     </div>
   <% end %>
 
-  <div class = "field">
-    <p>I completed <%= f.number_field :duration %> minutes of <%= @goal.name_of_activity_through_goal %>!</p>
-  </div>
+  <% if @goal.type_of_activity == "distance" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "intensity" %>
+    <%= render partial: 'intensity', locals: {:f => f} %>
+  <% else %>
+    <%= render partial: 'only_time', locals: {:f => f} %>
+  <% end %>
 
   <div class = "action">
     <br>
