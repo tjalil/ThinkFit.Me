@@ -2,7 +2,7 @@ Thinkfitme::Application.routes.draw do
 
 
   resources :users do
-    get "goals/new"
+   resources :goals, only: [:new, :create]  
   end
 
   get 'users/:id/dashboard' => 'users#dashboard'
