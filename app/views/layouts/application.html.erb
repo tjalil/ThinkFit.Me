@@ -12,7 +12,7 @@
     <div class = "userinfo", style= "float: right">
       <% if current_user %>
         Signed in as <%= current_user.name %> | <%= link_to "Logout", user_session_path("current"), method: :delete %> | 
-        <%= link_to "DASHBOARD", "users/#{current_user.id}/dashboard" %>
+        <%= link_to "DASHBOARD", dashboard_user_path(current_user) %>
       <% else %>
         <%= link_to "Log In", new_user_session_path %> | <%= link_to "Sign Up", new_user_path %>
       <% end %>
