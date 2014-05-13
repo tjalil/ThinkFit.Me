@@ -10,4 +10,8 @@ class Goal < ActiveRecord::Base
     Activity.find(self.activity_id).name
   end
 
+  def type_of_activity
+    Activity.find(self.activity_id).type_of_activity
+  end
+  
 end
