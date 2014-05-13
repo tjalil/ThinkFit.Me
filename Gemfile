@@ -40,10 +40,14 @@ gem 'sorcery'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'pry'
 end
 
 # Use cocoon for nesting forms
 gem "cocoon"
+
+# Use kaminari for pagination of comments
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

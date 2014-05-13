@@ -2,6 +2,18 @@
 <h2>Dashboard</h2>
 <%= link_to "Add new Goal", new_user_goal_path(current_user) %>
 
+<div id="comment_wall">
+	<%= render "/comments/new" %>
+	<% @comments.each do |comment| %>
+		<div class="comment_box">
+			<%= comment.user.name %><br>
+			<%= comment.comment %>
+			<br>
+		</div>
+	<% end %>
+	<%= paginate @comments %>
+</div>
+
 <% current_user.goals.each do |goal| %>
   <h3><%= goal.name_of_activity %></h3>
   <p>Goal: <%= goal.weekly_goal %> times/week</p>
