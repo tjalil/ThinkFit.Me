@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
     @goal.user_id = current_user.id
 
     if @goal.save
-      redirect_to dashboard_user_path(current_user), notice: "Welcome to ThinkFit.Me!"
+      redirect_to dashboard_user_path(current_user), notice: "YES! Successfully created new activity #{@goal.name_of_activity_through_goal}"
     else
       render :new
     end
