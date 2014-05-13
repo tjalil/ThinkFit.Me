@@ -1,0 +1,23 @@
+<%= form_for ([current_user, @goal, @activity_log]) do |f| %>
+
+  <% if @activity_log.errors.any? %>
+    <div class = "error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @activity_log.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "field">
+    <p>I completed <%= f.number_field :duration %> minutes of <%= @goal.name_of_activity_through_goal %>!</p>
+  </div>
+
+  <div class = "action">
+    <br>
+    <%= f.submit 'Done!'%> 
+  </div>
+
+<% end %>
