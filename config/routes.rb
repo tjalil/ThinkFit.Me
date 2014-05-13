@@ -1,6 +1,6 @@
 Thinkfitme::Application.routes.draw do
 
-  resources :users, only: [:index, :new, :create] do
+  resources :users do
     member do
       get 'dashboard'
     end
