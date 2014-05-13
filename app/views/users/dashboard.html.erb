@@ -7,3 +7,15 @@
   <p>Goal: <%= goal.weekly_goal %> times/week</p>
   <p>Last Logged: <%= goal.updated_at %></p>
 <% end %>
+
+<br/>
+<div class="teams">
+  <h2>Teams:</h2>
+  <p>
+  <%= link_to "Create a Team",  new_user_team_path(current_user) %>
+  </p>
+</div>
+
+<div class="wall">
+  <h2>Wall:</h2>
+</div>
