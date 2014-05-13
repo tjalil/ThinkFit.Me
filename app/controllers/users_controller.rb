@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def dashboard #main page for user. user redirected to this page after signup/login
     @comment = Comment.new
+    @comments = Comment.all
   end
 
   def new
