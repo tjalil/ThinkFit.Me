@@ -1,6 +1,6 @@
 <%= link_to "Back to Homepage", users_path %>
-
 <h2>Dashboard</h2>
+<%= link_to "Add new Goal", new_user_goal_path(current_user) %>
 
 <% current_user.goals.each do |goal| %>
   <h3><%= goal.name_of_activity %></h3>
