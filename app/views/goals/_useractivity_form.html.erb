@@ -1,0 +1,23 @@
+<%= form_for ([current_user, @goal]) do |f| %>
+
+  <h1>Almost done! Select atleast one activity and set a goal</h1>
+
+  <div class="user-activity-form">
+
+    <div class = "field">
+      <%= f.label :activity_name %><br>
+      <%= f.select :activity_id, options_from_collection_for_select(Activity.order(:name), :id, :name), include_blank: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :weekly_goal %><br>
+      <%= f.number_field :weekly_goal %>
+    </div>
+
+    <div class="action">
+      <%= f.submit 'All Set!'%>
+    </div>
+    
+  </div>
+
+<% end %>
