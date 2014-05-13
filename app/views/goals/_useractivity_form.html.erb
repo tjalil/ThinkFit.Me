@@ -7,6 +7,17 @@
     <!-- </div> -->
   <%# end %>
 
+  <% if @goal.errors.any? %>
+    <div class = "error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @goal.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class = "field">
     <%= f.label :activity_name %><br>
     <%= f.select :activity_id, options_from_collection_for_select(Activity.order(:name), :id, :name), include_blank: true %>
