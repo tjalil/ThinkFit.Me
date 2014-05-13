@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
 		@comment.user_id = current_user.id
 
 		if @comment.save
-			# will add respond to for AJAX
+			redirect_to dashboard_user_path(@comment.user_id) # Changing to respond to for AJAX
 		else
-			# will add respond to for AJAX
+			render :new # Changing to respond to for AJAX
 		end
 	end
 
