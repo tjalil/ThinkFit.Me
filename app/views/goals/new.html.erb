@@ -1,10 +1,1 @@
-<h1>Goals#new</h1>
-
-<%= form_for([current_user, @goal]) do |f| %>
-  <%= f.label :activity_name %>
-  <%= f.select :activity_id, options_from_collection_for_select(Activity.order(:name), :id, :name), include_blank: true %>
-  <br>
-  <%= f.label :weekly_goal %>
-  <%= f.number_field :weekly_goal %>
-  <%= f.submit %>
-<% end %>
+<%= render 'useractivity_form' %>
