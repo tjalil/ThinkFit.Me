@@ -1,3 +1,9 @@
 <%= link_to "Back to Homepage", users_path %>
 
 <h2>Dashboard</h2>
+
+<% current_user.goals.each do |goal| %>
+  <h3><%= goal.name_of_activity %></h3>
+  <p>Goal: <%= goal.weekly_goal %> times/week</p>
+  <p>Last Logged: <%= goal.updated_at %></p>
+<% end %>
