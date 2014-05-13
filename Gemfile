@@ -45,6 +45,9 @@ end
 # Use cocoon for nesting forms
 gem "cocoon"
 
+# User pry for debugging
+gem 'pry'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
