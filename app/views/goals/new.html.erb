@@ -1,0 +1,10 @@
+<h1>Goals#new</h1>
+<p>Find me in app/views/goals/new.html.erb</p>
+
+<%= form_for ([current_user, @goal]) do |f| %>
+  <%= f.label :dropdown_activity %>
+  <br>
+  <%= f.label :weekly_goal %>
+  <%= f.number_field :weekly_goal %>
+  <%= f.submit %>
+<% end %>
