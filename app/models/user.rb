@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password, length: { minimum: 6 }
 
   has_many :goals
+  # accepts_nested_attributes_for :goals, reject_if: :all_blank, allow_destroy: true 
+
   has_many :activities, through: :goals
 
 end

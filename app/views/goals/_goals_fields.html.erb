@@ -1,23 +1,15 @@
-<%= form_for ([current_user, @goal]) do |f| %>
+<div class = "nested-fields">
 
   <div class = "field">
     <%= f.label :activity_name %><br>
     <%= f.select :activity_id, options_from_collection_for_select(Activity.order(:name), :id, :name), include_blank: true %>
   </div>
 
-  <div class = "field">
+  <div class="field">
     <%= f.label :weekly_goal %><br>
     <%= f.number_field :weekly_goal %>
   </div>
 
-  <div class = "links">
-    <p style = "text-decoration: underline; cursor: pointer">Add Another Activity</p>
-  </div>
+  <%#= link_to_remove_association "Remove Activity", f %>
 
-  <div class = "action">
-    <%= f.submit 'Done!'%> 
-  </div>
-
-<% end %>
-
-
+</div>

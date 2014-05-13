@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index
   end
 
-  def dashboard #user main page 
+  def dashboard #main page for user. user redirected to this page after signup/login
   end
 
   def new
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :name, :height, :weight, :gender)
+    params.require(:user).permit(:email, :password, :name, :height, :weight, :gender, goals_attributes: [:id, :weekly_goal, :_destroy])
   end
 
 end
