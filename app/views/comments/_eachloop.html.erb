@@ -1,0 +1,7 @@
+<% @comments.each do |comment| %>
+	<div class="comment_box">
+		<%= comment.user.name %><br>
+		<%= comment.comment %>
+		<br>
+	</div>
+<% end %>
