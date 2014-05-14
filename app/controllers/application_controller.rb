@@ -8,9 +8,4 @@ class ApplicationController < ActionController::Base
   # def not_authenticated
   #   redirect_to new_user_session_path, alert: "Please Log In first"
   # end
-
-  def load_commentable
-  	resource, id = request.path.split('/')[1,2]
-  	@commentable = resource.singularize.classify.constantize.find(id)
-  end
 end
