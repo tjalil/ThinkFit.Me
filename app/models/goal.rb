@@ -13,5 +13,18 @@ class Goal < ActiveRecord::Base
   def type_of_activity
     Activity.find(self.activity_id).type_of_activity
   end
+
+  def count_activity_log
+    @activity_logs = ActivityLog.all
+    activity_log_count ||= 0
+
+    @activity_logs.each do |activity|
+      if activity.goal_id == self.id
+        activity_log_count += 1
+      end
+    end
+    
+    activity_log_count
+  end
   
 end

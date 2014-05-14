@@ -5,7 +5,7 @@
 <% current_user.goals.each do |goal| %>
   <h3><%= goal.name_of_activity_through_goal %></h3>
   <p>Goal: <%= goal.weekly_goal %> times/week</p>
-  <p>Logged: 0 times</p>
+  <p>Logged: <%= goal.count_activity_log %> times</p>
   <p>Last Logged: <%= goal.updated_at %></p>
   <p><%= link_to 'Log My Activity', new_user_goal_activity_log_path(current_user, goal) %></p>
   <p>______________________</p>
