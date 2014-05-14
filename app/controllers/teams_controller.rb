@@ -15,7 +15,12 @@ class TeamsController < ApplicationController
   end
 
   def edit
+  end
 
+  def show
+    @team = Team.find(params[:id])
+    if current_user
+    end
   end
 
   private
