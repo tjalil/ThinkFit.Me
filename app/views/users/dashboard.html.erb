@@ -1,8 +1,20 @@
 <%= link_to "Back to Homepage", users_path %>
 <h2>Dashboard</h2>
+
 <%= link_to "Add new Goal", new_user_goal_path(current_user) %>
+<% current_user.goals.each do |goal| %>
+  <h3><%= goal.name_of_activity_through_goal %></h3>
+  <p>Goal: <%= goal.weekly_goal %> times/week</p>
+  <p>Logged: 0 times</p>
+  <p>Last Logged: <%= goal.updated_at %></p>
+  <p><%= link_to 'Log My Activity', new_user_goal_activity_log_path(current_user, goal) %></p>
+  <p>______________________</p>
+<% end %>
 
 <div id="comment_wall">
+  <div class="wall">
+    <h2>Wall:</h2>
+  </div>
 	<%= render "/comments/new" %>
 	<% @comments.each do |comment| %>
 		<div class="comment_box">
@@ -13,16 +25,8 @@
 	<% end %>
 	<%= paginate @comments %>
 </div>
+<p>______________________</p>
 
-<% current_user.goals.each do |goal| %>
-  <h3><%= goal.name_of_activity_through_goal %></h3>
-  <p>Goal: <%= goal.weekly_goal %> times/week</p>
-  <p>Last Logged: <%= goal.updated_at %></p>
-  <p><%= link_to 'Log My Activity', new_user_goal_activity_log_path(current_user, goal) %></p>
-  <p>______________________</p>
-<% end %>
-
-<br/>
 <div class="teams">
   <h2>Teams:</h2>
   <p>
@@ -33,8 +37,4 @@
       <li> <%= link_to team.name, team_path(team.id) %></li>
     <% end %>
   </ul>
-</div>
-
-<div class="wall">
-  <h2>Wall:</h2>
 </div>
