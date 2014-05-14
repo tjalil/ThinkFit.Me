@@ -2,16 +2,16 @@ class CommentsController < ApplicationController
 	before_filter :require_login, :load_commentable
 
 	def new
-		@comment = Comment.new		
+		@comment = @commentable.comments.new		
 	end
 
 	def create
-		@comment = Comment.create(comment_params)
+		@comment = @commentable.comments.build(comment_params)
 		@comment.user_id = current_user.id
 
 		respond_to do |format|
 			if @comment.save
-				format.html {redirect_to dashboard_user_path(@comment.user_id)}
+				format.html {redirect_to polymorphic_path(@commentable)}
 				format.js
 			else
 				format.html
@@ -20,13 +20,9 @@ class CommentsController < ApplicationController
 		end
 	end
 
-	def show
-		@comment = Comment.find(params[:id])
-	end
-
 	private
 
 	def comment_params
-		params.require(:comment).permit(:user_id,:comment)
+		params.require(:comment).permit(:commentable_type,:commentable_id,:comment)
 	end
 end
