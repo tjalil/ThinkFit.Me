@@ -1,7 +1,5 @@
 <% @comments.each do |comment| %>
-	<div class="comment_box">
-		<%= User.find_by(id: comment.user_id).name %><br>
-		<%= comment.comment %>
-		<br>
-	</div>
+	<%= User.find(comment.user_id).name %><br>
+	<%= comment.comment %>
+	<br>
 <% end %>
