@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   end
 
   def dashboard #main page for user. user redirected to this page after signup/login
-    @comment = Comment.new
-    @comments = Comment.order('comments.created_at DESC').page params[:page]
+    @comment = @commentable.comments.build
+    @comments = @commentable.comments.order('comments.created_at DESC').page params[:page]
   end
 
   def new
