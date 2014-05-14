@@ -5,3 +5,15 @@
 
 <h3>Members</h3>
 <p>TODO: need to be created</p>
+
+<div id="teamwall">
+	<%= render "/comments/new" %>
+	<% @comments.each do |comment| %>
+		<div class="comment_box">
+			<%= comment.user.name %><br>
+			<%= comment.comment %>
+			<br>
+		</div>
+	<% end %>
+	<%= paginate @comments %>
+</div>
