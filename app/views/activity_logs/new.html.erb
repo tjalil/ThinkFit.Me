@@ -1,0 +1,27 @@
+<%= form_for ([current_user, @goal, @activity_log]) do |f| %>
+
+  <% if @activity_log.errors.any? %>
+    <div class = "error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @activity_log.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @goal.type_of_activity == "distance" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "intensity" %>
+    <%= render partial: 'intensity', locals: {:f => f} %>
+  <% else %>
+    <%= render partial: 'only_time', locals: {:f => f} %>
+  <% end %>
+
+  <div class = "action">
+    <br>
+    <%= f.submit 'Done!'%> 
+  </div>
+
+<% end %>

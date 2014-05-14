@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   end
 
   def dashboard #main page for user. user redirected to this page after signup/login
+    @comment = Comment.new
+    @comments = Comment.order('comments.created_at DESC').page params[:page]
   end
 
   def new
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login(@user) 
-      redirect_to new_user_goal_path(@user)
+      redirect_to new_user_goal_path(@user), notice: "Welcome to ThinkFit.Me!"
     else
       render :new
     end
@@ -43,7 +45,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :name, :height, :weight, :gender, goals_attributes: [:id, :weekly_goal, :_destroy])
+    params.require(:user).permit(:email, :password, :name, :height, :weight, :gender)
   end
 
 end

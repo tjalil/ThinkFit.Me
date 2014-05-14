@@ -4,10 +4,16 @@ Thinkfitme::Application.routes.draw do
     member do
       get 'dashboard'
     end
-    resources :goals, only: [:new, :create]
-    resources :teams
-  end
 
+    resources :comments, only: [:new, :create, :show]
+
+    resources :goals, only: [:new, :create] do
+      resources :activity_logs, only: [:new, :create]
+    end
+    
+    resources :teams, only: [:new, :create, :edit]
+  end
+  resources :teams, only: [:show]
   resources :user_sessions, only: [:new, :create, :destroy]
 
   root 'users#index', as: 'index'

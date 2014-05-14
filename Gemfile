@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 
-
 #Use postgres as database instead
 gem 'pg'
 
@@ -15,9 +14,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -33,19 +29,30 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+
 # CanCanCan for user access
 gem 'cancancan', '~> 1.8'
 
 # Use cocoon for nesting forms
 gem "cocoon"
 
+# Use kaminari for pagination of comments
+gem 'kaminari'
+
 # Rspec for testing
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'pry'
 end
 
 # Use sorcery for user model auth
 gem 'sorcery'
+
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', platforms: :ruby
+
+# Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'
