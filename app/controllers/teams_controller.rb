@@ -19,6 +19,10 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+
+    @comment = Comment.new
+    @comments = Comment.order('comments.created_at DESC').page params[:page]
+    
     if current_user
     end
   end
