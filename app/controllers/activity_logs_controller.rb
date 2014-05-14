@@ -1,4 +1,5 @@
 class ActivityLogsController < ApplicationController
+  before_action :find_goal, only: [:new, :create]
 
   def index
   end
@@ -8,11 +9,11 @@ class ActivityLogsController < ApplicationController
 
   def new
     @activity_log = ActivityLog.new
-    @goal = Goal.find(params[:goal_id])
   end
 
   def create
     @activity_log = ActivityLog.new(activity_log_params)
+    @activity_log.goal_id = @goal.id
 
     if @activity_log.save
       redirect_to dashboard_user_path(current_user), notice: "Successfully logged in your activity!"
@@ -33,7 +34,11 @@ class ActivityLogsController < ApplicationController
   private
 
   def activity_log_params
-    params.require(:activity_log).permit(:goal_id, :duration, :intensity, :distance)
+    params.require(:activity_log).permit(:duration, :intensity, :distance)
+  end
+
+  def find_goal
+    @goal = Goal.find(params[:goal_id])
   end
 
 end
