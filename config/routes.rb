@@ -11,12 +11,13 @@ Thinkfitme::Application.routes.draw do
       resources :activity_logs, only: [:new, :create]
     end
     
-    resources :teams, only: [:new, :create, :edit] do
+    resources :teams, only: [:new, :create, :show, :edit] do
       resources :comments, only: [:new, :create]
     end
     
   end
   resources :teams, only: [:show]
+
   resources :user_sessions, only: [:new, :create, :destroy]
 
   root 'users#index', as: 'index'
