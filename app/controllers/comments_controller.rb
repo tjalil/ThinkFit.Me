@@ -13,10 +13,10 @@ class CommentsController < ApplicationController
 		respond_to do |format|
 			if @comment.save
 				format.html {redirect_to polymorphic_path(@commentable)}
-				format.js
+				format.js {}
 			else
-				format.html
-				format.js
+				format.html {render polymorphic_path}
+				format.js {}
 			end
 		end
 	end
@@ -26,4 +26,12 @@ class CommentsController < ApplicationController
 	def comment_params
 		params.require(:comment).permit(:commentable_type,:commentable_id,:comment)
 	end
+
+	def load_commentable
+    	if params[:team_id]	
+    		@commentable = Team.find(params[:team_id])
+    	else
+    		@commentable = User.find(params[:user_id])
+    	end
+  	end
 end
