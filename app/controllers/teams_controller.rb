@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    @team[user_id: current_user.id]
+    @team[:user_id] = current_user.id
     if @team.save
       redirect_to dashboard_user_path(current_user)
     else
@@ -15,7 +15,12 @@ class TeamsController < ApplicationController
   end
 
   def edit
+  end
 
+  def show
+    @team = Team.find(params[:id])
+    if current_user
+    end
   end
 
   private
