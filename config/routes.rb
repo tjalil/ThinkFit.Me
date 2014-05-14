@@ -11,9 +11,8 @@ Thinkfitme::Application.routes.draw do
       resources :activity_logs, only: [:new, :create]
     end
     
-    resources :teams, only: [:new, :create, :edit]
+    resources :teams
   end
-  resources :teams, only: [:show]
   resources :user_sessions, only: [:new, :create, :destroy]
 
   root 'users#index', as: 'index'
