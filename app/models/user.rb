@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   has_many :activities, through: :goals
   has_many :teams
 
-  has_many :comments
+  has_many :comments, as: :commentable
 end
 

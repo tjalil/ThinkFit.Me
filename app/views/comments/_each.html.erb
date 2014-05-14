@@ -1,0 +1,5 @@
+<% @comments.each do |comment| %>
+	<%= User.find(comment.user_id).name %><br>
+	<%= comment.comment %>
+	<br>
+<% end %>

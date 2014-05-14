@@ -1,4 +1,4 @@
-<%= form_for ([current_user, @comment]) do |f| %>
+<%= form_for ([@commentable, @comment]) do |f| %>
 
 	<div class="field">
 		<%= f.label :comment %><br>

@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   before_filter :require_login, only: [:show, :edit, :update, :destroy]
+  before_filter :load_commentable, except: [:index]
 
   def index
   end
 
   def dashboard #main page for user. user redirected to this page after signup/login
-    @comment = Comment.new
-    @comments = Comment.order('comments.created_at DESC').page params[:page]
+    @comment = @commentable.comments.build
+    @comments = @commentable.comments.order('comments.created_at DESC').page params[:page]
   end
 
   def new
@@ -46,6 +47,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :name, :height, :weight, :gender)
+  end
+
+   def load_commentable
+    @commentable = User.find(params[:id])
   end
 
 end

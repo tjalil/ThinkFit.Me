@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_filter :load_commentable
 
   def new
     @team = Team.new
@@ -19,8 +20,9 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    if current_user
-    end
+
+    @comment = @commentable.comments.build
+    @comments = @commentable.comments.order('comments.created_at DESC').page params[:page]
   end
 
   private
@@ -28,5 +30,8 @@ class TeamsController < ApplicationController
     params.require(:team).permit(:name, :description, :user_id)
   end
 
+  def load_commentable
+    @commentable = Team.find(params[:id])
+  end
 
 end

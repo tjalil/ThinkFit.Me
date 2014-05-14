@@ -1,2 +1,2 @@
-<%= @comment.user.name %><br>
+<%= User.find(@comment.user_id).name %><br>
 <%= @comment.comment %>
