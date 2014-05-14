@@ -8,12 +8,6 @@
 
 <div id="teamwall">
 	<%= render "/comments/new" %>
-	<% @comments.each do |comment| %>
-		<div class="comment_box">
-			<%= comment.user.name %><br>
-			<%= comment.comment %>
-			<br>
-		</div>
-	<% end %>
+	<%= render "/comments/each" %>
 	<%= paginate @comments %>
 </div>
