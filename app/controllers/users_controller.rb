@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_login, only: [:show, :edit, :update, :destroy]
-  before_filter :load_commentable
+  before_filter :load_commentable, except: [:index]
 
   def index
   end
@@ -47,6 +47,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :name, :height, :weight, :gender)
+  end
+
+   def load_commentable
+    @commentable = User.find(params[:id])
   end
 
 end
