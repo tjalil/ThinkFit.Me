@@ -26,7 +26,7 @@
   </p>
   <ul>
     <% current_user.teams.each do |team| %>
-      <li> <%= link_to team.name, user_team_path(team.user_id, team.id) %></li>
+      <li> <%= link_to team.name, user_team_path(team.owner_id, team.id) %></li>
     <% end %>
   </ul>
 </div>
