@@ -12,19 +12,17 @@
 <% end %>
 
 <div id="comment_wall">
-  <div class="wall">
     <h2>Wall:</h2>
-  </div>
 	<%= render "/comments/new" %>
 	<%= render "/comments/each" %>
-	<%= paginate @comments %>
 </div>
+  <%= paginate @comments %>
 <p>______________________</p>
 
 <div class="teams">
   <h2>Teams:</h2>
   <p>
-  <%= link_to "Create a Team",  new_user_team_path(current_user) %>
+  <%= link_to "Create a Team",  new_team_path %>
   </p>
   <ul>
     <% current_user.teams.each do |team| %>
