@@ -48,6 +48,9 @@ end
 # Use sorcery for user model auth
 gem 'sorcery'
 
+gem 'better_errors'
+gem 'binding_of_caller'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
