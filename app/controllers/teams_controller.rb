@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_filter :load_commentable
 
   def new
     @team = Team.new
@@ -22,7 +23,7 @@ class TeamsController < ApplicationController
 
     @comment = Comment.new
     @comments = Comment.order('comments.created_at DESC').page params[:page]
-    
+
     if current_user
     end
   end

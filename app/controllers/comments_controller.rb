@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
-	before_filter :require_login
+	before_filter :require_login, :load_commentable
 
 	def new
-		@comment = Comment.new		# Might be able to remove when implementing AJAX
+		@comment = Comment.new		
 	end
 
 	def create
