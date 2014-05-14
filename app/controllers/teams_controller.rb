@@ -23,9 +23,6 @@ class TeamsController < ApplicationController
 
     @comment = @commentable.comments.build
     @comments = @commentable.comments.order('comments.created_at DESC').page params[:page]
-
-    if current_user
-    end
   end
 
   private
@@ -33,5 +30,8 @@ class TeamsController < ApplicationController
     params.require(:team).permit(:name, :description, :user_id)
   end
 
+  def load_commentable
+    @commentable = Team.find(params[:id])
+  end
 
 end
