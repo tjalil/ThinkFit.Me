@@ -26,8 +26,12 @@ class TeamsController < ApplicationController
 
 
   def join
-    Team.find(params[:team_id]).users << current_user
-    redirect_to team_path(params[:team_id])
+    team_users = Team.where(id: params[:team_id]).take.users 
+
+    if team_users.where(id: current_user.id) == []
+      team_users << current_user
+      redirect_to team_path(params[:team_id])
+    end
   end
 
   private
