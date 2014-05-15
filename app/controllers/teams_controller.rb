@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_filter :load_commentable
+  before_filter :load_commentable, except: [:join]
 
   def new
     @team = Team.new
@@ -20,9 +20,14 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-
     @comment = @commentable.comments.build
     @comments = @commentable.comments.order('comments.created_at DESC').page params[:page]
+  end
+
+
+  def join
+    Team.find(params[:team_id]).users << current_user
+    redirect_to team_path(params[:team_id])
   end
 
   private

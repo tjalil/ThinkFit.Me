@@ -19,6 +19,7 @@ Thinkfitme::Application.routes.draw do
 
   resources :teams do
     resources :comments, only: [:new, :create]
+    post 'join'
   end
 
 
