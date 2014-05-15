@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_filter :load_commentable
+  before_filter :load_commentable, except: [:join, :new, :create]
 
   def new
     @team = Team.new
@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    @team[:user_id] = current_user.id
+    @team[:owner_id] = current_user.id
     if @team.save
       redirect_to dashboard_user_path(current_user)
     else
@@ -20,9 +20,20 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-
     @comment = @commentable.comments.build
     @comments = @commentable.comments.order('comments.created_at DESC').page params[:page]
+  end
+
+
+  def join
+    team_users = Team.where(id: params[:team_id]).take.users 
+
+    if team_users.where(id: current_user.id) == []
+      team_users << current_user
+      redirect_to team_path(params[:team_id])
+    elsif
+      redirect_to team_path(params[:team_id])
+    end
   end
 
   private
