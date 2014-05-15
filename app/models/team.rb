@@ -1,4 +1,4 @@
 class Team < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :owner, foreign_key: 'owner_id', class_name: 'User'
   has_many :comments, as: :commentable
 end
