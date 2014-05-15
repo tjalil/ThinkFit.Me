@@ -1,10 +1,15 @@
 <h1><%= @team.name %></h1>
 <p>
-<%= @team.description %>
-<br/>
-Created by: <%= @team.owner_id %>
-</p>
 
+<div id="team-description">
+  Description: <%= @team.description %>
+</div>
+<br/>
+<div id="team-user">
+  Created by: <%=User.find(@team.owner_id).name %>
+</div>
+</p>
+<br/>
 
 <div class="roster">
   <h3>Members</h3>
