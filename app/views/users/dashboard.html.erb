@@ -14,21 +14,30 @@
 </div>
 
 <div id="comment_wall">
-    <h2>Wall:</h2>
-	<%= render "/comments/new" %>
-	<%= render "/comments/each" %>
+  <h2>Wall:</h2>
+  <%= render "/comments/new" %>
+  <%= render "/comments/each" %>
 </div>
-  <%= paginate @comments %>
+<%= paginate @comments %>
 <p>______________________</p>
 
 <div class="teams">
   <h2>Teams:</h2>
   <p>
-  <%= link_to "Create a Team",  new_team_path %>
+  I own teams:
+    <ul>
+      <% Team.where(owner_id: @commentable.id).each do |team| %>
+        <li> <%= link_to team.name, team_path(team.id) %></li>
+      <% end %>
+    </ul>
+
+  <%= link_to "Create a Team",  new_team_path(@commentable.id) %>
   </p>
-  <ul>
-    <% current_user.teams.each do |team| %>
-      <li> <%= link_to team.name, team_path(team.id) %></li>
-    <% end %>
-  </ul>
+  <div class="my_teams"> I'm a member of teams: 
+    <ul>
+      <% @commentable.teams.each do |team| %>
+        <li> <%= link_to team.name, team_path(team.id) %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>

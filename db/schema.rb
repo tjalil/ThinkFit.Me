@@ -61,10 +61,18 @@ ActiveRecord::Schema.define(version: 20140515015908) do
   create_table "teams", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner_id"
   end
+
+  create_table "teams_users", id: false, force: true do |t|
+    t.integer "team_id", null: false
+    t.integer "user_id", null: false
+  end
+
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",            null: false

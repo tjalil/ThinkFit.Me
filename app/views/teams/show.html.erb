@@ -1,14 +1,34 @@
 <h1><%= @team.name %></h1>
 <p>
-  <%= @team.description %>
-</p>
 
-<h3>Members</h3>
-<p>TODO: need to be created</p>
+<div id="team-description">
+  Description: <%= @team.description %>
+</div>
+<br/>
+<div id="team-user">
+  Created by: <%=User.find(@team.owner_id).name %>
+</div>
+</p>
+<br/>
+
+<div class="roster">
+  <h3>Members</h3>
+  <div class="roster">
+    <ul>
+      <% @team.users.each do |member| %>
+      <%= render 'new_member' %> 
+        <div class="person">
+          <li>  <%= member.name %></li>
+        </div>
+      <% end %>
+    </ul>
+    <p><%= button_to "Join!", team_join_path(@team.id) %></p>  
+  </div>
+</div>
 
 <div id="teamwall">
-	<h1>Wall: </h1>
-	<%= render "/comments/new" %>
-	<%= render "/comments/each" %>
+  <h1>Wall: </h1>
+  <%= render "/comments/new" %>
+  <%= render "/comments/each" %>
 </div>
 <%= paginate @comments %>

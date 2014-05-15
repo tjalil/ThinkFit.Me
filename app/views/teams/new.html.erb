@@ -1,6 +1,6 @@
 <h1> Add a new team </h1>
 
-<%= form_for([current_user, @team]) do |f| %>
+<%= form_for([@commentable, @team]) do |f| %>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
