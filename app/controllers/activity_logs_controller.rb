@@ -16,7 +16,7 @@ class ActivityLogsController < ApplicationController
     @activity_log.goal_id = @goal.id
 
     if @activity_log.save
-      redirect_to dashboard_user_path(current_user), notice: "Successfully logged in your activity!"
+      redirect_to dashboard_user_path(current_user), notice: "Successfully logged your activity!"
     else
       render :new, alert: "There was an error. Please try again."
     end
