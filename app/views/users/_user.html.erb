@@ -1,7 +1,9 @@
-  <% user.goals.each do |goal| %>
-    <h3><%= goal.name_of_activity_through_goal %></h3>
-    <p>Goal: <%= goal.weekly_goal %> times/week</p>
+<h1><%= user.name %></h1>
+<h2><%= user.name %>'s Goals:</h2>
+<% user.goals.each do |goal| %>
+	<h3><%= goal.name_of_activity_through_goal %></h3>
+  	<p>Goal: <%= goal.weekly_goal %> times/week</p>
     <p>Logged: <%= goal.count_activity_log %> times</p>
     <p>Last Logged: <%= goal.updated_at %></p>
     <p>______________________</p>
-  <% end %>
+<% end %>
