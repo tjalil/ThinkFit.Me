@@ -30,9 +30,10 @@ class TeamsController < ApplicationController
 
     if team_users.where(id: current_user.id) == []
       team_users << current_user
-      redirect_to team_path(params[:team_id])
+      redirect_to team_path(params[:team_id]), notice: "Welcom to the team!"
     elsif
-      redirect_to team_path(params[:team_id])
+      redirect_to team_path(params[:team_id]), alert: "Unable to join, you may already be a member"
+
     end
   end
 
