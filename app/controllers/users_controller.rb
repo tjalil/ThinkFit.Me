@@ -3,14 +3,14 @@ class UsersController < ApplicationController
   before_filter :load_commentable, except: [:index, :new, :create]
 
   def index
-    @user = if params[:search]
+    @users = if params[:search]
       User.where("name ILIKE ?", "%#{params[:search]}%")
     else
     end
 
       respond_to do |format|
         format.html
-        format.js
+        format.js 
       end
   end
 
