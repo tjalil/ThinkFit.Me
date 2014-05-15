@@ -51,6 +51,8 @@ gem 'sorcery'
 gem 'better_errors'
 gem 'binding_of_caller'
 
+gem 'figaro'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
