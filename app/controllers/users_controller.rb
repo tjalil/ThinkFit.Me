@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_login, only: [:show, :edit, :update, :destroy]
-  before_filter :load_commentable, except: [:index]
+  before_filter :load_commentable, except: [:index, :new, :create]
 
   def index
   end
