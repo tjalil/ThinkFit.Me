@@ -1,1 +1,9 @@
 <h1>Compete and Collaborate around your favourite healthy activity!</h1>
+
+<%= form_tag users_path, method: :get, authentication: false, id: 'search-form' do%>
+	<%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<div id="users">
+</div>

@@ -16,10 +16,6 @@
       <% else %>
         <%= link_to "Log In", new_user_session_path %> | <%= link_to "Sign Up", new_user_path %>
       <% end %>
-      <%= form_tag users_path, method: :get, authentication: false, id: 'search-form' do%>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-      <% end %>
     </div>
 
     <div class = "flash">
