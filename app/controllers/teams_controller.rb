@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_filter :load_commentable, except: [:join]
+  before_filter :load_commentable, except: [:join, :new, :create]
 
   def new
     @team = Team.new
@@ -30,9 +30,9 @@ class TeamsController < ApplicationController
 
     if team_users.where(id: current_user.id) == []
       team_users << current_user
-     redirect_to team_path(params[:team_id])
+      redirect_to team_path(params[:team_id])
     elsif
-redirect_to team_path(params[:team_id])
+      redirect_to team_path(params[:team_id])
     end
   end
 

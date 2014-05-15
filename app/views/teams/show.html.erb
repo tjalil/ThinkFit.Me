@@ -1,26 +1,29 @@
 <h1><%= @team.name %></h1>
 <p>
-  <%= @team.description %>
+<%= @team.description %>
+<br/>
+Created by: <%= @team.owner_id %>
 </p>
 
 
 <div class="roster">
   <h3>Members</h3>
-    <div class="roster">
+  <div class="roster">
     <ul>
       <% @team.users.each do |member| %>
+      <%= render 'new_member' %> 
         <div class="person">
           <li>  <%= member.name %></li>
         </div>
       <% end %>
     </ul>
-    <p> <%= render 'new_member' %> </p>
+    <p><%= button_to "Join!", team_join_path(@team.id) %></p>  
   </div>
 </div>
 
 <div id="teamwall">
-	<h1>Wall: </h1>
-	<%= render "/comments/new" %>
-	<%= render "/comments/each" %>
+  <h1>Wall: </h1>
+  <%= render "/comments/new" %>
+  <%= render "/comments/each" %>
 </div>
 <%= paginate @comments %>
