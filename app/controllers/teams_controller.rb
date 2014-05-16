@@ -1,5 +1,17 @@
 class TeamsController < ApplicationController
-  before_filter :load_commentable, except: [:join, :new, :create]
+  before_filter :load_commentable, except: [:index,:join, :new, :create]
+
+  def index
+    @teams = if params[:search]
+      Team.where("name ILIKE ?", "%#{params[:search]}%")
+    else
+    end
+
+      respond_to do |format|
+        format.html
+        format.js 
+      end
+  end
 
   def new
     @team = Team.new
@@ -10,7 +22,7 @@ class TeamsController < ApplicationController
     @team[:owner_id] = current_user.id
     if @team.save
       @team.users << current_user
-      redirect_to dashboard_user_path(current_user)
+      redirect_to team_path(@team.id) 
     else
       render :new
     end
