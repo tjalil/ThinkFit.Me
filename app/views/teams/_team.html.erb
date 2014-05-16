@@ -1,4 +1,4 @@
-<h1><%= team.name %></h1>
+<h1><%= link_to team.name, team_path(team) %></h1>
 <p>
 
 <div id="team-description">
@@ -6,7 +6,7 @@
 </div>
 <br/>
 <div id="team-user">
-  Created by: <%=User.find(team.owner_id).name %>
+  Created by: <%= User.find(team.owner_id).name %>
 </div>
 </p>
 <br/>
@@ -14,14 +14,15 @@
 <div class="roster">
   <h3>Members</h3>
   <div class="roster">
-    <ul>
-      <% team.users.each do |member| %>
-      <%= render 'new_member' %> 
-        <div class="person">
-          <li>  <%= link_to  member.name, dashboard_user_path(member.id)  %></li>
-        </div>
+
+      <% if team.users != [] %>
+          <p>SPACEFILLER</p>
+          <div class="person">
+
+          </div>
+      <% else %>
       <% end %>
-    </ul>
+
     <p><%= button_to "Join!", team_join_path(team.id) %></p>  
   </div>
 </div>
