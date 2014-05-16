@@ -1,14 +1,14 @@
-.widget.personalchat
+.widget .personalchat
 {
 	height: 735px;
 }
 
-.widget.companywall
+.widget .companywall
 {
   height:800px;
 }
 
-.widget.teamchat
+.widget .teamchat
 {
 	height:780px;
 }

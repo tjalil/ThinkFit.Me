@@ -9,11 +9,10 @@
   <body class = "background-dark">
 
     <%= render 'layouts/sidenav' %>
+    <%= render 'layouts/headnav' %>
 
     <div class = "wrap">
-      <%= render 'layouts/headnav' %>
-      <div class="content container-fluid">
-
+      <div class = "container-fluid">
         <div class="row-fluid">
 
           <div class = "flash">
@@ -27,8 +26,8 @@
 
           <%= yield %>
 
-        </div>
-      </div>      
+        </div>    
+      </div>
     </div>
 
   </body>
