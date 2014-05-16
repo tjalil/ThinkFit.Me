@@ -10,21 +10,48 @@
 </div>
 </p>
 <br/>
-<div class="roster">
-  <h3>Members</h3>
-  <ul>
-    <div id="member">
-      <%= render "members" %>
-    </div>
-  </ul>
+
+
+
+<div class="span4">
+  <section class="widget">
+  <header>
+  <legend><h4>
+      Members
+  </h4></legend>
+  </header>
+
+  <section class="widget">
+
+  <div id="member">
+    <%= render "members" %>
+  </div>
+  </section>
   <div id="join-team"><%= button_to "Join!", team_join_path(@team.id), remote: :true %></div>  
 </div>
+</section>
+
+
+<div class="span4">
+  <section class="widget chat companywall">
+  <header>
+  <legend><h4>
+      Wall 
+  </h4></legend>
+  </header>
+  <div class="body">
+    <div id="chat" class="chat">
+      <div class="row-fluid non-responsive">
+        <%= render "/comments/new" %>
+      </div>
+      <br>
+    </div>
+    <br>
+    <div id="chat-messages" class="chat-messages">
+      <%= render "/comments/each" %>
+      <%= paginate @comments %>
+    </div>
+  </div>
 </div>
-<div id="teamwall">
-  <h1>Wall: </h1>
-  <%= render "/comments/new" %>
-    <div id="chat-messages">
-  <%= render "/comments/each" %>
-</div>
-</div>
-<%= paginate @comments %>
+</section>
+
