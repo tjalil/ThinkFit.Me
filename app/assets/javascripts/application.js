@@ -10,17 +10,17 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require 'jquery-2.1.1'
+//= require jquery-2.1.1
 //= require jquery_ujs
-//= require 'bootstrap'
-//= require 'thinkfitme_specific'
-//= require 'cocoon'
-//= require turbolinks
+//= require bootstrap
+//= require thinkfitme_specific
+//= require cocoon
+//= require_self
 
 $(document).ready(function() {
 
 	// AJAX request for comments in dashboard
-	$("#new_comment").submit(function(event){
+	$("#new_comment").on('submit', function(event) {
 		event.preventDefault();
 
 		var url = $(this).attr('action');
