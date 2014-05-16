@@ -24,7 +24,7 @@
               <br>
               Goal: <%= goal.weekly_goal %> times/week<br>
               Logged: <%= goal.count_activity_log %> times<br>
-              Last Logged: <%= goal.updated_at %>
+              Last Logged: <%= goal.updated_at.to_s(:just_date) %>
             </address>
           </div>
         </div>
@@ -36,16 +36,26 @@
 </div> 
 
 <div class="span4">
-  <section class="widget">
-    <div id="comment_wall">
-      <header>
-        <h2>Wall:</h2>
-      </header>
+  <section class="widget chat companywall" style = "max-height: 650px">
+    <header>
+      <legend><h4>
+        Wall
+      </h4></legend>
+    </header>
+    <div class="body">
+      <div id="chat" class="chat">
+        <div class="row-fluid non-responsive">
+          <%= render "/comments/new" %>
+        </div>
+        <br>
+        <div id="chat-messages" class="chat-messages">
+          <%= render "/comments/each" %>
+        </div>
 
-      <%= render "/comments/new" %>
-      <%= render "/comments/each" %>
+          <%= paginate @comments %>
+
+      </div>
     </div>
-    <%= paginate @comments %>
   </section>
 </div>
 

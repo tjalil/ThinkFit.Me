@@ -1,6 +1,7 @@
 <% @comments.each do |comment| %>
 
 <div class="chat-message">
+
   <div class="sender pull-left">
     <div class="icon">
       <img src="" class="img-circle" alt="">
@@ -10,8 +11,15 @@
     </div>
   </div>
 
-	<%= User.find(comment.user_id).name %>
-	<%= comment.comment %>
+  <div class="chat-message-body">
+    <span class="arrow"></span>
+  	<div class="sender">
+      <%= User.find(comment.user_id).name %>
+    </div>
+    <div class="text">
+  	  <%= comment.comment %>
+    </div>
+  </div>
 
 </div>
 
