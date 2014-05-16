@@ -45,9 +45,7 @@ class TeamsController < ApplicationController
     elsif
       respond_to do |format|
       @team.users << current_user
-        format.html {
-          redirect_to team_path(@team.id), notice: "Welcome to the team!"
-        }
+        format.html { redirect_to team_path(@team.id), notice: "Welcome to the team!"}
         format.js {}
       end
     end

@@ -1,0 +1,1 @@
+<li>  <%= link_to  @team.users.find_by( id: current_user.id).name, team_path(@team.id)  %></li>
