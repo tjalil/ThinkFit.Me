@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Thinkfitme</title>
+    <title>ThinkFit.Me</title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
   </head>
-  <body>
+  <body class = "background-dark">
 
+    <%= render 'layouts/sidenav' %>
+    <%= render 'layouts/headnav' %>
 
+<<<<<<< HEAD
     <div class = "userinfo", style= "float: right">
       <% if current_user %>
         Signed in as <%= current_user.name %> | <%= link_to "Dashboard", dashboard_user_path(current_user) %> | <%= link_to "Logout", user_session_path("current"), method: :delete %>
@@ -27,17 +29,26 @@
         <%= submit_tag "Search" %>
       <% end %>
     </div>
+=======
+    <div class = "wrap">
+      <div class = "container-fluid">
+        <div class="row-fluid">
+>>>>>>> a0403aa37d8a0e5b608bbef0f08daa87a2a7e855
 
-    <div class = "flash">
-      <% if flash[:notice] %>
-        <p id = "notice", style="color:green"><%= flash[:notice] %></p>
-      <% end %>
-      <% if flash[:alert] %>
-        <p id = "alert", style="color:red"><%= flash[:alert] %></p>
-      <% end %>
+          <div class = "flash">
+            <% if flash[:notice] %>
+              <p id = "notice", style="color:green"><%= flash[:notice] %></p>
+            <% end %>
+            <% if flash[:alert] %>
+              <p id = "alert", style="color:red"><%= flash[:alert] %></p>
+            <% end %>
+          </div>
+
+          <%= yield %>
+
+        </div>    
+      </div>
     </div>
-
-    <%= yield %>
 
     <div id="search-answer">
     </div>
