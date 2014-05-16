@@ -11193,7 +11193,7 @@ input.parsley-error {
 /**********************************/
 .page-header {
   border: none;
-  margin: 15px 2.5641% 0;
+  /*margin: 15px 2.5641% 0;*/
   padding: 0;
   position: relative;
   -webkit-border-radius: 1px;
