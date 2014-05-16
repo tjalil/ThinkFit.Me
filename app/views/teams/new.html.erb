@@ -10,12 +10,22 @@
     <%= f.label :description %><br/>
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.submit %>
-  </div>
+  <br/>
   <div class="field">
     <p> Add a member here:</p>
-    <p> #to be created </p>
+    <p> #to be created -send email to friends? auto add?</p>
+  </div>
+  <!-- currently usless but we may need -->
+  <div class="field">
+    <p>Team Type: </p>
+    <%= f.label :type_public, "Public" %>
+    <%= f.radio_button :name, nil %>  
+    <%= f.label :type_private, "Private" %>
+    <%= radio_button_tag :name, nil  %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.submit %>
   </div>
 <% end %>
 
