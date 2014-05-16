@@ -32,7 +32,9 @@
     <br>
     <%= f.submit 'Done!'%> 
   </div>
-
 <% end %>
 
-
+  <div class = "back">
+    <br>
+    <%= link_to 'Nevermind - Go Back',  dashboard_user_path(current_user.id),{ action: 'GET'}  %> 
+  </div>
