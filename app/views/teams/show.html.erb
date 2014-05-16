@@ -20,10 +20,10 @@
   <div id="join-team"><%= button_to "Join!", team_join_path(@team.id), method: :post %></div>  
 </div>
 </div>
-<div id="chat-messages">
 <div id="teamwall">
   <h1>Wall: </h1>
   <%= render "/comments/new" %>
+    <div id="chat-messages">
   <%= render "/comments/each" %>
 </div>
 </div>
