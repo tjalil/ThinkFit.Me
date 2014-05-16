@@ -3,14 +3,14 @@ class TeamsController < ApplicationController
 
   def index
     @teams = if params[:search]
-      Team.where("name ILIKE ?", "%#{params[:search]}%")
-    else
-    end
+               Team.where("name ILIKE ?", "%#{params[:search]}%")
+             else
+             end
 
-      respond_to do |format|
-        format.html
-        format.js 
-      end
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   def new
@@ -39,20 +39,17 @@ class TeamsController < ApplicationController
 
 
   def join
-    team_users = Team.where(id: params[:team_id]).take.users 
-
-    respond_to do |format|
-      if team_users.where(id: current_user.id) == []
+    @team = Team.find(params[:team_id])
+    if @team.users.find_by( id: current_user.id) 
+      redirect_to team_path(@team.id), alert: "Unable to join, you may already be a member"
+    elsif
+      respond_to do |format|
+      @team.users << current_user
         format.html {
-          team_users << current_user
-          redirect_to team_path(params[:team_id]), notice: "Welcom to the team!"
+          redirect_to team_path(@team.id), notice: "Welcome to the team!"
         }
         format.js {}
-      elsif
-        format.html{ redirect_to team_path(params[:team_id]), alert: "Unable to join, you may already be a member"}
-        format.js {}
       end
-
     end
   end
 

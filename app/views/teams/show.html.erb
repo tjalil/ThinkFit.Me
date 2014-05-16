@@ -17,7 +17,7 @@
       <%= render "new_member" %>
     </div>
   </ul>
-  <div id="join-team"><%= button_to "Join!", team_join_path(@team.id), method: :post %></div>  
+  <div id="join-team"><%= button_to "Join!", team_join_path(@team.id), remote: :true %></div>  
 </div>
 </div>
 
