@@ -17,7 +17,12 @@
         <%= link_to "Log In", new_user_session_path %> | <%= link_to "Sign Up", new_user_path %>
       <% end %>
       <p>Search by User:</p>
-      <%= form_tag users_path, method: :get, authentication: false, id: 'search-form' do%>
+      <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search" %>
+      <% end %>
+      <p>Search by Team:</p>
+      <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
         <%= text_field_tag :search, params[:search] %>
         <%= submit_tag "Search" %>
       <% end %>
