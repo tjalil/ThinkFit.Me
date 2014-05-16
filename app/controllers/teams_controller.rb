@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team[:owner_id] = current_user.id
     if @team.save
+      @team.users << current_user
       redirect_to dashboard_user_path(current_user)
     else
       render :new
@@ -28,11 +29,17 @@ class TeamsController < ApplicationController
   def join
     team_users = Team.where(id: params[:team_id]).take.users 
 
-    if team_users.where(id: current_user.id) == []
-      team_users << current_user
-      redirect_to team_path(params[:team_id]), notice: "Welcom to the team!"
-    elsif
-      redirect_to team_path(params[:team_id]), alert: "Unable to join, you may already be a member"
+    respond_to do |format|
+      if team_users.where(id: current_user.id) == []
+        format.html {
+          team_users << current_user
+          redirect_to team_path(params[:team_id]), notice: "Welcom to the team!"
+        }
+        format.js {}
+      elsif
+        format.html{ redirect_to team_path(params[:team_id]), alert: "Unable to join, you may already be a member"}
+        format.js {}
+      end
 
     end
   end

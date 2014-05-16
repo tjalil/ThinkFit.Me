@@ -1,1 +1,3 @@
-
+<% @team.users.each do |member| %>
+  <li>  <%= link_to  member.name, dashboard_user_path(member.id)  %></li>
+<% end %>

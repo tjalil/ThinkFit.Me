@@ -1,8 +1,9 @@
 <%= link_to "Back to Homepage", users_path %>
-<h2>Dashboard</h2>
+<h1>Dashboard</h1>
 
 <div class = "add_new_goal">
   <%= link_to "Add new Goal", new_user_goal_path(current_user) %>
+
   <% current_user.goals.each do |goal| %>
     <h3><%= goal.name_of_activity_through_goal %></h3>
     <p>Goal: <%= goal.weekly_goal %> times/week</p>
@@ -41,3 +42,7 @@
     </ul>
   </div>
 </div>
+
+<h2>Activity Histoy</h2>
+
+
