@@ -10,19 +10,14 @@
 </div>
 </p>
 <br/>
-
 <div class="roster">
   <h3>Members</h3>
-  <div class="roster">
     <ul>
-      <% @team.users.each do |member| %>
-      <%= render 'new_member' %> 
-        <div class="person">
-          <li>  <%= link_to  member.name, dashboard_user_path(member.id)  %></li>
-        </div>
-      <% end %>
+      <div id:"member">
+        <%= render 'new_member' %> 
+      </div>
     </ul>
-    <p><%= button_to "Join!", team_join_path(@team.id) %></p>  
+    <div id="join-team"><%= button_to "Join!", team_join_path(@team.id), method: :post %></div>  
   </div>
 </div>
 
