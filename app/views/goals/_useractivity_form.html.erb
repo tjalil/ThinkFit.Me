@@ -1,12 +1,5 @@
 <%= form_for ([current_user, @goal]) do |f| %>
 
-  <%#= f.fields_for :goals do |goal| %>
-    <%#= render 'goals_fields', f: goal %>
-    <!-- <div class = "links"> -->
-      <%#= link_to_add_association 'Add Another Activity', f, :goals %>
-    <!-- </div> -->
-  <%# end %>
-
   <% if @goal.errors.any? %>
     <div class = "error_messages">
       <h2>Form is invalid</h2>
@@ -20,7 +13,7 @@
 
   <div class = "field">
     <%= f.label :activity_name %><br>
-    <%= f.select :activity_id, options_from_collection_for_select(Activity.order(:name), :id, :name), include_blank: true %>
+    <%= f.select :activity_id, options_from_collection_for_select(Activity.select('DISTINCT ON (name) *').all, :id, :name), include_blank: true %>
   </div>
 
   <div class = "field">
