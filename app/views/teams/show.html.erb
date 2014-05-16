@@ -23,10 +23,11 @@
   <div id="join-team"><%= button_to "Join!", team_join_path(@team.id), remote: :true %></div>  
 </div>
 </div>
-
+<div id="chat-messages">
 <div id="teamwall">
   <h1>Wall: </h1>
   <%= render "/comments/new" %>
   <%= render "/comments/each" %>
+</div>
 </div>
 <%= paginate @comments %>

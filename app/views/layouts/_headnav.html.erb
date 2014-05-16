@@ -1,0 +1,46 @@
+<header class="page-header">
+  <div class="navbar">
+    <div class="container-fluid">
+      <% if current_user %>
+        <ul class="pull-left logo" style = "margin-top: -1rem">
+          <li>
+            <h1> <%= link_to "THINKFIT.ME", users_path %></h1>
+          </li>
+        </ul>
+        <ul class="nav pull-right">
+          <li>
+              <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
+                <%= text_field_tag :search, params[:search], placeholder: 'Search by User' %>
+                <%= submit_tag "Search" %>
+              <% end %>
+          </li>
+          <li class="divider"></li>
+          <li>
+             <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
+              <%= text_field_tag :search, params[:search], placeholder: 'Search by Team' %>
+              <%= submit_tag "Search" %>
+            <% end %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to current_user.name, "#" %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to "Logout", user_session_path("current"), method: :delete %> 
+          </li>
+        </ul>
+        <% else %>
+        <ul class="nav pull-right">
+          <li>
+            <%= link_to "Log In", new_user_session_path %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to "Sign Up", new_user_path %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</header>

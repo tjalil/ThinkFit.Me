@@ -1,5 +1,26 @@
 <% @comments.each do |comment| %>
-	<%= User.find(comment.user_id).name %><br>
-	<%= comment.comment %>
-	<br>
+
+  <div class="chat-messages">
+
+    <div class="sender pull-left">
+      <div class="icon">
+        <img src="" class="img-circle" alt="">
+      </div>
+      <div class="time">
+        <%= comment.created_at.to_s(:just_time) %>
+      </div>
+    </div>
+
+    <div class="chat-message-body">
+      <span class="arrow"></span>
+    	<div class="sender">
+        <%= User.find(comment.user_id).name %>
+      </div>
+      <div class="text">
+    	  <%= comment.comment %>
+      </div>
+    </div>
+
+  </div>
+
 <% end %>

@@ -12,5 +12,13 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :teams
 
   has_many :comments, as: :commentable
+
+  before_save :capitalize_name
+
+  private
+
+  def capitalize_name
+    self.name = self.name.split.map(&:capitalize).join(' ')
+  end
 end
 
