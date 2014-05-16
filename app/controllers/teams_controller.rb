@@ -21,7 +21,8 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team[:owner_id] = current_user.id
     if @team.save
-      redirect_to dashboard_user_path(current_user)
+      @team.users << current_user
+      redirect_to team_path(@team.id) 
     else
       render :new
     end

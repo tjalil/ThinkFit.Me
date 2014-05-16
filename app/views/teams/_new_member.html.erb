@@ -1,1 +1,3 @@
-
+<% Team.find(params[:id]).users.each do |member| %>
+  <%= member.name %> 
+<% end%>
