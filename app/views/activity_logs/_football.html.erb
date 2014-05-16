@@ -1,0 +1,3 @@
+<div class = "field">
+  <p>I completed a <%= f.select :intensity, options_for_select([['Tackle','Tackle'], ['Touch or Flag', 'Touch or Flag']], include_blank: true) %> session of <%= @goal.name_of_activity_through_goal %> in <%= f.number_field :duration %> minutes!</p>
+</div>
