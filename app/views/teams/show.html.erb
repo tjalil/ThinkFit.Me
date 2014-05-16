@@ -14,10 +14,7 @@
   <h3>Members</h3>
   <ul>
     <div id="member">
-
-      <% @team.users.each do |member| %>
-        <%= render partial: "new_member", locals: { member: member} %>
-      <% end%>
+      <%= render "members" %>
     </div>
   </ul>
   <div id="join-team"><%= button_to "Join!", team_join_path(@team.id), remote: :true %></div>  
