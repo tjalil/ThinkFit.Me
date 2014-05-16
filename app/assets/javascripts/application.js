@@ -34,14 +34,23 @@ $(document).ready(function(){
 		});
 	});
 
-	// getScript request for searches
-	$('#search-form').submit(function(event){
+	// getScript request for user searches
+	$('#search-user').submit(function(event){
 		event.preventDefault();
 
 		var searchValue = $('#search').val();
 
 		$.getScript('/users?search=' + searchValue);
 
+	});
+
+	// getScript request for team searches
+	$('#search-team').submit(function(event){
+		event.preventDefault();
+
+		var searchValue = $('#search').val();
+
+		$.getScript('/teams?search=' + searchValue);
 	});
 
 });
