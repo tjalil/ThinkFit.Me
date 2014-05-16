@@ -1,0 +1,36 @@
+<header class="page-header">
+  <div class="navbar">
+    <% if current_user %>
+      <ul class="pull-left">
+        <li>
+          <%= link_to "Back to Homepage", users_path %>
+        </li>
+      </ul>
+      <ul class="nav pull-right">
+        <li>
+          <form id="search-form" class="navbar-search">
+            <input type="search" class="search-query" placeholder="Search...">
+          </form>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <span class="name"><%= link_to current_user.name.upcase, "#" %><span>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to "Logout", user_session_path("current"), method: :delete %> 
+        </li>
+      </ul>
+      <% else %>
+      <ul class="nav pull-right">
+        <li>
+          <%= link_to "Log In", new_user_session_path %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to "Sign Up", new_user_path %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</header>

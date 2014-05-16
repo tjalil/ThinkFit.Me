@@ -1,0 +1,44 @@
+.widget.personalchat
+{
+	height: 735px;
+}
+
+.widget.companywall
+{
+  height:800px;
+}
+
+.widget.teamchat
+{
+	height:780px;
+}
+
+.statspagechart
+{
+	height:275px;
+}
+
+.statspagechart-info {
+  margin: 12px 0 0;
+  text-align: center;
+  padding-bottom: 0;
+}
+.statspagechart .key {
+  font-weight: bold;
+  color: white;
+}
+.statspagechart .value {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 16.25px;
+}
+
+.modal
+{
+  overflow: visible;
+}
+
+.modal-body
+{
+  overflow-y: visible;
+}

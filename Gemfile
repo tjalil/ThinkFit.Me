@@ -29,7 +29,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-
 # CanCanCan for user access
 gem 'cancancan', '~> 1.8'
 
@@ -52,6 +51,8 @@ gem 'better_errors'
 gem 'binding_of_caller'
 
 gem 'figaro'
+
+gem 'bootstrap-sass'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

@@ -1,0 +1,9 @@
+<% if current_user %>
+  <nav id="sidebar" class="sidebar nav-collapse">
+    <ul id="side-nav" class="side-nav">
+      <li class="sidenav-dashboard">
+        <%= link_to "Dashboard", dashboard_user_path(current_user) %>
+      </li>
+    </ul>
+  </nav>
+<% end %>
