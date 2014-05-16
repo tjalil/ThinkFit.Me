@@ -11,29 +11,10 @@
     <%= render 'layouts/sidenav' %>
     <%= render 'layouts/headnav' %>
 
-<<<<<<< HEAD
-    <div class = "userinfo", style= "float: right">
-      <% if current_user %>
-        Signed in as <%= current_user.name %> | <%= link_to "Dashboard", dashboard_user_path(current_user) %> | <%= link_to "Logout", user_session_path("current"), method: :delete %>
-      <% else %>
-        <%= link_to "Log In", new_user_session_path %> | <%= link_to "Sign Up", new_user_path %>
-      <% end %>
-      <p>Search by User:</p>
-      <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-      <% end %>
-      <p>Search by Team:</p>
-      <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-      <% end %>
-    </div>
-=======
     <div class = "wrap">
       <div class = "container-fluid">
         <div class="row-fluid">
->>>>>>> a0403aa37d8a0e5b608bbef0f08daa87a2a7e855
+
 
           <div class = "flash">
             <% if flash[:notice] %>

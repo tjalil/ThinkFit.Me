@@ -9,15 +9,17 @@
         </ul>
         <ul class="nav pull-right">
           <li>
-            <form id="search-form" class="navbar-search">
-              <input type="search" class="search-query" placeholder="Search by User">
-            </form>
+              <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
+                <%= text_field_tag :search, params[:search], placeholder: 'Search by User' %>
+                <%= submit_tag "Search" %>
+              <% end %>
           </li>
           <li class="divider"></li>
           <li>
-            <form id="search-form" class="navbar-search">
-              <input type="search" class="search-query" placeholder="Search by Team">
-            </form>
+             <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
+              <%= text_field_tag :search, params[:search], placeholder: 'Search by Team' %>
+              <%= submit_tag "Search" %>
+            <% end %>
           </li>
           <li class="divider"></li>
           <li>
