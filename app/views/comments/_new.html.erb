@@ -1,12 +1,11 @@
 <%= form_for ([@commentable, @comment]) do |f| %>
 
 	<div class="field">
-		<%= f.label :comment %><br>
-		<%= f.text_area :comment %>
+		<%= f.text_area :comment, :class => "span12", placeholder: "Share something with everyone :)" %>
 	</div>
 
 	<div class="action" id="new_comment">
-		<%= f.submit 'Comment'%>
+		<%= f.submit 'Comment', :class => "btn btn-success span4 pull-right" %>
 	</div>
 
 <% end %>
