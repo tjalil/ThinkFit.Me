@@ -1,8 +1,8 @@
 <header class="page-header">
-  <div class="navbar navbar-default">
+  <div class="navbar">
     <div class="container-fluid">
       <% if current_user %>
-        <ul class="nav pull-left pull-top logo">
+        <ul class="pull-left logo" style = "margin-top: -1rem">
           <li>
             <h1> <%= link_to "THINKFIT.ME", users_path %></h1>
           </li>
@@ -10,7 +10,13 @@
         <ul class="nav pull-right">
           <li>
             <form id="search-form" class="navbar-search">
-              <input type="search" class="search-query" placeholder="Search...">
+              <input type="search" class="search-query" placeholder="Search by User">
+            </form>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <form id="search-form" class="navbar-search">
+              <input type="search" class="search-query" placeholder="Search by Team">
             </form>
           </li>
           <li class="divider"></li>
