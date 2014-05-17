@@ -56,6 +56,8 @@ gem 'bootstrap-sass'
 
 gem 'carrierwave'
 
+gem 'rmagick'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
