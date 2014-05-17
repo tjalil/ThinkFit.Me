@@ -52,6 +52,11 @@
 			<%= user.file_field :avatar %>
 		</div>
 
+		<div class="field">
+    	<%= user.label :remote_avatar_url, "or avatar URL" %><br/>
+    	<%= user.text_field :remote_avatar_url %>
+  	</div>
+
 		<div class="action">
 			<%= user.submit 'Submit!' %>
 		</div>
