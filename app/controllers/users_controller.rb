@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :name, :height, :weight, :gender)
+    params.require(:user).permit(:email, :password, :name, :height, :weight, :gender, :avatar)
   end
 
    def load_commentable
