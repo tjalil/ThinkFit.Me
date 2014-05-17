@@ -53,4 +53,17 @@ $(document).ready(function() {
 		$.getScript('/teams?search=' + searchValue);
 	});
 
+	// BELOW FOR USER SIGN UP FORM
+
+	// Height field click
+	$('#user_height').click(function(){
+		$('#instructions').html('Please enter your height in (metric or imperial)');
+	});
+
+	// Weight field click
+	$('#user_weight').click(function(){
+		$('#instructions').html('Please enter your weight in (metric or imperial)');
+	});
+
+
 });
