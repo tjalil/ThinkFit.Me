@@ -54,6 +54,8 @@ gem 'figaro'
 
 gem 'bootstrap-sass'
 
+gem 'carrierwave'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
