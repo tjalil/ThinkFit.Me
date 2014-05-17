@@ -53,7 +53,7 @@ class TeamsController < ApplicationController
 
   private
   def team_params
-    params.require(:team).permit(:name, :description, :user_id)
+    params.require(:team).permit(:name, :description, :user_id, :avatar)
   end
 
   def load_commentable
