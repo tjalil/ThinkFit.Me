@@ -49,11 +49,12 @@
 		</div>
 
 		<div class="field">
+			<%= user.label :avatar, "Upload your Profile Picture" %>
 			<%= user.file_field :avatar %>
 		</div>
 
 		<div class="field">
-    	<%= user.label :remote_avatar_url, "or avatar URL" %><br/>
+    	<%= user.label :remote_avatar_url, "Or Insert your Picture Link:" %>
     	<%= user.text_field :remote_avatar_url %>
   	</div>
 
@@ -66,4 +67,5 @@
 <% end %>
 
 <div id="tutorialbox">
+	<h1 id="instructions"></h1>
 </div>
