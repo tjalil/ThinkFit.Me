@@ -1,92 +1,118 @@
 <div class="content">
   <div class="span4">
     <section class="widget">
-      <header>
-        <legend><h4>
-          Track your Activities
-        </h4></legend>
-      </header>
+    <header>
+    <legend><h4>
+        Track your Activities
+    </h4></legend>
+    </header>
 
-      <div class = "body">
-        <% current_user.goals.each do |goal| %>
+    <div class = "body">
+      <% current_user.goals.each do |goal| %>
         <section class="widget">
-          <div class="row-fluid">
-            <div class="span4">
-                <img src="" alt="64x64" style="height: 100px; width:100px;" data-placement="top" id="tooltip-enabled" data-original-title="" class="img-circle">
-              </div>
-            <div class="span8">
-              <div class="span10">
-                <h4 class="no-margin"><%= goal.name_of_activity_through_goal %></h4>
-              </div>
-              <div class="span2">
-                <%= button_to "+", new_user_goal_activity_log_path(current_user, goal), :class => "btn btn-success pull-top", :method => :get %>
-              </div>
-              <address>
-                <br>
-                Goal: <%= goal.weekly_goal %> times/week<br>
-                Logged: <%= goal.count_activity_log %> times<br>
-                Last Logged: <%= goal.updated_at.to_s(:just_date) %>
-              </address>
-            </div>
+        <div class="row-fluid">
+          <div class="span4">
+            <img src="" alt="64x64" style="height: 100px; width:100px;" data-placement="top" id="tooltip-enabled" data-original-title="" class="img-circle">
           </div>
+          <div class="span8">
+            <div class="span10">
+              <h4 class="no-margin"><%= goal.name_of_activity_through_goal %></h4>
+            </div>
+            <div class="span2">
+              <%= button_to "+", new_user_goal_activity_log_path(current_user, goal), :class => "btn btn-success pull-top", :method => :get %>
+            </div>
+            <address>
+              <br>
+              Goal: <%= goal.weekly_goal %> times/week<br>
+              Logged: <%= goal.count_activity_log %> times<br>
+              Last Logged: <%= goal.updated_at.to_s(:just_date) %>
+            </address>
+          </div>
+        </div>
         </section>
-        <% end %>
+      <% end %>
 
-        <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
-      </div>
+      <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
+    </div>
     </section>
   </div> 
 
   <div class="span4">
     <section class="widget chat companywall">
-      <header>
-        <legend><h4>
-          Wall
-        </h4></legend>
-      </header>
-      <div class="body">
-        <div id="chat" class="chat">
-          <div class="row-fluid non-responsive">
-            <%= render "/comments/new" %>
-          </div>
-          <br>
-          <div id="chat-messages" class="chat-messages">
-            <%= render "/comments/each" %>
-            <%= paginate @comments %>
-          </div>
+    <header>
+    <legend><h4>
+        Wall
+    </h4></legend>
+    </header>
+    <div class="body">
+      <div id="chat" class="chat">
+        <div class="row-fluid non-responsive">
+          <%= render "/comments/new" %>
+        </div>
+        <br>
+        <div id="chat-messages" class="chat-messages">
+          <%= render "/comments/each" %>
+          <%= paginate @comments %>
         </div>
       </div>
+    </div>
     </section>
   </div>
 
   <div class="span4">
     <section class="widget">
-      <header>
-        <legend><h4>
-          Teams
-        </h4></legend>
-      </header>
+    <header>
+    <legend><h4>
+        Teams
+    </h4></legend>
+    </header>
 
-      <section class="widget">
-        I own teams:
-        <ul>
-          <% Team.where(owner_id: @commentable.id).each do |team| %>
-            <li> <%= link_to team.name, team_path(team.id) %></li>
+    <section class="widget">
+    I own teams:
+    <ul>
+      <% Team.where(owner_id: @commentable.id).each do |team| %>
+        <li> <%= link_to team.name, team_path(team.id) %></li>
+      <% end %>
+    </ul>
+    </section>
+    <section class="widget">
+    I'm a member of teams: 
+    <ul>
+      <% @commentable.teams.each do |team| %>
+        <li> <%= link_to team.name, team_path(team.id) %></li>
+      <% end %>
+    </ul>
+
+    <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
+    </section>
+
+  </div>
+  <div class="span4">
+    <section class="widget chat companywall">
+    <header>
+    <legend><h4>
+        ActivityStats 
+    </h4></legend>
+    </header>
+    <div class="body">
+      <div id="chat" class="chat">
+        <div id="stat-message" class="stats">
+          HI! More information to come.
+          <br/>
+          <br>
+          <% current_user.goals.each do |goal| %>
+            <%= goal.name_of_activity_through_goal %>
+            <br/> 
+            <li> Since: </li>
+            <li> Logged:  </li>
+            <li> Total Duration: </li>
+            <li> Total Distance: </li>
+            <li> Total Distance: Dose Not Exist Yet </li>
+            <br/>
           <% end %>
-        </ul>
-      </section>
-
-      <section class="widget">
-        I'm a member of teams: 
-        <ul>
-          <% @commentable.teams.each do |team| %>
-            <li> <%= link_to team.name, team_path(team.id) %></li>
-          <% end %>
-        </ul>
-      </section>
-
-      <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
-
+        </div>
+      </div>
+    </div>
     </section>
   </div>
 
