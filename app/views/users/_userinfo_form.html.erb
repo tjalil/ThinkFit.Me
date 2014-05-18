@@ -1,4 +1,4 @@
-<%= form_for @user do |user| %>
+<%= form_for @user, :html => {:multipart => true} do |user| %>
 
 	<h1>Personal Information</h1>
 
@@ -47,6 +47,15 @@
 			<%= user.label(:gender, "Female") %>
 			<%= user.radio_button(:gender, "female") %>
 		</div>
+
+		<div class="field">
+			<%= user.file_field :avatar %>
+		</div>
+
+		<div class="field">
+    	<%= user.label :remote_avatar_url, "or avatar URL" %><br/>
+    	<%= user.text_field :remote_avatar_url %>
+  	</div>
 
 		<div class="action">
 			<%= user.submit 'Submit!' %>

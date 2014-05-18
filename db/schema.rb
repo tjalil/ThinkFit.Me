@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140517185538) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
+    t.string   "avatar"
   end
 
   create_table "teams_users", id: false, force: true do |t|
@@ -91,6 +92,7 @@ ActiveRecord::Schema.define(version: 20140517185538) do
     t.string   "gender",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
