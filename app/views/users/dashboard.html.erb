@@ -88,7 +88,7 @@
 
   </div>
   <div class="span4">
-    <section class="widget chat companywall">
+    <section class="widget">
     <header>
     <legend><h4>
         ActivityStats 
@@ -100,13 +100,13 @@
           HI! More information to come.
           <br/>
           <br>
-          <% current_user.goals.each do |goal| %>
+          <% @person.goals.each do |goal| %>
             <%= goal.name_of_activity_through_goal %>
             <br/> 
-            <li> Since: <%=ActivityLog.where(goal_id: goal.id).first.created_at %> </li>
-            <li> Logged: <%=ActivityLog.where(goal_id: goal.id).count %> </li>
-            <li> Total Duration: <%=ActivityLog.where(goal_id: goal.id).sum(:duration) %> </li>
-            <li> Total Distance: <%=ActivityLog.where(goal_id: goal.id).sum(:distance) %> </li>
+            <li> Since: Dose Not Exist Yet </li>
+            <li> Logged: Dose Not Exist Yet </li>
+            <li> Total Duration: Dose Not Exist Yet </li>
+            <li> Total Distance: Dose Not Exist Yet </li>
             <li> Total Distance: Dose Not Exist Yet </li>
             <br/>
           <% end %>
@@ -115,6 +115,49 @@
     </div>
     </section>
   </div>
-</div>
-</div>
+  <div class="span4">
+    
+    <section class="widget">
+    <header>
+      <legend>
+        <h4> Friends  </h4>
+      </legend>
+    </header>
+    <div class="body">
+
+      <div id="friends" class="friends">
+          <% @person.friendships.each do |friend| %>
+            <li> 
+              IMAGE:  
+              <%= link_to User.find_by(id: friend.friend_id).name, dashboard_user_path(friend.friend_id) %>
+              <%="*" if @person.inverse_friends.find_by(id: friend.friend_id) %>
+              |
+              <%= link_to "remove", friendships_destroy_path, { method: 'delete', friend_id: friend.friend_id} %>
+            </li>
+            <br/>
+          <% end %>
+      </div>
+    </section>
+   
+    <section class="widget">
+      <header>
+        <legend>
+          <h4> Followers</h4>
+        </legend>
+      </header>
+      <div class="body">
+
+      <div id="followers" class="followers">
+          <% @person.inverse_friendships.each do |friended| %>
+            <li> 
+              IMAGE:  
+              <%= link_to User.find_by(id: friended.user_id).name, dashboard_user_path(friended.user_id) %>
+              <%="*" if @person.inverse_friends.find_by(id: friended.user_id) %>
+              |
+              <%= link_to "remove", friendships_destroy_path, { method: 'delete', friend_id: friended.friend_id} %>
+            </li>
+            <br/>
+          <% end %>
+      </div>
+     </div>
 </div>
