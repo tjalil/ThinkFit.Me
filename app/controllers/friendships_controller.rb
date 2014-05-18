@@ -1,4 +1,10 @@
 class FriendshipsController < ApplicationController
+
+  def new
+    
+  end
+
+
   def create
     @friendship = current_user.friendships.build(friend_id: params[:friend_id])
     if @friendship.save
@@ -11,10 +17,12 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = current_user.friendships.find_by(friend_id: friendship_params)
+    @friendship = current_user.friendships.find(params[:id])
     if @friendship.destroy
       flash[:notice] = "Goodbye Friend, hello sadness..."
       redirect_to dashboard_user_path(current_user)
+    else
+      flash[:alert] = "IT WORKS"
     end
   end
   private
