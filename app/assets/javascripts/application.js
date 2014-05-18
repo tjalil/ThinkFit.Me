@@ -65,5 +65,9 @@ $(document).ready(function() {
 		$('#instructions').html('Please enter your weight in (metric or imperial)');
 	});
 
+	// Weekly goal field click -- not working yet
+	$("#goal_weekly_goal").click(function(){
+		$('#instructions').html('Your weekly goal is how many times per week you would like to do this activity');
+	});
 
 });
