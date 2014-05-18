@@ -154,9 +154,6 @@
               IMAGE |  
               <%= link_to User.find_by(id: friended.user_id).name, dashboard_user_path(friended.user_id) %>
               <%="*" if @person.inverse_friends.find_by(id: friended.user_id) %>
-              |
-              <%= link_to "remove", friendships_destroy_path, { method: 'delete', friend_id: friended.friend_id} %>
-              's NOT WORKING!
             </li>
             <br/>
           <% end %>
