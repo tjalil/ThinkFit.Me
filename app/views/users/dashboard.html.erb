@@ -116,8 +116,36 @@
     </section>
   </div>
 
+
+
+ <div class="span4">
+    <section class="widget">
+    <header>
+    <legend>
+      <h4> Friends  </h4>
+    </legend>
+    </header>
+    <div class="body">
+
+      <div id="friends" class="friends">
+        <%= render partial: "friendships/friends", locals: { person_type: 'friend' } %>
+      </div>
+      </section>
+
+      <section class="widget">
+      <header>
+      <legend>
+        <h4> Followers</h4>
+      </legend>
+      </header>
+      <div class="body">
+
+        <div id="followers" class="followers">
+          <%= render partial: "friendships/friends", locals: { person_type: 'follower' } %>
+        </div>
+      </div>
+    </div>
   <!-- This'll have to be reformatted. Have it here to verify if image upload works -->
   <div class="uploadertest">
     <%= image_tag current_user.avatar_url %>
   </div>
-</div>
