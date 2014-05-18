@@ -25,7 +25,7 @@
                 <br>
                 Goal: <%= goal.weekly_goal %> times/week<br>
                 Logged: <%= goal.count_activity_log %> times<br>
-                Latest Points: <br>
+                Latest Points: <%= goal.show_points %> <br>
                 Last Logged: <%= goal.updated_at.to_s(:just_date) %>
               </address>
             </div>
