@@ -1,5 +1,7 @@
 Thinkfitme::Application.routes.draw do
 
+  post "friendships/create"
+  delete "friendships/destroy"
   resources :users do
     member do
       get 'dashboard'

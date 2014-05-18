@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def dashboard #main page for user. user redirected to this page after signup/login
     @comment = @commentable.comments.build
     @comments = @commentable.comments.order('comments.created_at DESC').page params[:page]
+    @person = User.find_by(id: params[:id])
   end
 
   def new

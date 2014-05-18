@@ -88,7 +88,7 @@
 
   </div>
   <div class="span4">
-    <section class="widget chat companywall">
+    <section class="widget">
     <header>
     <legend><h4>
         ActivityStats 
@@ -100,13 +100,13 @@
           HI! More information to come.
           <br/>
           <br>
-          <% current_user.goals.each do |goal| %>
+          <% @person.goals.each do |goal| %>
             <%= goal.name_of_activity_through_goal %>
             <br/> 
-            <li> Since: </li>
-            <li> Logged:  </li>
-            <li> Total Duration: </li>
-            <li> Total Distance: </li>
+            <li> Since: Dose Not Exist Yet </li>
+            <li> Logged: Dose Not Exist Yet </li>
+            <li> Total Duration: Dose Not Exist Yet </li>
+            <li> Total Distance: Dose Not Exist Yet </li>
             <li> Total Distance: Dose Not Exist Yet </li>
             <br/>
           <% end %>
@@ -115,9 +115,31 @@
     </div>
     </section>
   </div>
+  <div class="span4">
 
-  <!-- This'll have to be reformatted. Have it here to verify if image upload works -->
-  <div class="uploadertest">
-    <%= image_tag current_user.avatar_url.to_s %>
-  </div>
-</div>
+    <section class="widget">
+    <header>
+    <legend>
+      <h4> Friends  </h4>
+    </legend>
+    </header>
+    <div class="body">
+
+      <div id="friends" class="friends">
+        <%= render partial: "friendships/friends", locals: { person_type: 'friend' } %>
+      </div>
+      </section>
+
+      <section class="widget">
+      <header>
+      <legend>
+        <h4> Followers</h4>
+      </legend>
+      </header>
+      <div class="body">
+
+        <div id="followers" class="followers">
+          <%= render partial: "friendships/friends", locals: { person_type: 'follower' } %>
+        </div>
+      </div>
+    </div>
