@@ -14,8 +14,9 @@
   <%="*" if @user.inverse_friends.find_by(id: @friend_type) %>
   |
   <% if current_user == @user %>
-    <%= link_to "remove", friendships_destroy_path, { method: 'delete', id: current_user.friendships.find_by(:friend_id => friend.id )} %>
+    <%= link_to "remove", friendship_path(friend.id), { method: 'delete', id: friend.id} %>
   <% end %>
+
   </li>
   <br/>
 
