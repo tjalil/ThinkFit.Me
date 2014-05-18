@@ -128,11 +128,12 @@
       <div id="friends" class="friends">
           <% @person.friendships.each do |friend| %>
             <li> 
-              IMAGE:  
+              IMAGE |  
               <%= link_to User.find_by(id: friend.friend_id).name, dashboard_user_path(friend.friend_id) %>
               <%="*" if @person.inverse_friends.find_by(id: friend.friend_id) %>
               |
               <%= link_to "remove", friendships_destroy_path, { method: 'delete', friend_id: friend.friend_id} %>
+              's NOT WORKING!
             </li>
             <br/>
           <% end %>
@@ -150,11 +151,12 @@
       <div id="followers" class="followers">
           <% @person.inverse_friendships.each do |friended| %>
             <li> 
-              IMAGE:  
+              IMAGE |  
               <%= link_to User.find_by(id: friended.user_id).name, dashboard_user_path(friended.user_id) %>
               <%="*" if @person.inverse_friends.find_by(id: friended.user_id) %>
               |
               <%= link_to "remove", friendships_destroy_path, { method: 'delete', friend_id: friended.friend_id} %>
+              's NOT WORKING!
             </li>
             <br/>
           <% end %>
