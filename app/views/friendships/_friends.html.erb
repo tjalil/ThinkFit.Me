@@ -13,7 +13,7 @@
   <%= link_to User.find_by(id: @friend_type).name, dashboard_user_path(@friend_type) %>
   <%="*" if @person.inverse_friends.find_by(id: @friend_type) %>
   |
-  <% if current_user %>
+  <% if current_user == @person %>
     <%= link_to "remove", friendships_destroy_path, { method: 'delete', friend_id: friend.friend_id} %>
   <% end %>
   </li>
