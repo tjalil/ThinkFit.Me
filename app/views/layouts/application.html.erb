@@ -25,7 +25,7 @@
             <% end %>
           </div>
           <div id="user-name">
-            <h1> <%= User.find_by(id: params[:id]).name %>'s Page</h1>
+            <h1> <%= User.find_by(id: params[:id]).name if params[:id] != nil %></h1>
 
           </div>
 
