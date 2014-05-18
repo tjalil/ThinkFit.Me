@@ -1,12 +1,17 @@
 class User < ActiveRecord::Base
-  authenticates_with_sorcery!
+  authenticates_with_sorcery! do |config|
+    config.authentication_class = Authentication
+  end
 
   mount_uploader :avatar, AvatarUploader
+
+  # accepts_nested_attributes_for :authentications
 
   validates_presence_of :name, :gender, :height, :weight 
   validates_presence_of :email, uniqueness: true
   validates_presence_of :password, length: { minimum: 6 }
 
+  has_many :authentications, :dependent => :destroy
   has_many :goals
   has_many :activities, through: :goals
   has_many :teams, as: :owner
