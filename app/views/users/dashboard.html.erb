@@ -8,7 +8,7 @@
     </header>
 
     <div class = "body">
-      <% current_user.goals.each do |goal| %>
+      <% @user.goals.each do |goal| %>
         <section class="widget">
         <div class="row-fluid">
           <div class="span4">
@@ -19,7 +19,7 @@
               <h4 class="no-margin"><%= goal.name_of_activity_through_goal %></h4>
             </div>
             <div class="span2">
-              <%= button_to "+", new_user_goal_activity_log_path(current_user, goal), :class => "btn btn-success pull-top", :method => :get %>
+              <%= button_to "+", new_user_goal_activity_log_path(@user, goal), :class => "btn btn-success pull-top", :method => :get %>
             </div>
             <address>
               <br>
