@@ -1,0 +1,13 @@
+<%= link_to "Back to Homepage", users_path %>
+
+<div id="users">
+  <% User.all.each do |user| %>
+    <% if user.id == current_user.id %>
+    <% else %>
+      <div class="user">
+        <%= user.name %>
+        <%= button_to 'Add Friend', friendships_path(friend_id: user) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

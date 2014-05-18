@@ -107,7 +107,6 @@
             <li> Logged:  </li>
             <li> Total Duration: </li>
             <li> Total Distance: </li>
-            <li> Total Distance: Dose Not Exist Yet </li>
             <br/>
           <% end %>
         </div>
@@ -123,6 +122,8 @@
     <header>
     <legend>
       <h4> Friends  </h4>
+      <%= link_to "+Add", friendship_path %>
+
     </legend>
     </header>
     <div class="body">
@@ -139,7 +140,6 @@
       </legend>
       </header>
       <div class="body">
-
         <div id="followers" class="followers">
           <%= render partial: "friendships/friends", locals: { person_type: 'follower' } %>
         </div>
