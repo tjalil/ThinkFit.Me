@@ -116,47 +116,30 @@
     </section>
   </div>
   <div class="span4">
-    
+
     <section class="widget">
     <header>
-      <legend>
-        <h4> Friends  </h4>
-      </legend>
+    <legend>
+      <h4> Friends  </h4>
+    </legend>
     </header>
     <div class="body">
 
       <div id="friends" class="friends">
-          <% @person.friendships.each do |friend| %>
-            <li> 
-              IMAGE |  
-              <%= link_to User.find_by(id: friend.friend_id).name, dashboard_user_path(friend.friend_id) %>
-              <%="*" if @person.inverse_friends.find_by(id: friend.friend_id) %>
-              |
-              <%= link_to "remove", friendships_destroy_path, { method: 'delete', friend_id: friend.friend_id} %>
-              's NOT WORKING!
-            </li>
-            <br/>
-          <% end %>
+        <%= render partial: "friendships/friends", locals: { person_type: 'friend' } %>
       </div>
-    </section>
-   
-    <section class="widget">
+      </section>
+
+      <section class="widget">
       <header>
-        <legend>
-          <h4> Followers</h4>
-        </legend>
+      <legend>
+        <h4> Followers</h4>
+      </legend>
       </header>
       <div class="body">
 
-      <div id="followers" class="followers">
-          <% @person.inverse_friendships.each do |friended| %>
-            <li> 
-              IMAGE |  
-              <%= link_to User.find_by(id: friended.user_id).name, dashboard_user_path(friended.user_id) %>
-              <%="*" if @person.inverse_friends.find_by(id: friended.user_id) %>
-            </li>
-            <br/>
-          <% end %>
+        <div id="followers" class="followers">
+          <%= render partial: "friendships/friends", locals: { person_type: 'follower' } %>
+        </div>
       </div>
-     </div>
-</div>
+    </div>

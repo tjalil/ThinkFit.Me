@@ -1,0 +1,23 @@
+<!-- friend or follower -->
+<% if person_type == 'friend' %>
+  <% @human = @person.friendships.each %>
+<% else %>
+  <% @human = @person.inverse_friendships.each %>
+<% end %>
+
+<!-- List each person I'm connected to depending on friendship  -->
+<% @human.each do |friend| %>
+  <%  @friend_type =  person_type == 'friend' ? friend.friend_id : friend.user_id %>
+  <li> 
+  IMAGE |  
+  <%= link_to User.find_by(id: @friend_type).name, dashboard_user_path(@friend_type) %>
+  <%="*" if @person.inverse_friends.find_by(id: @friend_type) %>
+  |
+  <% if current_user %>
+    <%= link_to "remove", friendships_destroy_path, { method: 'delete', friend_id: friend.friend_id} %>
+  <% end %>
+  </li>
+  <br/>
+
+<% end %>
+
