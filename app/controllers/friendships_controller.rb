@@ -11,7 +11,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = current_user.friendships.find_by(friend_id: friendship_params)
+    @friendship = current_user.friendships.find(params[:id])
     if @friendship.destroy
       flash[:notice] = "Goodbye Friend, hello sadness..."
       redirect_to dashboard_user_path(current_user)
