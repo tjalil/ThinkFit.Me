@@ -152,8 +152,12 @@
               <br>
               <%= goal.name_of_activity_through_goal %>
               <li> Duration: <%= log.duration %></li>
-              <li> Intensity: <%= log.intensity %></li>
-              <li> Distance: <%= log.distance %></li>
+              <% if log.intensity != nil %>
+                <li> Intensity: <%= log.intensity %></li>
+              <% end %>
+              <% if log.distance != nil %>
+                <li> Distance: <%= log.distance %></li>
+              <% end %>
               <li> Points: <%= log.points %></li>
               <li> Logged: <%= log.created_at.to_s(:just_date) %></li>
               <br>
