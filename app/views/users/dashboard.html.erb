@@ -16,13 +16,13 @@
               </div>
             <div class="span8">
               <div class="span10">
-                <h4 class="no-margin"><%= goal.name_of_activity_through_goal %> (<%= goal.total_points %>)</h4>
+                <h4 class="no-margin"><%= goal.name_of_activity_through_goal %> (<%= goal.total_points_per_goal %>)</h4>
               </div>
               <div class="span2">
                 <%= button_to "+", new_user_goal_activity_log_path(current_user, goal), :class => "btn btn-success pull-top", :method => :get %>
+                <br>
               </div>
               <address>
-                <br>
                 Goal: <%= goal.weekly_goal %> times/week<br>
                 Logged: <%= goal.count_activity_log %> times<br>
                 Latest Points: 
