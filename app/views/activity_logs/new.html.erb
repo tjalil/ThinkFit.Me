@@ -35,6 +35,54 @@
   <% elsif @goal.type_of_activity == ">20mph" %>
     <%= render partial: 'distance', locals: {:f => f} %>
 
+  <!-- walking -->
+  <% elsif @goal.type_of_activity == "2-2.4 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "2.5-2.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "3.0-3.4 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "3.5-3.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "4.0-4.4 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "4.5-4.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "5.0-5.4 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+
+    <!-- running -->
+  <% elsif @goal.type_of_activity == "4.0-4.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "5.0-5.1 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "5.2-5.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "6.0-6.6 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "6.7-6.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "7.0-7.4 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "7.5-7.6 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "8.0-8.5 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "8.6-8.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "9.0-9.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "10.0-10.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "11.0-11.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "12.0-12.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "13.0-13.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "14.0-14.9 mph" %>
+    <%= render partial: 'distance', locals: {:f => f} %>
+
   <!-- soccer -->
   <% elsif @goal.type_of_activity == "Competitive" %>
     <%= render partial: 'soccer', locals: {:f => f} %>
@@ -73,22 +121,6 @@
   <% elsif @goal.type_of_activity == "Running: steeplechase, hurdles" %>
     <%= render partial: 'athletics', locals: {:f => f} %>
 
-  <!-- walking -->
-  <% elsif @goal.type_of_activity == "2-2.4 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "2.5-2.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "3.0-3.4 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "3.5-3.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "4.0-4.4 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "4.5-4.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "5.0-5.4 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-
   <!-- swimming -->
   <% elsif @goal.type_of_activity == "Freestyle" %>
     <%= render partial: 'distance', locals: {:f => f} %>
@@ -103,37 +135,6 @@
   <% elsif @goal.type_of_activity == "Sidestroke" %>
     <%= render partial: 'distance', locals: {:f => f} %>
 
-  <!-- walking -->
-  <% elsif @goal.type_of_activity == "4.0-4.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "5.0-5.1 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "5.2-5.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "6.0-6.6 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "6.7-6.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "7.0-7.4 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "7.5-7.6 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "8.0-8.5 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "8.6-8.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "9.0-9.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "10.0-10.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "11.0-11.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "12.0-12.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "13.0-13.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "14.0-14.9 mph" %>
-    <%= render partial: 'distance', locals: {:f => f} %>
 
   <!-- activities without any type_of_activities (time only activities) -->
   <% else %>
