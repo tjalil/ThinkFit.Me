@@ -100,62 +100,34 @@
 
   <div class="span4">
     <section class="widget">
-    <header>
-    <legend><h4>
-        Teams
-    </h4></legend>
-    </header>
+        <header>
+        <legend><h4>
+            Teams
+        </h4></legend>
+        </header>
 
-    <section class="widget">
-    I own teams:
-    <ul>
-      <% Team.where(owner_id: @commentable.id).each do |team| %>
-        <li> <%= link_to team.name, team_path(team.id) %></li>
-      <% end %>
-    </ul>
-    </section>
-    <section class="widget">
-    I'm a member of teams: 
-    <ul>
-      <% @commentable.teams.each do |team| %>
-        <li> <%= link_to team.name, team_path(team.id) %></li>
-      <% end %>
-    </ul>
+      <div class="body">
+        <section class="widget">
+          I own teams:
+          <ul>
+            <% Team.where(owner_id: @commentable.id).each do |team| %>
+              <li> <%= link_to team.name, team_path(team.id) %></li>
+            <% end %>
+          </ul>
+        </section>
 
-    <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
-    </section>
-
-  </div>
-
-  <div class="span4">
-    <section class="widget chat companywall">
-    <header>
-    <legend><h4>
-        Activity Stats 
-    </h4></legend>
-    </header>
-    <div class="body">
-      <div id="chat" class="chat">
-        <div id="stat-message" class="stats">
-          HI! More information to come.
-          <br/>
-          <br>
-          <% current_user.goals.each do |goal| %>
-            <%= goal.name_of_activity_through_goal %>
-            <br/> 
-            <li> Since: </li>
-            <li> Logged:  </li>
-            <li> Total Duration: </li>
-            <li> Total Distance: </li>
-            <br/>
-          <% end %>
-        </div>
+        <section class="widget">
+          I'm a member of teams: 
+          <ul>
+            <% @commentable.teams.each do |team| %>
+              <li> <%= link_to team.name, team_path(team.id) %></li>
+            <% end %>
+          </ul>
+        </section>
       </div>
-    </div>
+      <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
     </section>
-  </div>
 
-  <div class="span4">
     <section class="widget">
       <header>
       <legend>
@@ -169,9 +141,7 @@
         </div>
       </div>
     </section>
-  </div>
 
-  <div class="span4">
     <section class="widget">
       <header>
       <legend>
