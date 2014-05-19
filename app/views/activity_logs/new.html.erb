@@ -11,8 +11,16 @@
     </div>
   <% end %>
 
+  <!-- activities with intensity defined by Light, Moderate, Vigorous -->
+  <% if @goal.type_of_activity == "Light" %>
+    <%= render partial: 'intensity', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "Moderate" %>
+    <%= render partial: 'intensity', locals: {:f => f} %>
+  <% elsif @goal.type_of_activity == "Vigorous" %>
+    <%= render partial: 'intensity', locals: {:f => f} %>
+
   <!-- cycling -->
-  <% if @goal.type_of_activity == "5.0-7.9 mph" %>
+  <% elsif @goal.type_of_activity == "5.0-7.9 mph" %>
     <%= render partial: 'distance', locals: {:f => f} %>
   <% elsif @goal.type_of_activity == "8.0-9.9 mph" %>
     <%= render partial: 'distance', locals: {:f => f} %>
@@ -126,14 +134,6 @@
     <%= render partial: 'distance', locals: {:f => f} %>
   <% elsif @goal.type_of_activity == "14.0-14.9 mph" %>
     <%= render partial: 'distance', locals: {:f => f} %>
-
-  <!-- activities with intensity defined by Light, Moderate, Vigorous -->
-  <% elsif @goal.type_of_activity == "Light" %>
-    <%= render partial: 'intensity', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "Moderate" %>
-    <%= render partial: 'intensity', locals: {:f => f} %>
-  <% elsif @goal.type_of_activity == "Vigorous" %>
-    <%= render partial: 'intensity', locals: {:f => f} %>
 
   <!-- activities without any type_of_activities (time only activities) -->
   <% else %>
