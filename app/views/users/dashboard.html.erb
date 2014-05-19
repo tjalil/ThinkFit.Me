@@ -47,12 +47,10 @@
               Last Logged: <%= goal.updated_at.to_s(:just_date) %>
             </address>
           </div>
-        </div>
         </section>
       <% end %>
-
-      <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
     </div>
+      <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
     </section>
   </div> 
 
@@ -106,11 +104,12 @@
     </section>
 
   </div>
+
   <div class="span4">
     <section class="widget chat companywall">
     <header>
     <legend><h4>
-        ActivityStats 
+        Activity Stats 
     </h4></legend>
     </header>
     <div class="body">
