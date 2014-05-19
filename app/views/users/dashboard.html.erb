@@ -141,6 +141,32 @@
   <div class="span4">
     <section class="widget">
       <header>
+        <legend><h4>
+          Activity Logs
+        </h4></legend>
+      </header>
+      <div class="body">
+        <div id="actlogs">
+          <% @user.goals.each do |goal| %>
+            <% goal.activity_logs.each do |log| %>
+              <br>
+              <%= goal.name_of_activity_through_goal %>
+              <li> Duration: <%= log.duration %></li>
+              <li> Intensity: <%= log.intensity %></li>
+              <li> Distance: <%= log.distance %></li>
+              <li> Points: <%= log.points %></li>
+              <li> Logged: <%= log.created_at %></li>
+              <br>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="span4">
+    <section class="widget">
+      <header>
       <legend>
         <h4> Friends  </h4>
         <%= link_to "+Add", friendship_path %>
