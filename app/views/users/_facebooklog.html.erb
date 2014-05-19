@@ -1,0 +1,29 @@
+<%= form_for @user, :html => {:multipart => true} do |user| %>
+
+	<div class="field">
+		<%= user.label :height %><br>
+		<%= user.number_field :height %>
+	</div>
+
+	<div class="field">
+		<%= user.label :weight %><br>
+		<%= user.number_field :weight %><br>
+	</div>
+
+	<div class="field">
+		<%= user.label(:gender,"Male") %>
+		<%= user.radio_button(:gender, "male") %>
+
+		<%= user.label(:gender, "Female") %>
+		<%= user.radio_button(:gender, "female") %>
+	</div>
+
+	<div class="action">
+		<%= user.submit 'Submit!' %>
+	</div>
+
+<% end %>
+
+<div id="tutorialbox">
+	<h1 id="instructions"></h1>
+</div>

@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140518192708) do
+=======
+ActiveRecord::Schema.define(version: 20140518221624) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +42,14 @@ ActiveRecord::Schema.define(version: 20140518192708) do
     t.string   "challengeable_type"
     t.integer  "defendable_id"
     t.string   "defendable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -83,12 +95,12 @@ ActiveRecord::Schema.define(version: 20140518192708) do
 
   create_table "users", force: true do |t|
     t.string   "email",            null: false
-    t.string   "crypted_password", null: false
-    t.string   "salt",             null: false
-    t.string   "name",             null: false
-    t.integer  "height",           null: false
-    t.integer  "weight",           null: false
-    t.string   "gender",           null: false
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.string   "name"
+    t.integer  "height"
+    t.integer  "weight"
+    t.string   "gender"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar"
