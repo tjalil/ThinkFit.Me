@@ -1,0 +1,4 @@
+<div class = "field">
+  <h3>Track my <%= @goal.name_of_activity_through_goal %></h3>
+  <p>I completed a <%= f.select :intensity, options_for_select([['Without Cart','Without Cart'], ['With Cart', 'With Cart']], include_blank: true) %> session of <%= @goal.name_of_activity_through_goal %> in <%= f.number_field :duration %> minutes!</p>
+</div>

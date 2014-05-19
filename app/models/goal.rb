@@ -23,8 +23,29 @@ class Goal < ActiveRecord::Base
         activity_log_count += 1
       end
     end
-    
     activity_log_count
   end
-  
+
+  def total_points_per_goal
+    @activity_logs = ActivityLog.all
+    total_points ||= 0
+
+    @activity_logs.each do |activity|
+      if activity.goal_id == self.id
+        total_points += activity.points
+      end
+    end
+    total_points 
+  end
+
 end
+
+
+
+
+
+
+
+
+
+
