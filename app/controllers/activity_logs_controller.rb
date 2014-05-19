@@ -30,6 +30,9 @@ class ActivityLogsController < ApplicationController
   end
 
   def destroy
+    @activity_log = ActivityLog.find(params[:id])
+    @activity_log.destroy
+    redirect_to dashboard_user_path(current_user)
   end
 
   private
@@ -42,4 +45,7 @@ class ActivityLogsController < ApplicationController
     @goal = Goal.find(params[:goal_id])
   end
 
+  def find_user
+    @user = current_user
+  end
 end
