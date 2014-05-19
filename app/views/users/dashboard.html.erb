@@ -160,6 +160,9 @@
               <% end %>
               <li> Points: <%= log.points %></li>
               <li> Logged: <%= log.created_at.to_s(:just_date) %></li>
+              <% if log == goal.activity_logs.last %>
+                <%= link_to "Remove Log", user_goal_activity_log_path(current_user, goal, log.id), method: :delete %>
+              <% end %>
               <br>
             <% end %>
           <% end %>
