@@ -4,9 +4,7 @@ class Team < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   has_many :challenges, as: :challengeable
-  has_many :opponents, through: :challengeable
-  has_many :defendable, class_name: "Challenge", foreign_key: "oppenet_id"
-  has_many :defenders, through: :defendable, source: :team
-
+  has_many :inverse_challenges, as: :defendable, class_name: "Challenge", foreign_key: "defendable_id"
+ 
   mount_uploader :avatar, AvatarUploader
 end
