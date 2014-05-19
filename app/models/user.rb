@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
+  has_many :challenges, as: :challengeable
+  has_many :opponents, through: :challengeable
+  has_many :defendable, class_name: "Challenge", foreign_key: "oppenet_id"
+  has_many :defenders, through: :defendable, source: :team
 
   before_save :capitalize_name
 
