@@ -68,6 +68,35 @@
   </div>
 
   <div class="span4">
+    <section class="widget widget-tabs">
+      <header>
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#user" data-toggle="tab">Search for User</a>
+          </li>
+          <li>
+            <a href="#team" data-toggle="tab">Search for Team</a>
+          </li>
+        </ul>
+      </header>
+      <div class="body tab-content">
+        <div id="user" class="tab-pane active clearfix">
+          <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
+            <%= text_field_tag :search, params[:search], placeholder: 'Search for User' %>
+            <%= submit_tag "Search" %>
+          <% end %>
+        </div>
+        <div id="team" class="tab-pane active clearfix">
+          <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
+            <%= text_field_tag :search, params[:search], placeholder: 'Search for Team' %>
+            <%= submit_tag "Search" %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="span4">
     <section class="widget">
     <header>
     <legend><h4>
