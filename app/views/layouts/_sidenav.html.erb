@@ -6,7 +6,10 @@
           <span class="name"><%= link_to "Dashboard", dashboard_user_path(current_user) %></span>
         </li>
         <li class="sidenav-dashboard">
-          <%= link_to "Team", "#" %>
+          <%= link_to "Teams", "#" %>
+        </li>
+        <li class="sidenav-dashboard">
+          <%= link_to "Activity Stats", activity_stats_user_path(current_user) %>
         </li>
       </ul>
     </nav>
