@@ -155,7 +155,7 @@
               <li> Intensity: <%= log.intensity %></li>
               <li> Distance: <%= log.distance %></li>
               <li> Points: <%= log.points %></li>
-              <li> Logged: <%= log.created_at %></li>
+              <li> Logged: <%= log.created_at.to_s(:just_date) %></li>
               <br>
             <% end %>
           <% end %>
