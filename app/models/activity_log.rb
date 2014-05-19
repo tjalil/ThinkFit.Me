@@ -139,6 +139,9 @@ class ActivityLog < ActiveRecord::Base
           self.calculate_points
         end
       end
+
+    else
+      self.calculate_points
     end
   end
 
