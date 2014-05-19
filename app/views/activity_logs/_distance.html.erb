@@ -1,3 +1,4 @@
 <div class = "field">
-  <p>I completed <%= f.number_field :distance %> km in <%= f.number_field :duration %> minutes of <%= @goal.name_of_activity_through_goal %>!</p>
+  <h3>Track my <%= @goal.name_of_activity_through_goal %></h3>
+  <p>I completed <%= f.number_field :distance, placeholder: "miles" %> miles of <%= @goal.name_of_activity_through_goal %> in <%= f.number_field :duration %> minutes!</p>
 </div>
