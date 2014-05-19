@@ -3,7 +3,10 @@
     <nav id="sidebar" class="sidebar nav-collapse collapse">
       <ul id="side-nav" class="side-nav">
         <li class="sidenav-dashboard">
-          <%= link_to "Dashboard", dashboard_user_path(current_user) %>
+          <span class="name"><%= link_to "Dashboard", dashboard_user_path(current_user) %></span>
+        </li>
+        <li class="sidenav-dashboard">
+          <%= link_to "Team", "#" %>
         </li>
       </ul>
     </nav>

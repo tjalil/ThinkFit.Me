@@ -84,12 +84,14 @@
           <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
             <%= text_field_tag :search, params[:search], placeholder: 'Search for User' %>
             <%= submit_tag "Search" %>
+            <div id="search-answer"></div>
           <% end %>
         </div>
         <div id="team" class="tab-pane active clearfix">
           <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
             <%= text_field_tag :search, params[:search], placeholder: 'Search for Team' %>
             <%= submit_tag "Search" %>
+            <div id="search-answer"></div>
           <% end %>
         </div>
       </div>
