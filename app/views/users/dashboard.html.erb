@@ -16,7 +16,7 @@
               </div>
             <div class="span8">
               <div class="span10">
-                <h4 class="no-margin"><%= goal.name_of_activity_through_goal %> (Points)</h4>
+                <h4 class="no-margin"><%= goal.name_of_activity_through_goal %> (<%= goal.total_points %>)</h4>
               </div>
               <div class="span2">
                 <%= button_to "+", new_user_goal_activity_log_path(current_user, goal), :class => "btn btn-success pull-top", :method => :get %>
@@ -25,7 +25,10 @@
                 <br>
                 Goal: <%= goal.weekly_goal %> times/week<br>
                 Logged: <%= goal.count_activity_log %> times<br>
-                Latest Points: <%= goal.show_points %> <br>
+                Latest Points: 
+                <% if ActivityLog.where(goal_id: goal.id).length > 0 %>
+                  <%= ActivityLog.where(goal_id: goal.id).last.points %>
+                <% end %> <br>
                 Last Logged: <%= goal.updated_at.to_s(:just_date) %>
               </address>
             </div>
