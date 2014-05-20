@@ -17,7 +17,7 @@
   <div class="content">
     <%= render 'dashhead' %>
 
-<% if current_user.friendships.find_by(friend_id: @user.id) or if current_user.id == @user.id %>
+  <% if current_user.friendships.find_by(friend_id: @user.id) or current_user.id == @user.id %>
 
     <div class="span4">
       <section class="widget">
@@ -169,7 +169,7 @@
       </section>
     </div>
   </div>
-<% end %>  
+  <% end %>  
 
 <div id="leaderboard">
   <h1>Leaderboard</h1>
