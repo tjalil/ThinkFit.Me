@@ -42,6 +42,10 @@
                     <br>
                     Goal: <%= goal.weekly_goal %> times/week<br>
                     Logged: <%= goal.count_activity_log %> times<br>
+                    Latest Points: 
+                    <% if ActivityLog.where(goal_id: goal.id).length > 0 %>
+                      <%= ActivityLog.where(goal_id: goal.id).last.points %>
+                    <% end %> <br>
                     Last Logged: <%= goal.updated_at.to_s(:just_date) %>
                   </address>
                 </div>
@@ -98,15 +102,15 @@
             <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
               <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User' %>
               <%= submit_tag "Search" %>
-              <div id="search-answer-user"></div>
             <% end %>
+            <div id="search-answer-user"></div>
           </div>
           <div id="team" class="tab-pane active clearfix">
             <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
               <%= text_field_tag :search_team, params[:search], placeholder: 'Search for Team' %>
               <%= submit_tag "Search" %>
-              <div id="search-answer-team"></div>
             <% end %>
+            <div id="search-answer-team"></div>
           </div>
         </div>
       </section>

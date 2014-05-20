@@ -4,7 +4,7 @@
   <% User.all.each do |user| %>
     <div class="user">
       <%= user.name %>
-      <%= button_to 'Add Friend', friendships_create_path(friend_id: user) %>
+      <%= button_to 'Add Friend', friendships_path(friend_id: user) %>
     </div>
   <% end %>
 </div>

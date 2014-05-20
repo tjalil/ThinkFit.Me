@@ -7,9 +7,9 @@
 <section class="widget">
   <div id="member">
     <ul>
-    <% @commentable.inverse_challenges.each do |opponent| %>
-      <li> <%= link_to opponent.challengeable.name,  polymorphic_path(opponent.challengeable) %> </li>
-    <% end %>
+      <% @commentable.inverse_challenges.each do |opponent| %>
+        <li> <%= link_to opponent.challengeable.name,  polymorphic_path(opponent.challengeable) %> </li>
+      <% end %>
   </ul>
   </div>
 </section>
@@ -22,9 +22,9 @@
 <section class="widget">
   <div id="member">
     <ul>
-    <% @commentable.challenges.each do |opponent| %>
-      <li> <%= link_to opponent.defendable.name, polymorphic_path([opponent.defendable]) %></li>
-    <% end %>
+      <% @commentable.challenges.each do |opponent| %>
+        <li> <%= link_to opponent.defendable.name, polymorphic_path([opponent.defendable]) %></li>
+      <% end %>
   </ul>
   </div>
 </section>
