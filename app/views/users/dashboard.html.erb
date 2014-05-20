@@ -15,6 +15,32 @@
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
   <div class="content">
+    <div class="span12">
+      <section class="widget">
+        <div class="row-fluid">
+          <div class="span2">
+            <div id="useravatar">
+              MAKE ME A CIRCLE AND PUT USER PIC HERE
+            </div>
+          </div>
+          <div class="span6">
+            <h2><%= @user.name %></h2><br>
+            <% user_goal_points = [] %>
+            <% user_goal_points = Goal.where(user_id: @user.id).map do |goal|  %>
+              <% goal.id %>
+              <% ActivityLog.where(goal_id: goal.id).sum(:points) %>
+            <% end %>
+            <!-- Total user points from  points array by goal  -->
+            <% score = user_goal_points.inject {|sum, point| sum += point} %>
+            <h4><%= score %></h4>
+          </div>
+          <div class="span4">
+            <%= button_to "Follow", friendships_path(friend_id: @user.id) ,:class => 'btn btn-success span12'%>
+          </div>
+        </div>
+      </section>
+    </div>
+
     <div class="span4">
       <section class="widget">
         <header>
