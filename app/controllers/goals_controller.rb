@@ -25,10 +25,9 @@ class GoalsController < ApplicationController
 
   def update
     @goal = Goal.find(params[:id])
-    @goal.status = "inactive"
 
-    if @goal.update_attributes(:status)
-      redirect_to dashboard_user_path(current_user), notice: "Successfully set goal to inactive"
+    if @goal.update_attributes(goal_params)
+      redirect_to dashboard_user_path(current_user)
     else
       render :edit
     end
