@@ -1,155 +1,175 @@
 <% if @user.height.nil? or @user.weight.nil? %>
   <%= render 'facebooklog' %>
 <% else %>
-<div class="content">
-  <div class="span4">
-    <section class="widget">
-    <header>
-    <legend><h4>
-        Track your Activities
-    </h4></legend>
-    </header>
+  <div class="content">
+    <div class="span4">
+      <section class="widget">
+      <header>
+      <legend><h4>
+          Track your Activities
+      </h4></legend>
+      </header>
 
-    <div class = "body">
-      <% @user.goals.each do |goal| %>
-        <section class="widget">
-        <div class="row-fluid">
-          <div class="span4">
-            <img src="" alt="64x64" style="height: 100px; width:100px;" data-placement="top" id="tooltip-enabled" data-original-title="" class="img-circle">
-          </div>
-          <div class="span8">
-            <div class="span10">
-              <h4 class="no-margin"><%= goal.name_of_activity_through_goal %></h4>
+      <div class = "body">
+        <% @user.goals.each do |goal| %>
+          <section class="widget">
+          <div class="row-fluid">
+            <div class="span4">
+              <img src="" alt="64x64" style="height: 100px; width:100px;" data-placement="top" id="tooltip-enabled" data-original-title="" class="img-circle">
             </div>
-            <div class="span2">
-              <%= button_to "+", new_user_goal_activity_log_path(@user, goal), :class => "btn btn-success pull-top", :method => :get %>
+            <div class="span8">
+              <div class="span10">
+                <h4 class="no-margin"><%= goal.name_of_activity_through_goal %></h4>
+              </div>
+              <div class="span2">
+                <%= button_to "+", new_user_goal_activity_log_path(@user, goal), :class => "btn btn-success pull-top", :method => :get %>
+              </div>
+              <address>
+                <br>
+                Goal: <%= goal.weekly_goal %> times/week<br>
+                Logged: <%= goal.count_activity_log %> times<br>
+                Last Logged: <%= goal.updated_at.to_s(:just_date) %>
+              </address>
             </div>
-            <address>
-              <br>
-              Goal: <%= goal.weekly_goal %> times/week<br>
-              Logged: <%= goal.count_activity_log %> times<br>
-              Last Logged: <%= goal.updated_at.to_s(:just_date) %>
-            </address>
           </div>
-        </div>
-        </section>
-      <% end %>
+          </section>
+        <% end %>
 
-      <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
-    </div>
-    </section>
-  </div> 
-
-  <div class="span4">
-    <section class="widget chat companywall">
-    <header>
-    <legend><h4>
-        Wall
-    </h4></legend>
-    </header>
-    <div class="body">
-      <div id="chat" class="chat">
-        <div class="row-fluid non-responsive">
-          <%= render "/comments/new" %>
-        </div>
-        <br>
-        <div id="chat-messages" class="chat-messages">
-          <%= render "/comments/each" %>
-          <%= paginate @comments %>
-        </div>
-      </div>
-    </div>
-    </section>
-  </div>
-
-  <div class="span4">
-    <section class="widget">
-    <header>
-    <legend><h4>
-        Teams
-    </h4></legend>
-    </header>
-
-    <section class="widget">
-    I own teams:
-    <ul>
-      <% Team.where(owner_id: @commentable.id).each do |team| %>
-        <li> <%= link_to team.name, team_path(team.id) %></li>
-      <% end %>
-    </ul>
-    </section>
-    <section class="widget">
-    I'm a member of teams: 
-    <ul>
-      <% @commentable.teams.each do |team| %>
-        <li> <%= link_to team.name, team_path(team.id) %></li>
-      <% end %>
-    </ul>
-
-    <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
-    </section>
-
-  </div>
-  <div class="span4">
-    <section class="widget chat companywall">
-    <header>
-    <legend><h4>
-        ActivityStats 
-    </h4></legend>
-    </header>
-    <div class="body">
-      <div id="chat" class="chat">
-        <div id="stat-message" class="stats">
-          HI! More information to come.
-          <br/>
-          <br>
-          <% current_user.goals.each do |goal| %>
-            <%= goal.name_of_activity_through_goal %>
-            <br/> 
-            <li> Since: </li>
-            <li> Logged:  </li>
-            <li> Total Duration: </li>
-            <li> Total Distance: </li>
-            <br/>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    </section>
-  </div>
-
-
-
- <div class="span4">
-    <section class="widget">
-    <header>
-    <legend>
-      <h4> Friends  </h4>
-      <%= link_to "+Add", friendship_path %>
-
-    </legend>
-    </header>
-    <div class="body">
-
-      <div id="friends" class="friends">
-        <%= render partial: "friendships/friends", locals: { person_type: 'friend' } %>
+        <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
       </div>
       </section>
+    </div> 
 
+    <div class="span4">
+      <section class="widget chat companywall">
+      <header>
+      <legend><h4>
+          Wall
+      </h4></legend>
+      </header>
+      <div class="body">
+        <div id="chat" class="chat">
+          <div class="row-fluid non-responsive">
+            <%= render "/comments/new" %>
+          </div>
+          <br>
+          <div id="chat-messages" class="chat-messages">
+            <%= render "/comments/each" %>
+            <%= paginate @comments %>
+          </div>
+        </div>
+      </div>
+      </section>
+    </div>
+
+    <div class="span4">
+      <section class="widget">
+      <header>
+      <legend><h4>
+          Teams
+      </h4></legend>
+      </header>
+
+      <section class="widget">
+      I own teams:
+      <ul>
+        <% Team.where(owner_id: @commentable.id).each do |team| %>
+          <li> <%= link_to team.name, team_path(team.id) %></li>
+        <% end %>
+      </ul>
+      </section>
+      <section class="widget">
+      I'm a member of teams: 
+      <ul>
+        <% @commentable.teams.each do |team| %>
+          <li> <%= link_to team.name, team_path(team.id) %></li>
+        <% end %>
+      </ul>
+
+      <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
+      </section>
+
+    </div>
+    <div class="span4">
+      <section class="widget chat companywall">
+      <header>
+      <legend><h4>
+          ActivityStats 
+      </h4></legend>
+      </header>
+      <div class="body">
+        <div id="chat" class="chat">
+          <div id="stat-message" class="stats">
+            HI! More information to come.
+            <br/>
+            <br>
+            <% current_user.goals.each do |goal| %>
+              <%= goal.name_of_activity_through_goal %>
+              <br/> 
+              <li> Since: </li>
+              <li> Logged:  </li>
+              <li> Total Duration: </li>
+              <li> Total Distance: </li>
+              <br/>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      </section>
+    </div>
+
+
+
+    <div class="span4">
       <section class="widget">
       <header>
       <legend>
-        <h4> Followers</h4>
+        <h4> Friends  </h4>
+        <%= link_to "+Add", friendship_path %>
+
       </legend>
       </header>
       <div class="body">
-        <div id="followers" class="followers">
-          <%= render partial: "friendships/friends", locals: { person_type: 'follower' } %>
+
+        <div id="friends" class="friends">
+          <%= render partial: "friendships/friends", locals: { person_type: 'friend' } %>
+        </div>
+        </section>
+
+        <section class="widget">
+        <header>
+        <legend>
+          <h4> Followers</h4>
+        </legend>
+        </header>
+        <div class="body">
+          <div id="followers" class="followers">
+            <%= render partial: "friendships/friends", locals: { person_type: 'follower' } %>
+          </div>
         </div>
       </div>
+      <!-- This'll have to be reformatted. Have it here to verify if image upload works -->
+      <div class="uploadertest">
+        <%= image_tag current_user.avatar_url %>
+      </div>
+    <% end %>
+
+
+
+    <div class="span4">
+      <section class="widget">
+      <legend><h4>
+          Challenges
+        </h4>
+        <% if (@user != current_user) %>
+          <!-- If you arn't already in a  challenged you --> 
+          <% if (@user.challenges.where(id: current_user.id) == []) %>
+            <%= button_to "Take On #{@user.name}",  user_challenges_path(@user.id), :class => "btn btn-success span6 offset3" %>
+          <% end %>
+        <% end%>
+      </legend>
+      <%= render "challenges/each_challenge" %>
+      </section>
     </div>
-  <!-- This'll have to be reformatted. Have it here to verify if image upload works -->
-  <div class="uploadertest">
-    <%= image_tag current_user.avatar_url %>
-  </div>
-<% end %>
+
+

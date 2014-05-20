@@ -1,4 +1,10 @@
 <h1><%= @team.name %></h1>
+
+<div class="challenge">
+  <% if @team.users.where(id: current_user.id) == [] %>
+    <%= link_to "CHALLENGE", '#'  %>
+  <% end %>
+</div>
 <p>
 
 <div id="team-description">
@@ -22,7 +28,6 @@
   </header>
 
   <section class="widget">
-
   <div id="member">
     <%= render "members" %>
   </div>
@@ -53,6 +58,17 @@
     </div>
   </div>
 </div>
+
+<div class="span4">
+<section class="widget">
+<legend><h4>
+    Challenges
+</h4></legend>
+  <%= render "/challenges/each_challenge" %>
+  </section>
+</div>
+
+
 
 <div class="uploadertest">
   <%= image_tag @team.avatar_url.to_s %>
