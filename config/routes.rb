@@ -16,14 +16,13 @@ Thinkfitme::Application.routes.draw do
       resources :activity_logs, only: [:new, :create]
     end
 
-    # resources :teams do
-    #   resources :comments, only: [:new, :create]
-    # end
+    resources :challenges, only: [:new, :create]
 
   end
 
   resources :teams do
-    resources :comments, only: [:new, :create]
+     resources :challenges, only: [:new, :create]  
+     resources :comments, only: [:new, :create]
     post 'join'
   end
 
