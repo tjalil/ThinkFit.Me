@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       User.where.not(id: current_user)
     end
 
+
     respond_to do |format|
       format.html
       format.js

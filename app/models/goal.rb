@@ -5,6 +5,7 @@ class Goal < ActiveRecord::Base
 	has_many :activity_logs
 
   validates_presence_of :activity_id, :weekly_goal
+  validates_numericality_of :weekly_goal, greater_than: 0
 	
   def name_of_activity_through_goal
     Activity.find(self.activity_id).name

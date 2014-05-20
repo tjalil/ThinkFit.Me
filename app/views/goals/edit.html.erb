@@ -1,0 +1,20 @@
+<%= form_for ([current_user, @goal]) do |f| %>
+	
+	<h4>Activity:</h4> <%= @goal.name_of_activity_through_goal %><br>
+	<h4>Weekly Goal:</h4> <%= @goal.weekly_goal %><br>
+	Pressing the button below will change your goal's status to inactive.<br>
+	Are you sure you want switch this goal to inactive?<br><br>
+	<div class="field">
+		<%= f.label(:status, "Active") %>
+		<%= f.radio_button(:status, "active") %>
+
+		<%= f.label(:status, "Inactive") %>
+		<%= f.radio_button(:status, "inactive") %>
+	</div>
+	<br>
+
+	<div class="action">
+		<%= f.submit "Yes"%>
+	</div>
+	<%= button_to "No", dashboard_user_path(current_user), :class => "btn btn-danger", :method => :get %>
+<% end %>
