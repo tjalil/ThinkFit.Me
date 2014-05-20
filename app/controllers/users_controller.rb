@@ -6,11 +6,12 @@ class UsersController < ApplicationController
     @users = if params[:search]
       User.where("name ILIKE ?", "%#{params[:search]}%")
     else
+      User.all
     end
 
     respond_to do |format|
       format.html
-      format.js 
+      format.js
     end
   end
 

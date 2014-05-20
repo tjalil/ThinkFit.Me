@@ -106,46 +106,45 @@
         </h4></legend>
         </header>
 
-      <div class="body">
-        <section class="widget">
-          I created teams:
-          <ul>
-            <% Team.where(owner_id: @commentable.id).each do |team| %>
-              <li> <%= link_to team.name, team_path(team.id) %></li>
-            <% end %>
-          </ul>
-        </section>
+        <div class="body">
+          <section class="widget">
+            I created teams:
+            <ul>
+              <% Team.where(owner_id: @commentable.id).each do |team| %>
+                <li> <%= link_to team.name, team_path(team.id) %></li>
+              <% end %>
+            </ul>
+          </section>
 
-        <section class="widget">
-          I'm a member of teams: 
-          <ul>
-            <% @commentable.teams.each do |team| %>
-              <li> <%= link_to team.name, team_path(team.id) %></li>
-            <% end %>
-          </ul>
-        </section>
-      </div>
+          <section class="widget">
+            I'm a member of teams: 
+            <ul>
+              <% @commentable.teams.each do |team| %>
+                <li> <%= link_to team.name, team_path(team.id) %></li>
+              <% end %>
+            </ul>
+          </section>
+        </div>
       <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
     </section>
 
     <section class="widget">
       <header>
       <legend>
-        <h4> Friends  </h4>
+        <h4>People I follow</h4>
       </legend>
       </header>
       <div class="body">
         <div id="friends" class="friends">
           <%= render partial: "friendships/friends", locals: { person_type: 'friend' } %>
         </div>
-        <%= button_to "+ Add", friendship_path, :class => "btn btn-success span6 offset3", :method => :get %>
       </div>
     </section>
 
     <section class="widget">
       <header>
       <legend>
-        <h4> Followers</h4>
+        <h4>People following me</h4>
       </legend>
       </header>
       <div class="body">
