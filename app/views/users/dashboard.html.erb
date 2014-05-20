@@ -135,13 +135,6 @@
               <% Team.where(owner_id: @commentable.id).each do |team| %>
                 <li> <%= link_to team.name, team_path(team.id) %></li>
               <% end %>
-
-              <!-- PUT THIS IN LOG HISTORY SECTION PLEASE :D -->
-              <li> Points: <%= log.points %></li>
-              <li> Logged: <%= log.created_at.to_s(:just_date) %></li>
-              <% if log == goal.activity_logs.last %>
-                <%= button_to "Remove Log", user_goal_activity_log_path(current_user, goal, log.id), :class => 'btn btn-danger', method: :delete %>
-                <!-- RESUME ACTUAL STUFFS BELOW -->
             </ul>
           </section>
           <section class="widget">
