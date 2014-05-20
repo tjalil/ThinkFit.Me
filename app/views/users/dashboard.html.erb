@@ -30,7 +30,7 @@
     </header>
 
     <div class = "body">
-      <% @user.goals.each do |goal| %>
+      <% @user.goals.order('created_at DESC')[0..2].each do |goal| %>
         <section class="widget">
 
           <div class="row-fluid">
@@ -46,6 +46,7 @@
                 <br>
               </div>
               <address>
+                <!-- If statement checking if name of goals are equal, show more latest created at -->
                 Goal: <%= goal.weekly_goal %> times/week<br>
                 Logged: <%= goal.count_activity_log %> times<br>
                 Latest Points: 
