@@ -8,10 +8,10 @@ class UsersController < ApplicationController
     else
     end
 
-      respond_to do |format|
-        format.html
-        format.js 
-      end
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   def dashboard #main page for user. user redirected to this page after signup/login

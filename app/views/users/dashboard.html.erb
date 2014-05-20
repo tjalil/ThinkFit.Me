@@ -82,16 +82,16 @@
       <div class="body tab-content">
         <div id="user" class="tab-pane active clearfix">
           <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
-            <%= text_field_tag :search, params[:search], placeholder: 'Search for User' %>
+            <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User' %>
             <%= submit_tag "Search" %>
-            <div id="search-answer"></div>
+            <div id="search-answer-user"></div>
           <% end %>
         </div>
         <div id="team" class="tab-pane active clearfix">
           <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
-            <%= text_field_tag :search, params[:search], placeholder: 'Search for Team' %>
+            <%= text_field_tag :search_team, params[:search], placeholder: 'Search for Team' %>
             <%= submit_tag "Search" %>
-            <div id="search-answer"></div>
+            <div id="search-answer-team"></div>
           <% end %>
         </div>
       </div>
@@ -108,7 +108,7 @@
 
       <div class="body">
         <section class="widget">
-          I own teams:
+          I created teams:
           <ul>
             <% Team.where(owner_id: @commentable.id).each do |team| %>
               <li> <%= link_to team.name, team_path(team.id) %></li>
@@ -132,13 +132,13 @@
       <header>
       <legend>
         <h4> Friends  </h4>
-        <%= link_to "+Add", friendship_path %>
       </legend>
       </header>
       <div class="body">
         <div id="friends" class="friends">
           <%= render partial: "friendships/friends", locals: { person_type: 'friend' } %>
         </div>
+        <%= button_to "+ Add", friendship_path, :class => "btn btn-success span6 offset3", :method => :get %>
       </div>
     </section>
 
@@ -154,11 +154,6 @@
         </div>
       </div>
     </section>
-  </div>
-
-  <!-- This'll have to be reformatted. Have it here to verify if image upload works -->
-  <div class="uploadertest">
-    <%= image_tag current_user.avatar_url %>
   </div>
 </div>
 <% end %>
