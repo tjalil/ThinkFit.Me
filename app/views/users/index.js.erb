@@ -1,2 +1,6 @@
 // Fired and returned with a search getScript request
-$('#search-answer').html("<%= j(render @users) %>");
+<% if @users %>
+  $('#search-answer-user').html("<%= j(render @users) %>");
+<% elsif @teams %>
+  $('#search-answer-team').html("<%= j(render @teams) %>");
+<% end %>

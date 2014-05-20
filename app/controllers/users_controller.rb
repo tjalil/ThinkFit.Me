@@ -6,12 +6,13 @@ class UsersController < ApplicationController
     @users = if params[:search]
       User.where("name ILIKE ?", "%#{params[:search]}%")
     else
+      User.all
     end
 
-      respond_to do |format|
-        format.html
-        format.js 
-      end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def dashboard #main page for user. user redirected to this page after signup/login

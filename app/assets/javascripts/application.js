@@ -38,7 +38,7 @@ $(document).ready(function() {
 	$('#search-user').submit(function(event){
 		event.preventDefault();
 
-		var searchValue = $('#search').val();
+		var searchValue = $('#search_user').val();
 
 		$.getScript('/users?search=' + searchValue);
 
@@ -48,7 +48,7 @@ $(document).ready(function() {
 	$('#search-team').submit(function(event){
 		event.preventDefault();
 
-		var searchValue = $('#search').val();
+		var searchValue = $('#search_team').val();
 
 		$.getScript('/teams?search=' + searchValue);
 	});
