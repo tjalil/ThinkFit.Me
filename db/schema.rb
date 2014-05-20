@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20140518192708) do
+=======
 ActiveRecord::Schema.define(version: 20140518221624) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +38,15 @@ ActiveRecord::Schema.define(version: 20140518221624) do
     t.integer  "points"
   end
 
+  create_table "challenges", force: true do |t|
+    t.integer  "challengeable_id"
+    t.string   "challengeable_type"
+    t.integer  "defendable_id"
+    t.string   "defendable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
     t.string   "provider",   null: false
@@ -49,13 +62,6 @@ ActiveRecord::Schema.define(version: 20140518221624) do
     t.string   "commentable_type"
     t.integer  "commentable_id"
     t.integer  "user_id"
-  end
-
-  create_table "friendships", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "goals", force: true do |t|
