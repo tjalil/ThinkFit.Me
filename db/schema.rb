@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 20140520190243) do
     t.datetime "updated_at"
   end
 
+  create_table "challenges", force: true do |t|
+    t.integer  "challengeable_id"
+    t.string   "challengeable_type"
+    t.integer  "defendable_id"
+    t.string   "defendable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", force: true do |t|
     t.text     "comment"
     t.datetime "created_at"

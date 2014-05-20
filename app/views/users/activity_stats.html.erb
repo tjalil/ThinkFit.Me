@@ -1,0 +1,25 @@
+<section class="widget chat companywall">
+  <header>
+  <legend><h4>
+      Activity Stats 
+  </h4></legend>
+  </header>
+  <div class="body">
+    <div id="chat" class="chat">
+      <div id="stat-message" class="stats">
+        HI! More information to come.
+        <br/>
+        <br>
+        <% current_user.goals.each do |goal| %>
+          <%= goal.name_of_activity_through_goal %>
+          <br/> 
+          <li> Since: </li>
+          <li> Logged:  </li>
+          <li> Total Duration: </li>
+          <li> Total Distance: </li>
+          <br/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

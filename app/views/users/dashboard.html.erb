@@ -6,28 +6,22 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=566319116815288&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+  }(document, 'script', 'facebook-jssdk'));</script>
 
 <% if @user.height.nil? or @user.weight.nil? %>
   <%= render 'facebooklog' %>
 <% else %>
 
-<div class="content">
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-  <!-- Facebook Share plugin -->
-  <div class="fb-share-button" data-href="http://localhost:3000" data-width="50" data-type="button"></div>
-
-  <!-- Twitter Tweet plugin -->
-  <a href="https://twitter.com/share" class="twitter-share-button" data-via="IanCantor2">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-  <div class="span4">
-    <section class="widget">
-    <header>
-    <legend><h4>
-        Track your Activities
-    </h4></legend>
-    </header>
+  <div class="content">
+    <div class="span4">
+      <section class="widget">
+        <header>
+        <legend><h4>
+            Track your Activities
+        </h4></legend>
+        </header>
 
     <div class = "body">
       <% @user.goals.order('created_at DESC')[0..2].each do |goal| %>
@@ -66,152 +60,150 @@
     </section>
   </div> 
 
-  <div class="span4">
-    <section class="widget chat companywall">
-    <header>
-    <legend><h4>
-        Wall
-    </h4></legend>
-    </header>
-    <div class="body">
-      <div id="chat" class="chat">
-        <div class="row-fluid non-responsive">
-          <%= render "/comments/new" %>
-        </div>
-        <br>
-        <div id="chat-messages" class="chat-messages">
-          <%= render "/comments/each" %>
-          <%= paginate @comments %>
-        </div>
-      </div>
-    </div>
-    </section>
-  </div>
+        <!-- Facebook Share plugin -->
+          <div class="fb-share-button" data-href="http://localhost:3000" data-width="50" data-type="button"></div>
 
-  <div class="span4">
-    <section class="widget">
-    <header>
-    <legend><h4>
-        Teams
-    </h4></legend>
-    </header>
+        <!-- Twitter Tweet plugin -->
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="IanCantor2">Tweet</a>
+      </section>
+    </div> 
 
-    <section class="widget">
-    I own teams:
-    <ul>
-      <% Team.where(owner_id: @commentable.id).each do |team| %>
-        <li> <%= link_to team.name, team_path(team.id) %></li>
-      <% end %>
-    </ul>
-    </section>
-    <section class="widget">
-    I'm a member of teams: 
-    <ul>
-      <% @commentable.teams.each do |team| %>
-        <li> <%= link_to team.name, team_path(team.id) %></li>
-      <% end %>
-    </ul>
-
-    <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
-    </section>
-
-  </div>
-
-  <div class="span4">
-    <section class="widget chat companywall">
-    <header>
-    <legend><h4>
-        Activity Stats 
-    </h4></legend>
-    </header>
-    <div class="body">
-      <div id="chat" class="chat">
-        <div id="stat-message" class="stats">
-          HI! More information to come.
-          <br/>
-          <br>
-          <% current_user.goals.each do |goal| %>
-            <%= goal.name_of_activity_through_goal %>
-            <br/> 
-            <li> Since: </li>
-            <li> Logged:  </li>
-            <li> Total Duration: </li>
-            <li> Total Distance: </li>
-            <br/>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    </section>
-  </div>
-
-  <div class="span4">
-    <section class="widget">
-      <header>
+    <div class="span4">
+      <section class="widget chat companywall">
+        <header>
         <legend><h4>
-          Activity Logs
+            Wall
         </h4></legend>
-      </header>
-      <div class="body">
-        <div id="actlogs">
-          <% @user.goals.each do |goal| %>
-            <% goal.activity_logs.each do |log| %>
-              <br>
-              <%= goal.name_of_activity_through_goal %>
-              <li> Duration: <%= log.duration %></li>
-              <% if log.intensity != nil %>
-                <li> Intensity: <%= log.intensity %></li>
+        </header>
+        <div class="body">
+          <div id="chat" class="chat">
+            <div class="row-fluid non-responsive">
+              <%= render "/comments/new" %>
+            </div>
+            <br>
+            <div id="chat-messages" class="chat-messages">
+              <%= render "/comments/each" %>
+              <%= paginate @comments %>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <div class="span4">
+      <section class="widget widget-tabs">
+        <header>
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#user" data-toggle="tab">Search for User</a>
+            </li>
+            <li>
+              <a href="#team" data-toggle="tab">Search for Team</a>
+            </li>
+          </ul>
+        </header>
+        <div class="body tab-content">
+          <div id="user" class="tab-pane active clearfix">
+            <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
+              <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User' %>
+              <%= submit_tag "Search" %>
+            <% end %>
+            <div id="search-answer-user"></div>
+          </div>
+          <div id="team" class="tab-pane active clearfix">
+            <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
+              <%= text_field_tag :search_team, params[:search], placeholder: 'Search for Team' %>
+              <%= submit_tag "Search" %>
+            <% end %>
+            <div id="search-answer-team"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="widget">
+        <header>
+        <legend><h4>
+            Teams
+        </h4></legend>
+        </header>
+
+        <div class="body">
+          <section class="widget">
+            I created teams:
+            <ul>
+              <% Team.where(owner_id: @commentable.id).each do |team| %>
+                <li> <%= link_to team.name, team_path(team.id) %></li>
               <% end %>
-              <% if log.distance != nil %>
-                <li> Distance: <%= log.distance %></li>
-              <% end %>
+
+              <!-- PUT THIS IN LOG HISTORY SECTION PLEASE :D -->
               <li> Points: <%= log.points %></li>
               <li> Logged: <%= log.created_at.to_s(:just_date) %></li>
               <% if log == goal.activity_logs.last %>
                 <%= button_to "Remove Log", user_goal_activity_log_path(current_user, goal, log.id), :class => 'btn btn-danger', method: :delete %>
+                <!-- RESUME ACTUAL STUFFS BELOW -->
+            </ul>
+          </section>
+          <section class="widget">
+            I'm a member of teams: 
+            <ul>
+              <% @commentable.teams.each do |team| %>
+                <li> <%= link_to team.name, team_path(team.id) %></li>
               <% end %>
-              <br>
+            </ul>
+          </section>
+        </div>
+        <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
+      </section>
+
+      <section class="widget">
+        <header>
+        <legend>
+          <h4>People I follow</h4>
+        </legend>
+        </header>
+        <div class="body">
+          <div id="friends" class="friends">
+            <%= render partial: "friendships/friends", locals: { person_type: 'friend' } %>
+          </div>
+        </div>
+      </section>
+
+      <section class="widget">
+        <header>
+        <legend>
+          <h4>People following me</h4>
+        </legend>
+        </header>
+        <div class="body">
+          <div id="followers" class="followers">
+            <%= render partial: "friendships/friends", locals: { person_type: 'follower' } %>
+          </div>
+        </div>
+      </section>
+
+      <section class="widget">
+        <legend><h4>
+            Challenges
+          </h4>
+          <% if (@user != current_user) %>
+            <!-- If you aren't already in a challenge you --> 
+            <% if (@user.challenges.where(id: current_user.id) == []) %>
+              <%= button_to "Take On #{@user.name}",  user_challenges_path(@user.id), :class => "btn btn-success span6 offset3" %>
             <% end %>
-          <% end %>
+          <% end%>
+        </legend>
+        <div class="body">
+          <%= render "challenges/each_challenge" %>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 
-  <div class="span4">
-    <section class="widget">
-      <header>
-      <legend>
-        <h4> Friends  </h4>
-        <%= link_to "+Add", friendship_path %>
-      </legend>
-      </header>
-      <div class="body">
-        <div id="friends" class="friends">
-          <%= render partial: "friendships/friends", locals: { person_type: 'friend' } %>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div class="span4">
-    <section class="widget">
-      <header>
-      <legend>
-        <h4> Followers</h4>
-      </legend>
-      </header>
-      <div class="body">
-        <div id="followers" class="followers">
-          <%= render partial: "friendships/friends", locals: { person_type: 'follower' } %>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- This'll have to be reformatted. Have it here to verify if image upload works -->
-  <div class="uploadertest">
-    <%= image_tag current_user.avatar_url %>
-  </div>
+<div id="leaderboard">
+  <h1>Leaderboard</h1>
+  <%= render 'leaderboard' %>
 </div>
+
 <% end %>
+

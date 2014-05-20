@@ -3,9 +3,10 @@ class TeamsController < ApplicationController
 
   def index
     @teams = if params[:search]
-               Team.where("name ILIKE ?", "%#{params[:search]}%")
-             else
-             end
+      Team.where("name ILIKE ?", "%#{params[:search]}%")
+    else
+      Team.all
+    end
 
     respond_to do |format|
       format.html

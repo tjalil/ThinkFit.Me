@@ -3,15 +3,16 @@ class UsersController < ApplicationController
   before_filter :load_commentable, except: [:index, :new, :create]
 
   def index
-    @users = if params[:search]
+    @users = if params[:search].empty?
+      User.where.not(id: current_user)
+    elsif !params[:search].empty?
       User.where("name ILIKE ?", "%#{params[:search]}%")
-    else
     end
 
-      respond_to do |format|
-        format.html
-        format.js 
-      end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def dashboard #main page for user. user redirected to this page after signup/login

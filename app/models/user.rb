@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
+  has_many :challenges, as: :challengeable
+  has_many :inverse_challenges, as: :defendable, class_name: "Challenge", foreign_key: "defendable_id"
 
   before_save :capitalize_name
 
@@ -30,5 +32,6 @@ class User < ActiveRecord::Base
   def capitalize_name
     self.name = self.name.split.map(&:capitalize).join(' ')
   end
+
 end
 
