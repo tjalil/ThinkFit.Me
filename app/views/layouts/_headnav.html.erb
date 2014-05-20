@@ -9,7 +9,7 @@
         </ul>
         <ul class="nav pull-right">
           <li>
-            <%= image_tag current_user.avatar_url %>
+            <%= image_tag current_user.avatar_url(:thumb), :class => "img-circle" %>
           </li>
           <li>
             <%= link_to current_user.name, dashboard_user_path(current_user) %>
