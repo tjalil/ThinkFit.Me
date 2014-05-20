@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140518221624) do
     t.decimal  "distance",   precision: 5, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "points"
   end
 
   create_table "challenges", force: true do |t|

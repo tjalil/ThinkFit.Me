@@ -14,6 +14,7 @@ class ActivityLogsController < ApplicationController
   def create
     @activity_log = ActivityLog.new(activity_log_params)
     @activity_log.goal_id = @goal.id
+    @activity_log.points = @activity_log.show_points
 
     if @activity_log.save
       redirect_to dashboard_user_path(current_user), notice: "Successfully logged your activity!"
