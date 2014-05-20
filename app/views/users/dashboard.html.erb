@@ -32,7 +32,6 @@
     <div class = "body">
       <% @user.goals.order('created_at DESC')[0..2].each do |goal| %>
         <section class="widget">
-
           <div class="row-fluid">
             <div class="span4">
                 <img src="" alt="64x64" style="height: 100px; width:100px;" data-placement="top" id="tooltip-enabled" data-original-title="" class="img-circle">
@@ -43,10 +42,11 @@
               </div>
               <div class="span2">
                 <%= button_to "+", new_user_goal_activity_log_path(current_user, goal), :class => "btn btn-success pull-top", :method => :get %>
+                <%= button_to "-", edit_user_goal_path(current_user, goal), :class => "btn btn-danger pull-top", :method => :get %>
                 <br>
               </div>
               <address>
-                <!-- If statement checking if name of goals are equal, show more latest created at -->
+              <% if goal.status == "active" %>
                 Goal: <%= goal.weekly_goal %> times/week<br>
                 Logged: <%= goal.count_activity_log %> times<br>
                 Latest Points: 
@@ -54,6 +54,7 @@
                   <%= ActivityLog.where(goal_id: goal.id).last.points %>
                 <% end %> <br>
                 Last Logged: <%= goal.updated_at.to_s(:just_date) %>
+              <% end %>
               </address>
             </div>
           </div>
