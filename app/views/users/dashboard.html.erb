@@ -40,7 +40,7 @@
         </div>
       </section>
     </div>
-
+<% if current_user.friendships.find_by(friend_id: @user.id) or if current_user.id == @user.id %>
     <div class="span4">
       <section class="widget">
         <header>
@@ -61,11 +61,13 @@
               <div class="span10">
                 <h4 class="no-margin"><%= goal.name_of_activity_through_goal %> (<%= goal.total_points_per_goal %>)</h4>
               </div>
-              <div class="span2">
-                <%= button_to "+", new_user_goal_activity_log_path(current_user, goal), :class => "btn btn-success pull-top", :method => :get %>
-                <%= button_to "-", edit_user_goal_path(current_user, goal), :class => "btn btn-danger pull-top", :method => :get %>
-                <br>
-              </div>
+              <% if @user.id == current_user.id %>
+                <div class="span2">
+                  <%= button_to "+", new_user_goal_activity_log_path(current_user, goal), :class => "btn btn-success pull-top", :method => :get %>
+                  <%= button_to "-", edit_user_goal_path(current_user, goal), :class => "btn btn-danger pull-top", :method => :get %>
+                  <br>
+                </div>
+              <% end %>
               <address>
                 Goal: <%= goal.weekly_goal %> times/week<br>
                 Logged: <%= goal.count_activity_log %> times<br>
@@ -82,7 +84,9 @@
         <% end %>
       <% end %>
     </div>
+    <% if @user.id == current_user.id %>
       <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
+    <% end %>
     </section>
   </div> 
 
@@ -103,9 +107,9 @@
         </header>
         <div class="body">
           <div id="chat" class="chat">
-            <div class="row-fluid non-responsive">
-              <%= render "/comments/new" %>
-            </div>
+              <div class="row-fluid non-responsive">
+                <%= render "/comments/new" %>
+              </div>
             <br>
             <div id="chat-messages" class="chat-messages">
               <%= render "/comments/each" %>
@@ -172,7 +176,9 @@
             </ul>
           </section>
         </div>
-        <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
+        <% if @user.id == current_user.id %>
+          <%= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success span6 offset3", :method => :get  %>
+        <% end %>
       </section>
 
       <section class="widget">
@@ -218,6 +224,7 @@
       </section>
     </div>
   </div>
+<% end %>  
 
 <div id="leaderboard">
   <h1>Leaderboard</h1>
