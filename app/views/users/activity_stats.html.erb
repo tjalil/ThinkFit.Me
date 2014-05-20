@@ -36,12 +36,15 @@
           <% current_user.goals.each do |goal| %>
           <li><%= goal.name_of_activity_through_goal %></li><br>
             <% goal.activity_logs.each do |log| %>
-              <li> Points: <%= log.points %></li>
-              <li> Logged: <%= log.created_at.to_s(:just_date) %></li>
-                <% if log == goal.activity_logs.last %>
-                <%= button_to "Remove Log", user_goal_activity_log_path(current_user, goal, log.id), :class => 'btn btn-danger', method: :delete %><br>
-                <% end %>
+              <% if log == nil %>
+              <% else %>
+                <li> Points: <%= log.points %></li>
+                <li> Logged: <%= log.created_at.to_s(:just_date) %></li>
+                  <% if log == goal.activity_logs.last %>
+                  <%= button_to "Remove Log", user_goal_activity_log_path(current_user, goal, log.id), :class => 'btn btn-danger', method: :delete %><br>
+                  <% end %>
               <% end %>
+            <% end %>
           <% end %>
         </ul>
         </div>
