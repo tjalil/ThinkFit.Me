@@ -8,7 +8,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
     @goal.status = "active"
-    
+
     if @goal.save
       redirect_to dashboard_user_path(current_user), notice: "Successfully created new activity #{@goal.name_of_activity_through_goal}"
     else
@@ -17,6 +17,21 @@ class GoalsController < ApplicationController
   end 
 
   def show
+  end
+
+  def edit
+    @goal = Goal.find(params[:id])
+  end
+
+  def update
+    @goal = Goal.find(params[:id])
+    @goal.status = "inactive"
+
+    if @goal.update_attributes(:status)
+      redirect_to dashboard_user_path(current_user), notice: "Successfully set goal to inactive"
+    else
+      render :edit
+    end
   end
 
   private 
