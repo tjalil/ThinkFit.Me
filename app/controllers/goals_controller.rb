@@ -7,9 +7,10 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
-
+    @goal.status = "active"
+    
     if @goal.save
-      redirect_to dashboard_user_path(current_user), notice: "YES! Successfully created new activity #{@goal.name_of_activity_through_goal}"
+      redirect_to dashboard_user_path(current_user), notice: "Successfully created new activity #{@goal.name_of_activity_through_goal}"
     else
       render :new
     end
@@ -21,7 +22,7 @@ class GoalsController < ApplicationController
   private 
 
   def goal_params
-   params.require(:goal).permit(:weekly_goal, :activity_id)
+   params.require(:goal).permit(:weekly_goal, :activity_id, :status)
   end
 
 end
