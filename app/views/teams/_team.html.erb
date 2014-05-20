@@ -1,28 +1,19 @@
-<h1><%= link_to team.name, team_path(team) %></h1>
-<p>
 
-<div id="team-description">
-  Description: <%= team.description %>
-</div>
-<br/>
-<div id="team-user">
-  Created by: <%= User.find(team.owner_id).name %>
-</div>
-</p>
-<br/>
+<section class="widget">
+  <h4><%= link_to team.name, team_path(team) %></h4>
 
-<div class="roster">
-  <h3>Members</h3>
-  <div class="roster">
+  <address>
+    Description: <%= team.description %><br>
+    Created by: <%= User.find(team.owner_id).name %><br>
 
+    Members:
+    <div class="roster">
       <% if team.users != [] %>
-          <p>SPACEFILLER</p>
           <div class="person">
 
           </div>
-      <% else %>
       <% end %>
-
-    <p><%= button_to "Join!", team_join_path(team.id) %></p>  
-  </div>
-</div>
+    </div>
+  </address>
+  <%= button_to "Join!", team_join_path(team.id), :class => "btn btn-success span6 offset3" %>
+</section>

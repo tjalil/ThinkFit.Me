@@ -1,9 +1,9 @@
-<h1><%= link_to user.name, dashboard_user_path(user) %></h1>
-<h2><%= user.name %>'s Goals:</h2>
-<% user.goals.each do |goal| %>
-	<h3><%= goal.name_of_activity_through_goal %></h3>
-  	<p>Goal: <%= goal.weekly_goal %> times/week</p>
-    <p>Logged: <%= goal.count_activity_log %> times</p>
-    <p>Last Logged: <%= goal.updated_at %></p>
-    <p>______________________</p>
-<% end %>
+<section class="widget">
+  <h3><%= link_to user.name, dashboard_user_path(user) %></h3>
+  <h4>Goals:</h4>
+  <address>
+    <% user.goals.each do |goal| %>
+    	<%= goal.name_of_activity_through_goal %><br>
+    <% end %>
+  </address>
+</section>

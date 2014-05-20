@@ -2,7 +2,7 @@
   <%= render 'facebooklog' %>
 <% else %>
 
-<div class="content">
+<div class="content"> <!-- keep this start -->
   <div class="span4">
     <section class="widget">
     <header>
@@ -17,8 +17,8 @@
 
           <div class="row-fluid">
             <div class="span4">
-                <img src="" alt="64x64" style="height: 100px; width:100px;" data-placement="top" id="tooltip-enabled" data-original-title="" class="img-circle">
-              </div>
+              <img src="" alt="64x64" style="height: 100px; width:100px;" data-placement="top" id="tooltip-enabled" data-original-title="" class="img-circle">
+            </div>
             <div class="span8">
               <div class="span10">
                 <h4 class="no-margin"><%= goal.name_of_activity_through_goal %> (<%= goal.total_points_per_goal %>)</h4>
@@ -43,7 +43,7 @@
     </div>
       <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
     </section>
-  </div> 
+  </div> <!-- keep this end -->
 
   <div class="span4">
     <section class="widget chat companywall">

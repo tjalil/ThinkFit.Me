@@ -2,14 +2,15 @@ class TeamsController < ApplicationController
   before_filter :load_commentable, except: [:index,:join, :new, :create]
 
   def index
-   @teams = if params[:search]
-     Team.where("name ILIKE ?", "%#{params[:search]}%")
-   else
-   end
+    @teams = if params[:search]
+      Team.where("name ILIKE ?", "%#{params[:search]}%")
+    else
+      Team.all
+    end
 
-   respond_to do |format|
-     format.html
-     format.js 
+    respond_to do |format|
+      format.html
+      format.js 
     end
   end
 
