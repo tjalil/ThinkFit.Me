@@ -1,4 +1,7 @@
 <section class="widget">
+  <div id="useravatar">
+    <%= image_tag user.avatar_url(:banner), :class => "img-circle" %>
+  </div>
   <h3><%= link_to user.name, dashboard_user_path(user) %></h3>
   <h4>Activities:</h4>
   <address>
