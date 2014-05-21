@@ -20,7 +20,7 @@
 
   <section class="widget">
   <div id="challengable">
-    <%= render partial: "challenges/each_challenge"  %>
+    <%= render partial: "challenges/each_challenge", locals: {challenge_type: 'challenged'} %>
   </div>
   </section>
 
@@ -31,7 +31,7 @@
   </header>
   <section class="widget">
   <div id="defendable">
-    <%= render partial: "challenges/each_challenge"  %>
+    <%= render partial: "challenges/each_challenge", locals: {challenge_type: 'defending'} %>
   </div>
   </section>
 

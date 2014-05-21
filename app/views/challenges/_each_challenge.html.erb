@@ -1,15 +1,24 @@
-  <% current_user.challenges %>
-  <% current_user.inverse_challenges %>
+<!-- People you challenged or did they challenge you? -->
+<% if challenge_type == 'challenged' %>
+  <% user_challenges = current_user.challenges %>
+<% else %>
+  <% user_challenges = current_user.inverse_challenges %>
+<% end %>
+
+
 <ul>
-  <% current_user.challenges.each do |opponent| %>
-    <div id="challenge-time">
-    <li> <%= link_to opponent.defendable.name,  polymorphic_path(opponent.challengeable) %> 
-          <% link_to opponent.challengeable.name,  polymorphic_path(opponent.challengeable) %> 
-      | Points: <%= @points %> | 
-       Ends: <%= opponent.end_date %></li>
-       <%= button_to 'Edit' , edit_user_challenge_path(opponent.challengeable.id, opponent.id) %> 
-       <%= button_to 'Delete' , user_challenge_path(opponent.challengeable.id, opponent.id), action: 'DELETE' %> 
-    </div>
-  <% end %>
-</ul>
+  <% user_challenges.each do |challenge| %>
+    <% @opponent =  challenge_type == 'friend' ? challenge.challengeable : challenge.defendable  %>
+    <ul>
+      <div id="challenge-time">
+        <li> 
+        <li> <%= link_to @opponent.name,  polymorphic_path(@opponent) %> 
+        <% link_to @opponent.name,  polymorphic_path(@opponent) %> 
+        | Points: <%= @points %> | 
+        Ends: <%= challenge.end_date.to_s(:just_date) %></li>
+        <%= link_to 'Edit' , edit_user_challenge_path(@opponent.id, challenge.id) %> 
+        | <%= link_to 'Delete' , user_challenge_path(@opponent.id, challenge.id), action: 'DELETE' %> 
+      </div>
+    <% end %>
+  </ul>
 
