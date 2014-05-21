@@ -5,12 +5,6 @@
         Challenges
       </h4></legend>
       <div class="body">
-        <%# if (@user != current_user) %>
-          <!-- If you aren't already in a challenge you --> 
-          <%# if (@user.challenges.where(id: current_user.id) == []) %>
-            <%#= button_to "Take On #{@user.name}",  user_challenges_path(@user.id), :class => "btn btn-success span6 offset3" %>
-          <%# end %>
-        <%# end%>
         <%= render "each_challenge" %>
       </div>
     </section>
