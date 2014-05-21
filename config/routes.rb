@@ -17,7 +17,7 @@ Thinkfitme::Application.routes.draw do
       resources :activity_logs, only: [:new, :create, :destroy]
     end
 
-    resources :challenges, only: [:index, :new, :create]
+    resources :challenges, only: [:index, :new, :create, :edit, :update]
 
   end
 

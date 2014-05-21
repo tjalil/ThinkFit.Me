@@ -25,5 +25,11 @@
         <% end %>
       </div>
     </div>
+
+    <% if current_user.challenges.where(defendable_id: @user.id) == [] %>
+      <%= button_to "Take On #{@user.name}",  user_challenges_path(@user.id), :class => "btn btn-success span6 offset3" %>
+    <% end %>
+
+
   </section>
 </div>
