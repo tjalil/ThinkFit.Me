@@ -1,21 +1,25 @@
 <section class="widget">
-  <div class="icon">
+  <div class="span4">
     <%= image_tag team.avatar_url(:banner), :class => "img-circle" %>
   </div>
-  <h4><%= link_to team.name, team_path(team) %></h4>
-
-  <address>
-    Description: <%= team.description %><br>
-    Created by: <%= User.find(team.owner_id).name %><br>
-
-    Members:
-    <div class="roster">
+  <div class="span8">
+    <h4><%= link_to team.name, team_path(team) %></h4>
+    <address>
+      Description: <%= team.description.capitalize %><br>
+      Created by: <%= User.find(team.owner_id).name %><br>
+      Members:
       <% if team.users != [] %>
-        <div class="person">
-
-        </div>
+        <% team.users.each do |user| %>
+          <li><%= user.name %></li>
+        <% end %>
       <% end %>
-    </div>
-  </address>
-  <%= button_to "Join!", team_join_path(team.id), :class => "btn btn-success span6 offset3" %>
+    </address>
+  </div>
+  <% if team.owner_id == current_user.id %>
+    <%= button_to 'You created ' + team.name, '#', :class => "btn btn-transparent span12", :disabled => "disabled" %>
+  <% elsif team.users.find_by(id: current_user.id) %>
+    <%= button_to 'You are a member of ' + team.name, '#', :class => "btn btn-transparent span12", :disabled => "disabled" %>
+  <% else %>
+    <%= button_to "Join!", team_join_path(team.id), :class => "btn btn-success span6 offset3" %>
+  <% end %>
 </section>

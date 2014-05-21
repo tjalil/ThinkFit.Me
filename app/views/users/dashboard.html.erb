@@ -21,7 +21,7 @@
     <% end %>
 
     <% if current_user.inverse_friendships.find_by(user_id: @user.id) or current_user.id == @user.id %>
-
+    <div content>
       <div class="span4">
         <section class="widget widget-tabs">
           <header>
@@ -89,13 +89,16 @@
               <li>
                 <a href="#team" data-toggle="tab">Search for Team</a>
               </li>
+              <li>
+                <a href="#request" data-toggle="tab">Pending Requests</a>
+              </li>
             </ul>
           </header>
           <div class="body tab-content">
             <div id="user" class="tab-pane active clearfix">
               <%= form_tag users_path, method: :get, authentication: false, id: 'search-user'  do%>
                 <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User', :class => "span12" %>
-                  <%= submit_tag "Search", :class => "btn btn-success offset4" %>
+                <%= submit_tag "Search", :class => "btn btn-success offset4" %>
               <% end %>
               <br>
               <div id="search-answer-user"></div>
@@ -108,9 +111,15 @@
               <br>
               <div id="search-answer-team"></div>
             </div>
+            <div id="request" class="tab-pane clearfix">
+              Show pending friends and challenges requests
+              <br>
+            </div>
           </div>
         </section>
       </div>
+    </div>
+
     <% end %>
   </div> 
 <% end %>

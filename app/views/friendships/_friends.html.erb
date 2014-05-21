@@ -6,20 +6,20 @@
 <% end %>
 
 <!-- List each person I'm connected to depending on friendship  -->
+
+
 <% @humans.each do |friend| %>
-  <% @friend_type =  person_type == 'friend' ? friend.friend_id : friend.user_id %>
-  <ul style="text-align:center">
-    <li> 
-      <%= image_tag User.find_by(id: @friend_type).avatar_url(:thumb), :class => "img-circle" %>
-    </li>
-    <li>
-      <%= link_to User.find_by(id: @friend_type).name, dashboard_user_path(@friend_type) %>
-      <%="*" if current_user.inverse_friends.find_by(id: @friend_type) %>
-      <br>
-      <% if current_user %>
-        <%= link_to "(Remove)", friendship_path(friend.id), { method: 'delete', id: friend.id} %>
+  <div class="widget span6">
+    <% @friend_type =  person_type == 'friend' ? friend.friend_id : friend.user_id %>
+    <div class="span6">
+      <%= image_tag User.find_by(id: @friend_type).avatar_url(:banner), :class => "img-circle" %>
+    </div>
+    <div class="span6">
+      <h4><%= link_to User.find_by(id: @friend_type).name, dashboard_user_path(@friend_type) %></h4>
+        <%#="*" if current_user.inverse_friends.find_by(id: @friend_type) %>
+      <% if current_user && person_type == "friend" %>
+        <%= button_to "Unfollow", friendship_path(friend.id), { :class => "btn btn-danger", method: 'delete', id: friend.id} %>
       <% end %>
-    </li>
-  </ul>
-  <br/>
+    </div>
+  </div>
 <% end %>
