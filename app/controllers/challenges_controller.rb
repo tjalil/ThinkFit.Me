@@ -10,9 +10,23 @@ class ChallengesController < ApplicationController
   end
 
 
-  def new
-    @comment = @commentable.comments.new		
+  def edit
+    @challenge = Challenge.find(params[:id])
+    @defendable = @challenge.defendable
   end
+
+
+  def update
+    @challenge = Challenge.find(params[:id])
+    @defendable = @challenge.defendable
+
+    if @challenge.update_attributes(challenge_params)
+      redirect_to user_challenges_path(current_user)
+    else
+      render :edit
+    end
+  end
+
 
   def create
     @challengeable = current_user
@@ -21,7 +35,7 @@ class ChallengesController < ApplicationController
 
     respond_to do |format|
       if @challenge.save
-        format.html {redirect_to polymorphic_path(@defendable)}
+        format.html {redirect_to user_challenges_path(current_user)}
         format.js {}
       else
         format.html {render polymorphic_path}
@@ -33,7 +47,7 @@ class ChallengesController < ApplicationController
   private
 
   def challenge_params
-    params.require(:defendable).permit(:defendable_id, :defendable_type)
+    params.require(:challenge).permit(:defendable_id, :defendable_type, :end_date)
   end
 
   def load_defendable
