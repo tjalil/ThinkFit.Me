@@ -1,0 +1,31 @@
+<div class = "span6">
+  <section class="widget">
+    <header>
+      <legend><h4>
+          Teams
+      </h4></legend>
+    </header>
+
+    <div class="body">
+      <section class="widget">
+        I created teams:
+        <ul>
+          <% Team.where(owner_id: current_user.id).each do |team| %>
+            <li> <%= link_to team.name, team_path(team.id) %></li>
+          <% end %>
+        </ul>
+      </section>
+      <section class="widget">
+        I'm a member of teams: 
+        <ul>
+          <% current_user.teams.each do |team| %>
+            <li> <%= link_to team.name, team_path(team.id) %></li>
+          <% end %>
+        </ul>
+      </section>
+    </div>
+    <% if current_user %>
+      <%= button_to "Create a Team",  new_team_path, :class => "btn btn-success span6 offset3", :method => :get  %>
+    <% end %>
+  </section>
+</div>  

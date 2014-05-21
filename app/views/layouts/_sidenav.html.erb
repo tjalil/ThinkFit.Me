@@ -5,24 +5,9 @@
         <li class="sidenav-dashboard">
           <%= link_to "Dashboard", dashboard_user_path(current_user) %>
         </li>
-       <!--  <li class="accordion-group">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#side-nav" href="#forms-collapse">Teams</a>
-          <ul id="forms-collapse" class="accordion-body collapse">
-            <li>
-              <section class="widget">
-                <ul>
-                  <%# Team.where(owner_id: @commentable.id).each do |team| %>
-                    <li> <%#= link_to team.name, team_path(team.id) %></li>
-                  <%# end %>
-                  <%# @commentable.teams.each do |team| %>
-                    <li> <%#= link_to team.name, team_path(team.id) %></li>
-                  <%# end %>
-                </ul>
-                <%#= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success", :method => :get  %>
-              </section>
-            </li>
-          </ul>
-        </li> -->
+        <li class="sidenav-teams">
+          <%= link_to "Teams", teams_path %>
+        </li>
         <li class="sidenav-activity-stats">
           <%= link_to "Activity Stats", activity_stats_user_path(current_user) %>
         </li>
