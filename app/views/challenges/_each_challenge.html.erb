@@ -1,32 +1,38 @@
 <header>
-  <h5>
-    Challenged:
-  </h5>
+<h5>
+  Challenged:
+</h5>
 </header>
 
 <section class="widget">
-  <div id="member">
-    <ul>
-      <% @commentable.inverse_challenges.each do |opponent| %>
-        <li> <%= link_to opponent.challengeable.name,  polymorphic_path(opponent.challengeable) %> </li>
-      <% end %>
+<div id="member">
+  <ul>
+    <% current_user.inverse_challenges.each do |opponent| %>
+      <li> <%= link_to opponent.challengeable.name,  polymorphic_path(opponent.challengeable) %> </li>
+      <div id="challenge-time">
+        Time Left: 
+        <%= opponent.end_date %>
+      </div>
+    <% end %>
   </ul>
-  </div>
+</div>
 </section>
 
 <header>
-  <h5>
-    Fending Off:
-  </h5>
+<h5>
+  Fending Off:
+</h5>
 </header>
 <section class="widget">
-  <div id="member">
-    <ul>
-      <% @commentable.challenges.each do |opponent| %>
-        <li> <%= link_to opponent.defendable.name, polymorphic_path([opponent.defendable]) %></li>
-      <% end %>
+<div id="member">
+  <ul>
+    <% current_user.challenges.each do |opponent| %>
+      <li> <%= link_to opponent.defendable.name, polymorphic_path([opponent.defendable]) %></li>
+      <div id="challenge-time">
+      Time Left: <%= opponent.end_date %> 
+      </div>
+    <% end %>
   </ul>
-  </div>
+</div>
 </section>
-
 

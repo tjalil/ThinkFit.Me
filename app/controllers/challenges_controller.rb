@@ -1,6 +1,14 @@
 class ChallengesController < ApplicationController
 	before_filter :require_login, :load_defendable
 
+  def index
+    @user = User.find(params[:user_id])
+    @challengable = @user.challenges
+    @defendable = @user.inverse_challenges
+
+  end
+
+
   def new
     @comment = @commentable.comments.new		
   end
