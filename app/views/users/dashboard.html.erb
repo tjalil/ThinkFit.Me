@@ -86,7 +86,7 @@
                 <% end %>
                 <div id="search-answer-user"></div>
               </div>
-              <div id="team" class="tab-pane active clearfix">
+              <div id="team" class="tab-pane clearfix">
                 <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
                   <%= text_field_tag :search_team, params[:search], placeholder: 'Search for Team' %>
                   <%= submit_tag "Search" %>
