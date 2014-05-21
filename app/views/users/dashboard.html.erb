@@ -21,19 +21,30 @@
 
       <% if current_user.friendships.find_by(friend_id: @user.id) or current_user.id == @user.id %>
 
-      <div class="span4">
-          <section class="widget">
+        <div class="span4">
+          <section class="widget widget-tabs">
             <header>
-              <legend><h4>
-                  Track your Activities
-              </h4></legend>
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#activity-tracking" data-toggle="tab">Track your Activities</a>
+                </li>
+                <li>
+                  <a href="#leaderboard" data-toggle="tab">Leaderboard</a>
+                </li>
+              </ul>
             </header>
-            <div class = "body">
-              <%= render 'trackboard' %>
+            <div class = "body tab-content">
+              <div id="activity-tracking" class="tab-pane active clearfix">
+                <%= render 'trackboard' %>
+                <% if @user.id == current_user.id %>
+                  <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
+                <% end %>
+              </div>
+              <div id="leaderboard" class="tab-pane clearfix">
+                <%#= render 'leaderboard' %>
+              </div>
             </div>
-            <% if @user.id == current_user.id %>
-              <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
-            <% end %>
+      
             <br>
             <!-- Facebook Share plugin -->
             <div class="fb-share-button" data-href="http://localhost:3000" data-width="50" data-type="button"></div>
@@ -95,17 +106,7 @@
               </div>
             </div>
           </section>
-
-          <section class="widget">
-            <div id="leaderboard">
-              <header>
-                <legend><h4>
-                  Leaderboard
-                </h4></legend>
-              </header>
-              <%#= render 'leaderboard' %>
-            </div>
-          </section>
+          
         </div>
       <% end %>
     <% end %>
