@@ -2,7 +2,7 @@
   <div class="span4">
     <%= image_tag user.avatar_url(:banner), :class => "img-circle" %>
   </div>
-  <div class="span4">
+  <div class="span6">
     <h4><%= link_to user.name, dashboard_user_path(user) %></h4>
     <strong>Activities:</strong>
     <address>
@@ -12,14 +12,15 @@
         <% end %>
       <% end %>
     </address>
+    <br>
   </div>
   <% if current_user.friendships.empty? %>
-    <%= button_to 'Follow ' + user.name, friendships_path(friend_id: user.id), :class => "btn btn-success span6 offset3" %>
+    <%= button_to 'Follow ' + user.name, friendships_path(friend_id: user.id), :class => "btn btn-success span8 offset2" %>
   <% else %>
     <% if current_user.friendships.find_by(friend_id: user.id) %>
       <%= button_to 'You are following ' + user.name, '#', :class => "btn btn-transparent span12", :disabled => "disabled" %>
     <% else %>
-      <%= button_to 'Follow ' + user.name, friendships_path(friend_id: user.id), :class => "btn btn-success span6 offset3" %>
+      <%= button_to 'Follow ' + user.name, friendships_path(friend_id: user.id), :class => "btn btn-success span8 offset2" %>
     <% end %>
   <% end %>
 </section>
