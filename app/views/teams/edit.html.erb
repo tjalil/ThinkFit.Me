@@ -1,0 +1,14 @@
+<%= link_to "Back to Homepage", users_path %>
+<% if current_user.id == @team.owner_id %>
+
+	<h1>Edit your team</h1>
+
+	<%= render 'teamform' %>
+
+<% else %>
+
+	<h1>Sorry!</h1>
+
+	You're not authorized to access this page. :(
+
+<% end %>
