@@ -7,9 +7,10 @@
             <h1> <%= link_to "THINKFIT.ME", users_path %></h1>
           </li>
         </ul>
-        <ul class="nav pull-right">
-          <li>
+        <ul class="nav pull-right" style="margin-top: -0.25rem">
+          <li style="margin-top: -0.50rem">
             <%= image_tag current_user.avatar_url(:thumb), :class => "img-circle" %>
+            <br>
           </li>
           <li>
             <%= link_to current_user.name, dashboard_user_path(current_user) %>
@@ -20,7 +21,7 @@
           </li>
         </ul>
         <% else %>
-        <ul class="nav pull-right">
+        <ul class="nav pull-right" style="margin-top: -0.25rem">
           <li>
             <%= link_to "Log In", new_user_session_path %>
           </li>

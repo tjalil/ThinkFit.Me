@@ -3,11 +3,11 @@
     <div class="row-fluid">
       <div class="span2">
         <div id="useravatar">
-          MAKE ME A CIRCLE AND PUT USER PIC HERE
+           <%= image_tag @user.avatar_url(:banner), :class => "img-circle" %>
         </div>
       </div>
       <div class="span6">
-        <h2><%= @user.name %></h2><br>
+        <h2><%= @user.name %></h2>
         <% user_goal_points = [] %>
         <% user_goal_points = Goal.where(user_id: @user.id).map do |goal|  %>
           <% goal.id %>
@@ -18,7 +18,7 @@
         <h4><%= score %></h4>
       </div>
       <div class="span4">
-        <%= button_to "Follow", friendships_path(friend_id: @user.id) ,:class => 'btn btn-success span12'%>
+        <%= button_to "Follow", friendships_path(friend_id: @user.id) ,:class => 'btn btn-success span6 offset3'%>
       </div>
     </div>
   </section>
