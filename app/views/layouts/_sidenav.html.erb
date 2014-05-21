@@ -13,20 +13,28 @@
                 <ul>
                   <%# Team.where(owner_id: @commentable.id).each do |team| %>
                     <li> <%#= link_to team.name, team_path(team.id) %></li>
-                  <%# end %>
-                  <%# @commentable.teams.each do |team| %>
-                    <li> <%#= link_to team.name, team_path(team.id) %></li>
-                  <%# end %>
-                </ul>
-                <%#= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success", :method => :get  %>
-              </section>
-            </li>
-          </ul>
-        </li> -->
-        <li class="sidenav-activity-stats">
+                    <%# end %>
+                    <%# @commentable.teams.each do |team| %>
+                      <li> <%#= link_to team.name, team_path(team.id) %></li>
+                      <%# end %>
+                    </ul>
+                    <%#= button_to "Create a Team",  new_team_path(@commentable.id), :class => "btn btn-success", :method => :get  %>
+                    </section>
+                    </li>
+                  </ul>
+                  </li> -->
+                  <li class="sidenav-activity-stats">
           <%= link_to "Activity Stats", activity_stats_user_path(current_user) %>
         </li>
+        <li>
+        <%= link_to "Friends...not yet" %>
+        </li>
+        <li>
+        <%= link_to "Challenges", user_challenges_path(current_user.id) %>
+        </li>
+
       </ul>
     </nav>
+
   <% end %>
 </div>
