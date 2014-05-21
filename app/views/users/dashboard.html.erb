@@ -41,16 +41,18 @@
                 <% end %>
               </div>
               <div id="leaderboard" class="tab-pane clearfix">
-                <%#= render 'leaderboard' %>
+                <%= render 'leaderboard' %>
               </div>
             </div>
       
             <br>
             <!-- Facebook Share plugin -->
-            <div class="fb-share-button" data-href="http://localhost:3000" data-width="50" data-type="button"></div>
+            <div class="span6 offset3">
+              <div class="fb-share-button" data-href="http://localhost:3000" data-width="50" data-type="button"></div>
 
-            <!-- Twitter Tweet plugin -->
-            <a href="https://twitter.com/share" class="twitter-share-button" data-via="IanCantor2">Tweet</a>
+              <!-- Twitter Tweet plugin -->
+              <a href="https://twitter.com/share" class="twitter-share-button" data-via="IanCantor2">Tweet</a>
+            </div>
           </section>
         </div>
 
@@ -91,23 +93,25 @@
             </header>
             <div class="body tab-content">
               <div id="user" class="tab-pane active clearfix">
-                <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
-                  <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User' %>
-                  <%= submit_tag "Search" %>
+                <%= form_tag users_path, method: :get, authentication: false, id: 'search-user'  do%>
+                  <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User', :class => "span12" %>
+                    <%= submit_tag "Search", :class => "btn btn-success offset4" %>
                 <% end %>
+                <br>
                 <div id="search-answer-user"></div>
               </div>
               <div id="team" class="tab-pane clearfix">
                 <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
-                  <%= text_field_tag :search_team, params[:search], placeholder: 'Search for Team' %>
-                  <%= submit_tag "Search" %>
+                  <%= text_field_tag :search_team, params[:search], placeholder: 'Search for Team', :class => "span12" %>
+                  <%= submit_tag "Search", :class => "btn btn-success offset4" %>
                 <% end %>
+                <br>
                 <div id="search-answer-team"></div>
               </div>
             </div>
           </section>
-          
         </div>
+
       <% end %>
     <% end %>
   </div> 
