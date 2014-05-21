@@ -8,6 +8,16 @@
       <div class="span8">
         <div class="span10">
           <h4 class="no-margin"><%= goal.name_of_activity_through_goal %> (<%= goal.total_points_per_goal %>)</h4>
+          <br>
+          <address>
+            Goal: <%= goal.weekly_goal %> times/week<br>
+            Logged: <%= goal.count_activity_log %> times<br>
+            Latest Points: 
+            <% if ActivityLog.where(goal_id: goal.id).length > 0 %>
+              <%= ActivityLog.where(goal_id: goal.id).last.points %>
+            <% end %> <br>
+            Last Logged: <%= goal.updated_at.to_s(:just_date) %>
+          </address>
         </div>
         <% if @user.id == current_user.id %>
           <div class="span2">
@@ -15,15 +25,6 @@
             <%= button_to "-", edit_user_goal_path(current_user, goal), :class => "btn btn-danger pull-top", :method => :get %>
           </div>
         <% end %>
-        <address>
-          Goal: <%= goal.weekly_goal %> times/week<br>
-          Logged: <%= goal.count_activity_log %> times<br>
-          Latest Points: 
-          <% if ActivityLog.where(goal_id: goal.id).length > 0 %>
-            <%= ActivityLog.where(goal_id: goal.id).last.points %>
-          <% end %> <br>
-          Last Logged: <%= goal.updated_at.to_s(:just_date) %>
-        </address>
       </div>
     </div>
   </section>

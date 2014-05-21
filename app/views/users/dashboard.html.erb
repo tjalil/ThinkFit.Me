@@ -21,7 +21,7 @@
     <% end %>
 
     <% if current_user.inverse_friendships.find_by(user_id: @user.id) or current_user.id == @user.id %>
-
+    <div content>
       <div class="span4">
         <section class="widget widget-tabs">
           <header>
@@ -95,7 +95,7 @@
             <div id="user" class="tab-pane active clearfix">
               <%= form_tag users_path, method: :get, authentication: false, id: 'search-user'  do%>
                 <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User', :class => "span12" %>
-                  <%= submit_tag "Search", :class => "btn btn-success offset4" %>
+                <%= submit_tag "Search", :class => "btn btn-success offset4" %>
               <% end %>
               <br>
               <div id="search-answer-user"></div>
@@ -111,6 +111,7 @@
           </div>
         </section>
       </div>
+    </div>
 
     <% end %>
   </div> 
