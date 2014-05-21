@@ -1,5 +1,7 @@
-
 <section class="widget">
+  <div class="icon">
+    <%= image_tag team.avatar_url(:banner), :class => "img-circle" %>
+  </div>
   <h4><%= link_to team.name, team_path(team) %></h4>
 
   <address>
@@ -9,9 +11,9 @@
     Members:
     <div class="roster">
       <% if team.users != [] %>
-          <div class="person">
+        <div class="person">
 
-          </div>
+        </div>
       <% end %>
     </div>
   </address>

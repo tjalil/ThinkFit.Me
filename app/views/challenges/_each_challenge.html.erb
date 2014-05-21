@@ -9,16 +9,17 @@
 <ul>
   <% user_challenges.each do |challenge| %>
     <% @opponent =  challenge_type == 'friend' ? challenge.challengeable : challenge.defendable  %>
-    <ul>
+      <li> 
       <div id="challenge-time">
-        <li> 
-        <li> <%= link_to @opponent.name,  polymorphic_path(@opponent) %> 
+        <%= link_to @opponent.name,  polymorphic_path(@opponent) %> 
         <% link_to @opponent.name,  polymorphic_path(@opponent) %> 
-        | Points: <%= @points %> | 
-        Ends: <%= challenge.end_date.to_s(:just_date) %></li>
-        <%= link_to 'Edit' , edit_user_challenge_path(@opponent.id, challenge.id) %> 
+        | Points: <%= @points %>
+        | Ends: <%= challenge.end_date.to_s(:just_date) %> 
+        | <%= link_to 'Edit' , edit_user_challenge_path(@opponent.id, challenge.id) %> 
         | <%= link_to 'Delete' , user_challenge_path(@opponent.id, challenge.id), action: 'DELETE' %> 
       </div>
+      </li>
+
     <% end %>
   </ul>
 

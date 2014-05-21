@@ -4,7 +4,7 @@ Thinkfitme::Application.routes.draw do
   get "oauth/callback" => 'oauths#callback' # for use with Github
   get "oauth/:provider" => 'oauths#oauth', :as => :auth_at_provider
 
-  resources :friendships, only: [:show, :create, :destroy]
+  resources :friendships, only: [:index, :show, :create, :destroy]
   resources :users do
     member do
       get 'dashboard'
@@ -17,7 +17,7 @@ Thinkfitme::Application.routes.draw do
       resources :activity_logs, only: [:new, :create, :destroy]
     end
 
-    resources :challenges
+    resources :challenges, only: [:index, :new, :create, :edit, :update]
 
   end
 

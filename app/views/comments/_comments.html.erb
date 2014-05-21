@@ -1,7 +1,7 @@
 <div class="chat-message">
   <div class="sender pull-left">
     <div class="icon">
-      <img src="" class="img-circle" alt="">
+      <%= image_tag User.find(@comment.user_id).avatar_url(:thumb), :class => "img-circle" %>
     </div>
     <div class="time">
       <%= @comment.created_at.to_s(:just_time) %>

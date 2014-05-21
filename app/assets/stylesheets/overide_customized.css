@@ -42,3 +42,15 @@
 {
   overflow-y: visible;
 }
+
+.display-position-in-leaderboard
+{
+  display: list-item;
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+.current-user-in-leaderboard
+{
+  background: rgba(86, 188, 118, 0.50);
+}

@@ -18,7 +18,11 @@
         <h4><%= score %></h4>
       </div>
       <div class="span4">
-        <%= button_to "Follow", friendships_path(friend_id: @user.id) ,:class => 'btn btn-success span6 offset3'%>
+        <% if current_user.friendships.find_by(friend_id: @user.id) %>
+          <%= button_to 'You are following ' + @user.name, '#', :class => "btn btn-transparent span12", :disabled => "disabled" %>
+        <% else %>
+          <%= button_to 'Follow ' + @user.name, friendships_path(friend_id: @user.id), :class => "btn btn-success span6 offset3" %>
+        <% end %>
       </div>
     </div>
 

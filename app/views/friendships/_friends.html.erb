@@ -1,8 +1,8 @@
 <!-- friend or follower -->
 <% if person_type == 'friend' %>
-  <% @humans = @user.friendships %>
+  <% @humans = current_user.friendships %>
 <% else %>
-  <% @humans = @user.inverse_friendships %>
+  <% @humans = current_user.inverse_friendships %>
 <% end %>
 
 <!-- List each person I'm connected to depending on friendship  -->
@@ -14,9 +14,9 @@
     </li>
     <li>
       <%= link_to User.find_by(id: @friend_type).name, dashboard_user_path(@friend_type) %>
-      <%="*" if @user.inverse_friends.find_by(id: @friend_type) %>
+      <%="*" if current_user.inverse_friends.find_by(id: @friend_type) %>
       <br>
-      <% if current_user == @user %>
+      <% if current_user %>
         <%= link_to "(Remove)", friendship_path(friend.id), { method: 'delete', id: friend.id} %>
       <% end %>
     </li>
