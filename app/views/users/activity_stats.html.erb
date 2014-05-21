@@ -8,7 +8,10 @@
         <div id="stat-message" class="stats">
         <ul>
           <% current_user.goals.each do |goal| %>
-          <li><%= goal.name_of_activity_through_goal %></li><br>
+            <% if goal.activity_logs.empty? %>
+            <% else %>
+              <li><%= goal.name_of_activity_through_goal %></li><br>
+            <% end %>
             <% goal.activity_logs.each do |log| %>
               <% if log == nil %>
               <% else %>
