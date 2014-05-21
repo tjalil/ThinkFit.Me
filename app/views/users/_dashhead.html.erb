@@ -15,7 +15,7 @@
         <% end %>
         <!-- Total user points from  points array by goal  -->
         <% score = user_goal_points.inject {|sum, point| sum += point} %>
-        <h4><%= score %></h4>
+        <h4>Points: <%= score %></h4>
       </div>
       <div class="span4">
         <% if current_user.friendships.find_by(friend_id: @user.id) %>
