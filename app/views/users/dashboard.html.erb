@@ -15,104 +15,103 @@
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
   <div class="content">
-    <% if @user != current_user %>
+
+    <% if current_user.id != @user.id %>
       <%= render 'dashhead' %>
-    <% else %>
+    <% end %>
 
-      <% if current_user.friendships.find_by(friend_id: @user.id) or current_user.id == @user.id %>
+    <% if current_user.inverse_friendships.find_by(user_id: @user.id) or current_user.id == @user.id %>
 
-        <div class="span4">
-          <section class="widget widget-tabs">
-            <header>
-              <ul class="nav nav-tabs">
-                <li class="active">
-                  <a href="#activity-tracking" data-toggle="tab">Track your Activities</a>
-                </li>
-                <li>
-                  <a href="#leaderboard" data-toggle="tab">Leaderboard</a>
-                </li>
-              </ul>
-            </header>
-            <div class = "body tab-content">
-              <div id="activity-tracking" class="tab-pane active clearfix">
-                <%= render 'trackboard' %>
-                <% if @user.id == current_user.id %>
-                  <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
-                <% end %>
-              </div>
-              <div id="leaderboard" class="tab-pane clearfix">
-                <%= render 'leaderboard' %>
-              </div>
+      <div class="span4">
+        <section class="widget widget-tabs">
+          <header>
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#activity-tracking" data-toggle="tab">Track your Activities</a>
+              </li>
+              <li>
+                <a href="#leaderboard" data-toggle="tab">Leaderboard</a>
+              </li>
+            </ul>
+          </header>
+          <div class = "body tab-content">
+            <div id="activity-tracking" class="tab-pane active clearfix">
+              <%= render 'trackboard' %>
+              <% if @user.id == current_user.id %>
+                <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
+              <% end %>
             </div>
-      
-            <br>
-            <!-- Facebook Share plugin -->
-            <div class="span6 offset3">
-              <div class="fb-share-button" data-href="http://localhost:3000" data-width="50" data-type="button"></div>
-
-              <!-- Twitter Tweet plugin -->
-              <a href="https://twitter.com/share" class="twitter-share-button" data-via="IanCantor2">Tweet</a>
+            <div id="leaderboard" class="tab-pane clearfix">
+              <%= render 'leaderboard' %>
             </div>
-          </section>
-        </div>
+          </div>
+    
+          <br>
+          <!-- Facebook Share plugin -->
+          <div class="span6 offset3">
+            <div class="fb-share-button" data-href="http://localhost:3000" data-width="50" data-type="button"></div>
 
-        <div class="span4">
-          <section class="widget chat companywall">
-            <header>
-              <legend><h4>
-                  Wall
-              </h4></legend>
-            </header>
-            <div class="body">
-              <div id="chat" class="chat">
-                  <div class="row-fluid non-responsive">
-                    <%= render "/comments/new" %>
-                  </div>
-                <br>
-                <div id="chat-messages" class="chat-messages">
-                  <%= render "/comments/each" %>
-                  <%= paginate @comments %>
+            <!-- Twitter Tweet plugin -->
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="IanCantor2">Tweet</a>
+          </div>
+        </section>
+      </div>
+
+      <div class="span4">
+        <section class="widget chat companywall">
+          <header>
+            <legend><h4>
+                Wall
+            </h4></legend>
+          </header>
+          <div class="body">
+            <div id="chat" class="chat">
+                <div class="row-fluid non-responsive">
+                  <%= render "/comments/new" %>
                 </div>
+              <br>
+              <div id="chat-messages" class="chat-messages">
+                <%= render "/comments/each" %>
+                <%= paginate @comments %>
               </div>
-
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
+      </div>
 
-        <div class="span4">
-          <section class="widget widget-tabs">
-            <header>
-              <ul class="nav nav-tabs">
-                <li class="active">
-                  <a href="#user" data-toggle="tab">Search for User</a>
-                </li>
-                <li>
-                  <a href="#team" data-toggle="tab">Search for Team</a>
-                </li>
-              </ul>
-            </header>
-            <div class="body tab-content">
-              <div id="user" class="tab-pane active clearfix">
-                <%= form_tag users_path, method: :get, authentication: false, id: 'search-user'  do%>
-                  <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User', :class => "span12" %>
-                    <%= submit_tag "Search", :class => "btn btn-success offset4" %>
-                <% end %>
-                <br>
-                <div id="search-answer-user"></div>
-              </div>
-              <div id="team" class="tab-pane clearfix">
-                <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
-                  <%= text_field_tag :search_team, params[:search], placeholder: 'Search for Team', :class => "span12" %>
+      <div class="span4">
+        <section class="widget widget-tabs">
+          <header>
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#user" data-toggle="tab">Search for User</a>
+              </li>
+              <li>
+                <a href="#team" data-toggle="tab">Search for Team</a>
+              </li>
+            </ul>
+          </header>
+          <div class="body tab-content">
+            <div id="user" class="tab-pane active clearfix">
+              <%= form_tag users_path, method: :get, authentication: false, id: 'search-user'  do%>
+                <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User', :class => "span12" %>
                   <%= submit_tag "Search", :class => "btn btn-success offset4" %>
-                <% end %>
-                <br>
-                <div id="search-answer-team"></div>
-              </div>
+              <% end %>
+              <br>
+              <div id="search-answer-user"></div>
             </div>
-          </section>
-        </div>
+            <div id="team" class="tab-pane clearfix">
+              <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
+                <%= text_field_tag :search_team, params[:search], placeholder: 'Search for Team', :class => "span12" %>
+                <%= submit_tag "Search", :class => "btn btn-success offset4" %>
+              <% end %>
+              <br>
+              <div id="search-answer-team"></div>
+            </div>
+          </div>
+        </section>
+      </div>
 
-      <% end %>
     <% end %>
   </div> 
 <% end %>

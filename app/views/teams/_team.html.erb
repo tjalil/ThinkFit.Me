@@ -1,4 +1,7 @@
 <section class="widget">
+  <div class="icon">
+    <%= image_tag team.avatar_url(:banner), :class => "img-circle" %>
+  </div>
   <h4><%= link_to team.name, team_path(team) %></h4>
 
   <address>

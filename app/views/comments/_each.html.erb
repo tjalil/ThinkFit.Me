@@ -4,7 +4,7 @@
 
     <div class="sender pull-left">
       <div class="icon">
-        <img src="" class="img-circle" alt="">
+       <%= image_tag User.find(comment.user_id).avatar_url(:banner), :class => "img-circle" %>
       </div>
       <div class="time">
         <%= comment.created_at.to_s(:just_time) %>
@@ -14,7 +14,7 @@
     <div class="chat-message-body">
       <span class="arrow"></span>
     	<div class="sender">
-        <%= User.find(comment.user_id).name %>
+        <%= link_to User.find(comment.user_id).name, dashboard_user_path(User.find(comment.user_id)) %>
       </div>
       <div class="text">
     	  <%= comment.comment %>
