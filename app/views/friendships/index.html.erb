@@ -25,7 +25,9 @@
       </header>
       <div class="body">
         <div id="followers" class="followers">
-          <%= render partial: "friends", locals: { person_type: 'follower' } %>
+          <div class = "row-fluid">
+            <%= render partial: "friends", locals: { person_type: 'follower' } %>
+          </div>
         </div>
       </div>
     </section>
