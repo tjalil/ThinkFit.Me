@@ -1,10 +1,11 @@
 class ChallengesController < ApplicationController
-	before_filter :require_login, :load_defendable
+  before_filter :require_login, :load_defendable
 
   def index
     @user = User.find(params[:user_id])
     @challengable = @user.challenges
     @defendable = @user.inverse_challenges
+    @points = total_user_points
 
   end
 
@@ -16,6 +17,7 @@ class ChallengesController < ApplicationController
   def create
     @challengeable = current_user
     @challenge = @challengeable.challenges.build(defendable_id: @defendable.id, defendable_type: @type)
+    @challenge.end_date = Time.now.end_of_week + 1.week
 
     respond_to do |format|
       if @challenge.save
@@ -28,7 +30,7 @@ class ChallengesController < ApplicationController
     end
   end
 
-private
+  private
 
   def challenge_params
     params.require(:defendable).permit(:defendable_id, :defendable_type)
@@ -44,5 +46,14 @@ private
     end
   end
 
+  def total_user_points  
+    user_goal_points = []
+    user_goal_points = Goal.where(user_id: @user.id).map do |goal| 
+      goal.id
+      ActivityLog.where(goal_id: goal.id).sum(:points)
+    end
+    score = user_goal_points.inject {|sum, point| sum += point}
+    score
+  end
 
 end
