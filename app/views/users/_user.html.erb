@@ -3,7 +3,9 @@
   <h4>Activities:</h4>
   <address>
     <% user.goals.each do |goal| %>
-    	<%= goal.name_of_activity_through_goal %><br>
+      <% if goal.status == "active" %>
+    	 <%= goal.name_of_activity_through_goal %><br>
+      <% end %>
     <% end %>
   </address>
   <% if current_user.friendships.empty? %>
