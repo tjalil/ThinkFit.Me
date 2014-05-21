@@ -12,10 +12,10 @@
 <% end %>
 <div id='print-out-leaderboard'>
   <ol>
-    <% leaders.sort_by{|k,v|v }.reverse.each do |key, value| %>
+    <% leaders.sort_by{|k,v| v }.reverse.each do |key, value| %>
       <li>
-      <%= link_to User.find(key).name, dashboard_user_path(User.find(key).id) %>
-      <%= value %>
+        <%= link_to User.find(key).name, dashboard_user_path(User.find(key).id) %>
+        <%= value %>
       </li>
     <% end%>
   </ol>

@@ -7,17 +7,19 @@
 
 <!-- List each person I'm connected to depending on friendship  -->
 <% @humans.each do |friend| %>
-  <%  @friend_type =  person_type == 'friend' ? friend.friend_id : friend.user_id %>
-  <li> 
-  IMAGE |  
-  <%= link_to User.find_by(id: @friend_type).name, dashboard_user_path(@friend_type) %>
-  <%="*" if @user.inverse_friends.find_by(id: @friend_type) %>
-  |
-  <% if current_user == @user %>
-    <%= link_to "remove", friendship_path(friend.id), { method: 'delete', id: friend.id} %>
-  <% end %>
-
-  </li>
+  <% @friend_type =  person_type == 'friend' ? friend.friend_id : friend.user_id %>
+  <ul style="text-align:center">
+    <li> 
+      <%= image_tag User.find_by(id: @friend_type).avatar_url(:thumb), :class => "img-circle" %>
+    </li>
+    <li>
+      <%= link_to User.find_by(id: @friend_type).name, dashboard_user_path(@friend_type) %>
+      <%="*" if @user.inverse_friends.find_by(id: @friend_type) %>
+      <br>
+      <% if current_user == @user %>
+        <%= link_to "(Remove)", friendship_path(friend.id), { method: 'delete', id: friend.id} %>
+      <% end %>
+    </li>
+  </ul>
   <br/>
-
 <% end %>
