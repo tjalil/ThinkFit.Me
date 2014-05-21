@@ -1,0 +1,39 @@
+<section class="widget">
+<legend><h4>
+    Challenges
+  </h4>
+  <% if (@user != current_user) %>
+    <!-- If you aren't already in a challenge you --> 
+    <% if (@user.challenges.where(id: current_user.id) == []) %>
+      <%= button_to "Take On #{@user.name}",  user_challenges_path(@user.id), :class => "btn btn-success span6 offset3" %>
+    <% end %>
+  <% end%>
+</legend>
+<div class="body">
+
+
+  <header>
+  <h5>
+    Challenged:
+  </h5>
+  </header>
+
+  <section class="widget">
+  <div id="challengable">
+    <%= render partial: "challenges/each_challenge"  %>
+  </div>
+  </section>
+
+  <header>
+  <h5>
+    Fending Off:
+  </h5>
+  </header>
+  <section class="widget">
+  <div id="defendable">
+    <%= render partial: "challenges/each_challenge"  %>
+  </div>
+  </section>
+
+</div>
+</section>
