@@ -1,0 +1,24 @@
+<% teams_leaders = {} %>
+<% Team.all.each do |team| %>
+  <% teams_leaders[team.id] = team.team_total_points %>
+<% end %>
+
+<div id='show-leaderboard'>
+  <ol class="users-list">
+    <% teams_leaders.sort_by{|k,v| v }.reverse.each do |key, value| %>
+      <li class="display-position-in-leaderboard">
+        <% if key == @team.id %>
+          <div class="user-info current-user-in-leaderboard">
+            <%= image_tag Team.find(key).avatar_url(:thumb), :class => "img-circle" %>
+            <%= link_to Team.find(key).name, team_path(Team.find(key).id) %> - <%= value %>
+          </div>
+        <% else %>
+          <div class="user-info">
+            <%= image_tag Team.find(key).avatar_url(:thumb), :class => "img-circle" %>
+            <%= link_to Team.find(key).name, team_path(Team.find(key).id) %> - <%= value %>
+          </div>
+        <% end %>
+      </li>
+    <% end%>
+  </ol>
+</div>
