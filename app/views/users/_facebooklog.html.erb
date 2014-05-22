@@ -1,29 +1,69 @@
-<%= form_for @user, :html => {:multipart => true} do |user| %>
+<div class="content">
+	<section class="widget login-widget">
+	  <legend>
+	    <header class="text-align-center">
+	      <h1>Personal Information</h1>
+	    </header>
+	  </legend>
 
-	<div class="field">
-		<%= user.label :height %><br>
-		<%= user.number_field :height %>
-	</div>
+		<%= form_for @user, :html => {:multipart => true} do |user| %>
 
-	<div class="field">
-		<%= user.label :weight %><br>
-		<%= user.number_field :weight %><br>
-	</div>
+			<div class="body">
+	      <fieldset>
+					<div class="control-group no-margin">
+						<div class="control">
+							<div class="input-prepend input-padding-increased">
+			          <span class="add-on">
+			            <i class="icon-lock icon-large"></i>
+			          </span>
+								<%= user.number_field :height, placeholder: "Height (inches)" %>
+							</div>
+						</div>
+					</div>
 
-	<div class="field">
-		<%= user.label(:gender,"Male") %>
-		<%= user.radio_button(:gender, "male") %>
+					<div class="control-group no-margin">
+						<div class="control">
+							<div class="input-prepend input-padding-increased">
+			          <span class="add-on">
+			            <i class="icon-lock icon-large"></i>
+			          </span>
+							<%= user.number_field :weight, placeholder: "Weight (kg)" %>
+							</div>
+						</div>
+					</div>
 
-		<%= user.label(:gender, "Female") %>
-		<%= user.radio_button(:gender, "female") %>
-	</div>
+					<label class="control">
+						<div class="row-fluid">
+							<div class="btn-large btn-transparent span6">
+								<%= user.label(:gender,"Male") %>
+								<%= user.radio_button(:gender, "male") %>
+							</div>
 
-	<div class="action">
-		<%= user.submit 'Submit!' %>
-	</div>
+							<div class="btn-large btn-transparent span6">
+								<%= user.label(:gender, "Female") %>
+								<%= user.radio_button(:gender, "female") %>
+							</div>
+						</div>
+					</label>
 
-<% end %>
+					<div class="control-group no-margin">
+						<div class="control">
+								<div class="widget">
+									<%= user.label :avatar, "Upload your Profile Picture", { style: "text-align:center"} %>
+									<br>
+									<%= user.file_field :avatar, {:class=>"btn btn-transparent span12", style:"margin-bottom:1rem"} %>
+									<%= user.text_field :remote_avatar_url, {placeholder: "Or Insert a Picture Link", :class => "span12"} %>
+								</div>
+						</div>
+					</div>
 
-<div id="tutorialbox">
-	<h1 id="instructions"></h1>
+				  <div class="control-group no-margin">
+						<div class="form-actions" style="padding-bottom: 1rem">
+							<%= user.submit 'Submit!', :class => "btn btn-block btn-success btn-large" %>
+						</div>
+					</div>
+				</div>
+
+		<% end %>
+	</section>
 </div>

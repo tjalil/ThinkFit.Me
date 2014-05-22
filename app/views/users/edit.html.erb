@@ -1,5 +1,9 @@
 <% if current_user.id == @user.id %>
-			<%= render 'userinfo_form' %>
+
+	<div class="user_form">
+		<%= render 'userinfo_form' %>
+	</div>
+
 <% else %>
 	<h1>Sorry!</h1>
 	<div class="alert alert-danger">
