@@ -54,3 +54,21 @@
 {
   background: rgba(86, 188, 118, 0.50);
 }
+
+.count {
+  position: absolute;
+  top: -5px;
+  right: 2px;
+  font-size: 1rem;
+  font-weight: normal;
+  /*background: rgba(86, 188, 118, 1);*/
+  background: rgba(229, 96, 59, 1);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1rem;
+  padding: 4px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+}
