@@ -9,16 +9,25 @@
 <ul>
   <% user_challenges.each do |challenge| %>
     <% @opponent =  challenge_type == 'friend' ? challenge.challengeable : challenge.defendable  %>
-      <li> 
-      <div id="challenge-time">
-        <%= link_to @opponent.name,  polymorphic_path(@opponent) %> 
-        <% link_to @opponent.name,  polymorphic_path(@opponent) %> 
-        | Points: <%= @points %>
-        | Ends: <%= challenge.end_date.to_s(:just_date) %> 
-        | <%= link_to 'Edit' , edit_user_challenge_path(@opponent.id, challenge.id) %> 
-        | <%= link_to 'Delete' , user_challenge_path(@opponent.id, challenge.id), action: 'DELETE' %> 
-      </div>
-      </li>
-    <% end %>
-  </ul>
+    <li> 
 
+    <section class="widget">
+    <div id="challenge-time">
+      <h4> <%= @opponent.name %></h4>
+
+      <div><%= link_to @opponent.name,  polymorphic_path(@opponent) %> <%= @opponent.total_points %> points </div>
+      <div><%= link_to current_user.name,  polymorphic_path(@current_user) %> <%= current_user.total_points %> points </div>
+      <div> Ends: <%= challenge.end_date.to_s(:just_date) %></div> 
+      <div> <%= link_to 'Edit' , edit_user_challenge_path(@opponent.id, challenge.id) %> | <%= link_to 'Delete' , user_challenge_path(@opponent.id, challenge.id), action: 'DELETE' %></div> 
+    </div>
+    <div id="challenge-lead"> 
+      <% if @opponent.total_points >= current_user.total_points %> 
+        <%= @opponent.name %>  is in the lead 
+      <%  else %>
+        You are in the lead
+      <%  end %>
+    </div>
+
+    </li>
+  <% end %>
+</ul>
