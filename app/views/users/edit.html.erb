@@ -1,6 +1,4 @@
-<%= link_to "Back to Homepage", users_path %>
 <% if current_user.id == @user.id %>
-	<h1>EDIT USER</h1>
 
 	<div class="user_form">
 		<%= render 'userinfo_form' %>

@@ -1,8 +1,10 @@
 <div class="single-widget-container">  
   <section class="widget login-widget">
-    <header class="text-align-center">
-      <h1>Log In</h1>
-    </header>
+    <legend>
+      <header class="text-align-center">
+        <h1>Log In</h1>
+      </header>
+    </legend>
 
     <%= form_tag user_sessions_path do %>
       
@@ -10,10 +12,10 @@
         <fieldset>
           <div class="control-group no-margin">
             <div class = "field">
-              <%= label_tag :email %><br>
+              <%= label_tag :email %>
             </div>
             <div class="control">
-              <div class="input-prepend input-padding-increased">
+              <div class="input-prepend input-padding-increased span12">
                   <span class="add-on">
                       <i class="eicon-user icon-large"></i>
                   </span>
@@ -24,7 +26,7 @@
 
           <div class="control-group">  
             <div class = "field">
-              <%= label_tag :password %><br>
+              <%= label_tag :password %>
             </div>
             <div class="control">
               <div class="input-prepend input-padding-increased">
@@ -37,10 +39,8 @@
           </div>
         </fieldset>
 
-          <div class="form-actions">
-            <div class="span4 offset4">
-              <%= submit_tag "Log In", :class => "btn btn-block btn-success" %>
-            </div>
+          <div class="form-actions" style="padding-top:1rem; padding-bottom: 1rem">
+              <%= submit_tag "Log In", :class => "btn btn-block btn-success btn-large" %>
           </div>
 
           <footer>
