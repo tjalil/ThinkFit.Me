@@ -9,6 +9,20 @@ class Team < ActiveRecord::Base
  
   mount_uploader :avatar, AvatarUploader
 
+  def team_total_points
+    total_points ||= 0
+    self.users.each do |user|
+      user.goals.each do |goal|
+        goal.activity_logs.each do |log|
+          if log.points != nil
+            total_points += log.points
+          end
+        end
+      end
+    end
+    total_points
+  end
+
   private
 
   def capitalize_name
