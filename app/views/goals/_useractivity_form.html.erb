@@ -1,3 +1,4 @@
+<div class="body">
 <%= form_for ([current_user, @goal]) do |f| %>
 
   <% if @goal.errors.any? %>
@@ -23,6 +24,7 @@
 
   <div class = "action">
     <br>
-    <%= f.submit 'Done!'%> 
+    <%= f.submit 'Done!', :class => "btn btn-success"%> 
   </div>
 <% end %>
+</div>
