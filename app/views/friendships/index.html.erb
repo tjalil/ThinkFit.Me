@@ -1,19 +1,23 @@
 <div class="row-fluid">
   <div class="span6">
+    <div class="content">
     <section class="widget">
       <header>
         <legend>
           <h4>People I follow</h4>
         </legend>
       </header>
-      <div class="body">
-        <div id="friends" class="friends">
-            <div class = "row-fluid">
+      <div class="content">
+        <div class="body">
+          <div class="row-fluid">
+            <div id="friends" class="friends">
               <%= render partial: "friends", locals: { person_type: 'friend' } %>
             </div>
-         </div>
+          </div>
+        </div>
       </div>
     </section>
+  </div>
   </div>
 
   <div class="span6">
@@ -24,8 +28,8 @@
         </legend>
       </header>
       <div class="body">
-        <div id="followers" class="followers">
-          <div class = "row-fluid">
+        <div class = "row-fluid">
+          <div id="followers" class="followers">
             <%= render partial: "friends", locals: { person_type: 'follower' } %>
           </div>
         </div>

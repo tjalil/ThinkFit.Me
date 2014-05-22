@@ -1,46 +1,6 @@
-.widget .personalchat
+html
 {
-	height: 735px;
-}
-
-.widget .companywall
-{
-  height:800px;
-}
-
-.widget .teamchat
-{
-	height:780px;
-}
-
-.statspagechart
-{
-	height:275px;
-}
-
-.statspagechart-info {
-  margin: 12px 0 0;
-  text-align: center;
-  padding-bottom: 0;
-}
-.statspagechart .key {
-  font-weight: bold;
-  color: white;
-}
-.statspagechart .value {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  font-size: 16.25px;
-}
-
-.modal
-{
-  overflow: visible;
-}
-
-.modal-body
-{
-  overflow-y: visible;
+  overflow-y: hidden;
 }
 
 .display-position-in-leaderboard
@@ -106,3 +66,48 @@
 {
   border-bottom: 1px solid #e5e5e5;
 }
+
+#activity-tracking > .pre-scrollable
+{
+  max-height: 560px;
+  overflow-y: scroll;
+}
+
+#chat-messages > .pre-scrollable
+{
+  max-height: 475px;
+  overflow-y: scroll;
+}
+
+#leaderboard > .pre-scrollable
+{
+  max-height: 560px;
+  overflow-y: scroll; 
+  overflow-x: hidden;
+}
+
+#search-answer-user.pre-scrollable
+{
+  max-height: 500px;
+  overflow-y: scroll; 
+}
+
+#search-answer-team.pre-scrollable
+{
+  max-height: 500px;
+  overflow-y: scroll; 
+}
+
+#request > .pre-scrollable
+{
+  max-height: 500px;
+  overflow-y: scroll; 
+}
+
+#leaderboard-for-all-teams > .pre-scrollable
+{
+  max-height: 600px;
+  overflow-y: scroll; 
+  overflow-x: hidden;
+}
+
