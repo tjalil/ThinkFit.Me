@@ -70,20 +70,20 @@ $(document).ready(function() {
 		$('#instructions').html('Your weekly goal is how many times per week you would like to do this activity');
 	});
 
-	// AJAX request for last activity log deletion
-	$('#remove-log').submit(function(event){
-		event.preventDefault();
+	// // AJAX request for last activity log deletion
+	// $('#remove-log').submit(function(event){
+	// 	event.preventDefault();
 
-		var url = $(this).attr('action');
-		var data = $(this).serialize();
+	// 	var url = $(this).attr('action');
+	// 	var data = $(this).serialize();
 
-		$.ajax({
-			url: url,
-			type: 'POST',
-			data: data,
-			dataType: 'script'
-		});
-	});
+	// 	$.ajax({
+	// 		url: url,
+	// 		type: 'POST',
+	// 		data: data,
+	// 		dataType: 'script'
+	// 	});
+	// });
 
 
 });
