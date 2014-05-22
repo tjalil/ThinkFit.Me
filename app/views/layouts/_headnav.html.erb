@@ -4,7 +4,7 @@
       <% if current_user %>
         <ul class="pull-left logo" style = "margin-top: -1rem">
           <li>
-            <h1> <%= link_to "THINKFIT.ME", users_path %></h1>
+            <h1> <%= link_to "THINKFIT.ME", dashboard_user_path(current_user) %></h1>
           </li>
         </ul>
         <ul class="nav pull-right" style="margin-top: -0.25rem">
