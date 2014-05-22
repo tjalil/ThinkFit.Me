@@ -7,8 +7,8 @@
 
 <!-- List each person I'm connected to depending on friendship  -->
 
-
 <% @humans.each do |friend| %>
+<div class="content">
   <div class="widget span6">
     <% @friend_type =  person_type == 'friend' ? friend.friend_id : friend.user_id %>
     <div class="span6">
@@ -21,4 +21,5 @@
       <% end %>
     </div>
   </div>
+</div>
 <% end %>

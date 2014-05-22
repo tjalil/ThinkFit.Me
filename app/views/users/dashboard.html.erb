@@ -34,18 +34,21 @@
               </li>
             </ul>
           </header>
-          <div class = "body tab-content pre-scrollable">
+          <div class = "body tab-content">
             <div id="activity-tracking" class="tab-pane active clearfix">
-              <%= render 'trackboard' %>
+              <div class="pre-scrollable">
+                <%= render 'trackboard' %>
+              </div>
               <% if @user.id == current_user.id %>
                 <%= button_to "Add new Goal", new_user_goal_path(current_user), :class => "btn btn-success span6 offset3", :method => :get %>
               <% end %>
             </div>
             <div id="leaderboard" class="tab-pane clearfix">
-              <%= render 'leaderboard' %>
+              <div class="pre-scrollable">
+                <%= render 'leaderboard' %>
+              </div>
             </div>
           </div>
-    
           <br>
           <!-- Facebook Share plugin -->
           <div class="span6 offset3">
@@ -70,9 +73,11 @@
                   <%= render "/comments/new" %>
                 </div>
               <br>
-              <div id="chat-messages" class="chat-messages pre-scrollable"`>
-                <%= render "/comments/each" %>
-                <%= paginate @comments %>
+              <div id="chat-messages" class="chat-messages"`>
+                <div class="pre-scrollable">
+                  <%= render "/comments/each" %>
+                  <%= paginate @comments %>
+                </div>
               </div>
             </div>
           </div>
@@ -119,10 +124,12 @@
                 <%= submit_tag "Search", :class => "btn btn-success offset4" %>
               <% end %>
               <br>
-              <div id="search-answer-team"></div>
+              <div id="search-answer-team" class="pre-scrollable"></div>
             </div>
             <div id="request" class="tab-pane clearfix">
-              <%= render "pending_requests" %>
+              <div class="pre-scrollable">
+                <%= render "pending_requests" %>
+              </div>
               <br>
             </div>
           </div>

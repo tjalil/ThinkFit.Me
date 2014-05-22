@@ -1,14 +1,18 @@
-<%= link_to "Back to Homepage", users_path %>
 <% if current_user.id == @team.owner_id %>
 
-	<h1>Edit your team</h1>
+	<div class="single-widget-container">  
+  <section class="widget login-widget">
+    <header class="text-align-center">
+    	<h1>Edit your Team</h1>
+    </header>
 
 	<%= render 'teamform' %>
 
 <% else %>
 
 	<h1>Sorry!</h1>
-
-	You're not authorized to access this page. :(
+	<div class=content>
+		<div class="alert alert-danger span4"><b>You're not authorized to access this page. :(</b></div>
+	</div>
 
 <% end %>
