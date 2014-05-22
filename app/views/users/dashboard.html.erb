@@ -90,13 +90,21 @@
                 <a href="#team" data-toggle="tab">Search for Team</a>
               </li>
               <li>
-                <a href="#request" data-toggle="tab">Pending Requests</a>
+                <a href="#request" data-toggle="tab">
+                  Pending Requests
+                  <% if current_user.count_pending_requests == 0 %>
+                  <% else %>
+                    <span class="count">
+                      <%= current_user.count_pending_requests %>
+                    </span>
+                  <% end %>
+                </a>
               </li>
             </ul>
           </header>
           <div class="body tab-content">
             <div id="user" class="tab-pane active clearfix">
-              <%= form_tag users_path, method: :get, authentication: false, id: 'search-user'  do%>
+              <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
                 <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User', :class => "span12" %>
                 <%= submit_tag "Search", :class => "btn btn-success offset4" %>
               <% end %>
@@ -112,7 +120,7 @@
               <div id="search-answer-team"></div>
             </div>
             <div id="request" class="tab-pane clearfix">
-              Show pending friends and challenges requests
+              <%= render "pending_requests" %>
               <br>
             </div>
           </div>
