@@ -34,7 +34,7 @@
               </li>
             </ul>
           </header>
-          <div class = "body tab-content">
+          <div class = "body tab-content pre-scrollable">
             <div id="activity-tracking" class="tab-pane active clearfix">
               <%= render 'trackboard' %>
               <% if @user.id == current_user.id %>
@@ -70,7 +70,7 @@
                   <%= render "/comments/new" %>
                 </div>
               <br>
-              <div id="chat-messages" class="chat-messages">
+              <div id="chat-messages" class="chat-messages pre-scrollable"`>
                 <%= render "/comments/each" %>
                 <%= paginate @comments %>
               </div>
@@ -109,7 +109,7 @@
                 <%= submit_tag "Search", :class => "btn btn-success offset4" %>
               <% end %>
               <br>
-              <div id="search-answer-user"></div>
+              <div id="search-answer-user" class="pre-scrollable"></div>
             </div>
             <div id="team" class="tab-pane clearfix">
               <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
