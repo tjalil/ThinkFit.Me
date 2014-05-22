@@ -3,8 +3,10 @@
 	<div class="user_form">
 		<%= render 'userinfo_form' %>
 	</div>
+
 <% else %>
 	<h1>Sorry!</h1>
-
-	You're not authorized to access this page. :(
+	<div class="alert alert-danger">
+		You're not authorized to access this page. :(
+	</div>
 <% end %>
