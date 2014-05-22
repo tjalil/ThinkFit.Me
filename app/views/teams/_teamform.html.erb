@@ -1,24 +1,60 @@
 <%= form_for(@team) do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <br/>
-  <div class="field">
-    <%= f.label :description %><br/>
-    <%= f.text_area :description %>
-  </div>
-  <br/>
-  <div class="field">
-    <%= f.file_field :avatar %>
-  </div>
 
-  <div class="field">
-    <%= f.label :remote_avatar_url, "or avatar URL" %><br/>
-    <%= f.text_field :remote_avatar_url %>
-  </div>
+  <div class="body">
+    <fieldset>
 
-  <div class="action">
-    <%= f.submit %>
+      <div class="control-group no-margin">
+        <div class="field">
+          <%= f.label :name %>
+        </div>
+        <div class="control">
+          <div class="input-prepend input-padding-increased">
+            <span class="add-on">
+              <i class="eicon-user icon-large"></i>
+            </span>
+          <%= f.text_field :name %>
+          </div>
+        </div>
+      </div><br>
+
+      <div class="control-group no-margin">
+        <div class="field">
+          <%= f.label :description %>
+        </div>
+        <div class="control">
+          <div class="input-prepend input-padding-increased">
+          <%= f.text_area :description %>
+          </div>
+        </div>
+      </div><br>
+      
+      <div class="control-group no-margin">
+        <div class="field">
+          <%= f.label :avatar, "Upload your Team's Profile Picture" %>
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
+
+      <div class="control-group no-margin">
+        <div class="field">
+          <%= f.label :remote_avatar_url, "Or a picture's URL:" %>
+        </div>
+        <div class="control">
+          <div class="input-prepend input-padding-increased">
+            <span class="add-on">
+              <i class="eicon-user icon-large"></i>
+            </span>
+          <%= f.text_field :remote_avatar_url %>
+          </div>
+        </div>
+      </div>
+
+     <div class="form-actions">
+        <div class="span4 offset4">
+          <%= f.submit "Submit!", :class => "btn btn-block btn-success" %>
+        </div>
+      </div>
+
+    </fieldset>
   </div>
 <% end %>
