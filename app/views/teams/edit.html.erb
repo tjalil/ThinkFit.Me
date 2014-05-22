@@ -1,18 +1,24 @@
 <% if current_user.id == @team.owner_id %>
+  
+<div class="content">
+  <div class="row-fluid"> 
+    <section class="widget login-widget">
+      <legend>
+        <header class="text-align-center">
+        	<h1>Edit your Team</h1>
+        </header>
+      </legend>
 
-	<div class="single-widget-container">  
-  <section class="widget login-widget">
-    <header class="text-align-center">
-    	<h1>Edit your Team</h1>
-    </header>
-
-	<%= render 'teamform' %>
+  	   <%= render 'teamform' %>
+    </section>
+  </div>
+</div>
 
 <% else %>
 
 	<h1>Sorry!</h1>
 	<div class=content>
-		<div class="alert alert-danger span4"><b>You're not authorized to access this page. :(</b></div>
+		<div class="alert alert-danger span4"><b>Only the creator of this team is authorized to edit the team</b></div>
 	</div>
 
 <% end %>
