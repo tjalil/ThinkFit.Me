@@ -1,0 +1,12 @@
+<% if current_user.inverse_friendships %>
+  <% current_user.inverse_friendships.each do |friendship| %>
+    <% if current_user.friendships.find_by(friend_id: friendship.user_id) %>
+    <% else %>
+      <div class="widget">
+        <%= button_to "Pending friend request from " + User.find(friendship.user_id).name, friendships_path(friend_id: friendship.user_id), :class => "btn btn-success span12" %>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  You have no pending requests
+<% end %>

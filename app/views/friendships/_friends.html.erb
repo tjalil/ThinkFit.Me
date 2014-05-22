@@ -16,7 +16,6 @@
     </div>
     <div class="span6">
       <h4><%= link_to User.find_by(id: @friend_type).name, dashboard_user_path(@friend_type) %></h4>
-        <%#="*" if current_user.inverse_friends.find_by(id: @friend_type) %>
       <% if current_user && person_type == "friend" %>
         <%= button_to "Unfollow", friendship_path(friend.id), { :class => "btn btn-danger", method: 'delete', id: friend.id} %>
       <% end %>

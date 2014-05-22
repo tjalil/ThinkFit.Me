@@ -3,18 +3,11 @@ class UsersController < ApplicationController
   before_filter :load_commentable, except: [:index, :new, :create]
 
   def index
-    # @users = if params[:search].empty?
-    #   User.where.not(id: current_user)
-    # elsif !params[:search].empty?
-    #   User.where("name ILIKE ?", "%#{params[:search]}%")
-    # end
-
-    @users = if params[:search]
-      User.where("name ILIKE ?", "%#{params[:search]}%")
+    if params[:search] == ""
+      @users = User.where.not(id: current_user)
     else
-      User.where.not(id: current_user)
+      @users = User.where("name ILIKE ?", "%#{params[:search]}%")
     end
-
 
     respond_to do |format|
       format.html

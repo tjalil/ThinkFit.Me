@@ -27,6 +27,19 @@ class User < ActiveRecord::Base
 
   before_save :capitalize_name
 
+  def count_pending_requests
+    count ||= 0
+    if self.inverse_friendships
+      self.inverse_friendships.each do |friendship|
+        if self.friendships.find_by(friend_id: friendship.user_id)
+        else
+          count += 1
+        end
+      end
+      return count
+    end
+  end
+
   private
 
   def capitalize_name
