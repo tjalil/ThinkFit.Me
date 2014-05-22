@@ -1,17 +1,55 @@
-<h1>User Log In Form</h1>
+<div class="single-widget-container">  
+  <section class="widget login-widget">
+    <header class="text-align-center">
+      <h1>Log In</h1>
+    </header>
 
-<%= form_tag user_sessions_path do %>
-  
-  <div class = "field">
-    <%= label_tag :email %><br>
-    <%= text_field_tag :email %>
-  </div>
-  <div class = "field">
-    <%= label_tag :password %><br>
-    <%= password_field_tag :password %>
-  </div>
-  <div class = "actions">
-    <%= submit_tag "Log In" %>
-  </div>
+    <%= form_tag user_sessions_path do %>
+      
+      <div class="body">
+        <fieldset>
+          <div class="control-group no-margin">
+            <div class = "field">
+              <%= label_tag :email %><br>
+            </div>
+            <div class="control">
+              <div class="input-prepend input-padding-increased">
+                  <span class="add-on">
+                      <i class="eicon-user icon-large"></i>
+                  </span>
+                  <%= text_field_tag :email %>
+                </div>
+              </div>
+            </div>
 
-<% end %>
+          <div class="control-group">  
+            <div class = "field">
+              <%= label_tag :password %><br>
+            </div>
+            <div class="control">
+              <div class="input-prepend input-padding-increased">
+                <span class="add-on">
+                    <i class="icon-lock icon-large"></i>
+                </span>  
+                <%= password_field_tag :password %>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+          <div class="form-actions">
+            <div class="span4 offset4">
+              <%= submit_tag "Log In", :class => "btn btn-block btn-success" %>
+            </div>
+          </div>
+
+          <footer>
+            <div class="facebook-login">
+              <span><i class="icon-facebook-sign icon-large"></i>
+              <%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
+            </div>
+          </footer>
+
+    <% end %>
+  </section>
+</div>
