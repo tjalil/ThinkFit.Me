@@ -1,4 +1,4 @@
-<% @user.goals.order('created_at DESC')[0..2].each do |goal| %>
+<% @user.goals.order('created_at DESC').each do |goal| %>
   <% if goal.status == "active" %>
   <section class="widget">
     <div class="row-fluid">
