@@ -72,3 +72,21 @@
   -o-border-radius: 100%;
   border-radius: 100%;
 }
+
+#landing-log{
+  background-color: lightgreen;
+  text-align: center;
+}
+
+#landing-log a{
+  color: white;
+}
+
+#landing-sign{
+  background-color: gold;
+  text-align: center;
+}
+
+#landing-sign a{
+  color: white;
+}
