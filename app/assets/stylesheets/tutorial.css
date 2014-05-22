@@ -6,3 +6,8 @@
 	max-width: 500px;
 	top: 50%;
 }
+
+#sign-up-widget {
+	position: absolute;
+	top: 30%;
+}

@@ -33,6 +33,30 @@ html
   border-radius: 100%;
 }
 
+#landing-log{
+  background-color: #56bc76;
+  text-align: center;
+}
+
+#landing-log a{
+  color: white;
+  font-size: 1.5em;
+  width: 100%;
+  text-decoration: none;
+}
+
+#landing-sign{
+  background-color: #eac85e;
+  text-align: center;
+}
+
+#landing-sign a{
+  color: white;
+  font-size: 1.5em;
+  width: 100%;
+  text-decoration: none;
+}
+
 #team-leaderboard
 {
   text-align: center;
@@ -86,3 +110,4 @@ html
   overflow-y: scroll; 
   overflow-x: hidden;
 }
+
