@@ -9,6 +9,7 @@ Thinkfitme::Application.routes.draw do
     member do
       get 'dashboard'
       get 'activity_stats'
+      post 'activity_stats'
     end
 
     resources :comments, only: [:new, :create]
