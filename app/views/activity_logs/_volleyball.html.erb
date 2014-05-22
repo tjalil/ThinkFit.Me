@@ -1,4 +1,10 @@
 <div class = "field">
-  <h3>Track my <%= @goal.name_of_activity_through_goal %></h3>
-  <p>I completed a <%= f.select :intensity, options_for_select([['Beach','Beach'], ['Court', 'Court']], include_blank: true) %> session of <%= @goal.name_of_activity_through_goal %> in <%= f.number_field :duration %> minutes!</p>
+  <legend>
+    <header><h4>
+      Track my <%= @goal.name_of_activity_through_goal %>
+    </header></h4>
+  </legend>
+  <div class="body">
+    <p>I completed a <%= f.select :intensity, options_for_select([['Beach','Beach'], ['Court', 'Court']], include_blank: true) %> session of <%= @goal.name_of_activity_through_goal %> in <%= f.number_field :duration %> minutes!</p>
+  </div>
 </div>

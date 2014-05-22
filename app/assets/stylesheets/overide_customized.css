@@ -96,3 +96,13 @@
   width: 100%;
   text-decoration: none;
 }
+
+#team-leaderboard
+{
+  text-align: center;
+}
+
+#team-leaderboard-row
+{
+  border-bottom: 1px solid #e5e5e5;
+}

@@ -1,33 +1,39 @@
-<div class="row-fluid">
-  <div class = "span6">
+<div class="content">
+  <div class = "span12">
     <section class="widget">
       <header>
         <legend><h4>
-            Teams
+            My Teams
         </h4></legend>
       </header>
 
       <div class="body">
-        <section class="widget">
-          I created teams:
-          <ul>
-            <% Team.where(owner_id: current_user.id).each do |team| %>
-              <li> <%= link_to team.name, team_path(team.id) %></li>
-            <% end %>
-          </ul>
-        </section>
-        <section class="widget">
-          I'm a member of teams: 
-          <ul>
-            <% current_user.teams.each do |team| %>
-              <li> <%= link_to team.name, team_path(team.id) %></li>
-            <% end %>
-          </ul>
-        </section>
+        <div class="row_fluid">
+          <% current_user.teams.each do |team| %>
+            <div class="widget span4">
+              <div class="span4">
+                <%= image_tag team.avatar_url(:banner), :class => "img-circle" %>
+              </div>
+              <div class="span6 offset1">
+                <h4><%= link_to team.name, team_path(team) %></h4>
+                <address>
+                  Description: <%= team.description.capitalize %><br>
+                  Created by: <%= User.find(team.owner_id).name %><br>
+                  Members:
+                  <% if team.users != [] %>
+                    <% team.users.each do |user| %>
+                      <li><%= user.name %></li>
+                    <% end %>
+                  <% end %>
+                </address>
+              </div>
+            </div>
+          <% end %>
+          <% if current_user %>
+          <%= button_to "Create a Team",  new_team_path, :class => "btn btn-success btn-large span6 offset3", :method => :get  %>
+          <% end %>
+        </div>
       </div>
-      <% if current_user %>
-        <%= button_to "Create a Team",  new_team_path, :class => "btn btn-success span6 offset3", :method => :get  %>
-      <% end %>
     </section>
-  </div>  
+  </div>     
 </div>

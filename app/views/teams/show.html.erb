@@ -1,80 +1,104 @@
-<h1><%= @team.name %></h1>
+<div class="content">
+  <div class="row-fluid">
 
-<div class="challenge">
-  <% if @team.users.where(id: current_user.id) == [] %>
-    <%= link_to "CHALLENGE", '#'  %>
-  <% end %>
-</div>
-<p>
+    <div class="span4">
+      <section class="widget">
+        <div class="body">
+          <div class="row-fluid">
+            <div class="span4">
+              <div class="text-align-center">
+                <img class="img-circle" src="http://placehold.it/112x112" alt="64x64" style="height: 112px; width:112px">
+                <%#= image_tag @team.avatar_url(:team), :class => "img-circle" %>
+                <p style="font-style:italic"><%= @team.description %></p>
+              </div>
+            </div>
+            <div class="span6">
+              <div class="row-fluid">
+                <h3 class="no-margin span12">
+                  <%= @team.name %>
+                </h3>
+              </div>
+              <h4 class="no-margin">Points: <%= @team.team_total_points %> </h4><br>
+              <address>
+                Created by: <%= User.find(@team.owner_id).name %><br>
+                Creation date: <%= @team.created_at.to_s(:just_date) %>
+              </address>
+              <% if current_user.id != @team.owner_id && @team.users.where(id: current_user.id) == [] %>
+                <%= button_to "Join Team!", team_join_path(@team.id), { :class => "btn btn-success span12", remote: :true} %>
+                <%= button_to "Challenge Team!", team_join_path(@team.id), { :class => "btn btn-success span12", remote: :true} %>
+              <% end %>
+            </div>
+            <div class="span2">
+              <% if current_user.id == @team.owner_id || @team.users.where(id: current_user.id) != [] %>
+                <%= button_to "Edit", edit_team_path(@team.id), :class => "btn btn-warning", :method => :get %>
+              <% end %>
+            </div>
+          </div>
 
-<% if current_user.id == @team.owner_id %>
-  <div id="edit-team"><%= button_to "Edit", edit_team_path(@team.id), :class => "btn btn-warning", :method => :get %></div>
-<% end %>
+        </div>
+      </section>
 
-<div id="team-description">
-  Description: <%= @team.description %>
-</div>
-<br/>
-<div id="team-user">
-  Created by: <%=User.find(@team.owner_id).name %>
-</div>
-</p>
-<br/>
-
-<div class="span4">
-  <section class="widget">
-  <header>
-  <legend><h4>
-      Members
-  </h4></legend>
-  </header>
-
-  <section class="widget">
-  <div id="member">
-    <%= render "members" %>
-  </div>
-  </section>
-  <div id="join-team"><%= button_to "Join!", team_join_path(@team.id), remote: :true %></div>  
-</div>
-</section>
-
-
-<div class="span4">
-  <section class="widget chat companywall">
-  <header>
-  <legend><h4>
-      Wall 
-  </h4></legend>
-  </header>
-  <div class="body">
-    <div id="chat" class="chat">
-      <div class="row-fluid non-responsive">
-        <%= render "/comments/new" %>
-      </div>
-      <br>
+      <section class="widget">
+        <header>
+          <legend><h4>
+            Team Leaderboard
+          </h4></legend>
+        </header>
+        <div class="body">
+          <table class="table table-condensed ">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th id="team-leaderboard">Activity Logs</th>
+                <th id="team-leaderboard">Total Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render "members" %>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
-    <br>
-    <div id="chat-messages" class="chat-messages">
-      <%= render "/comments/each" %>
-      <%= paginate @comments %>
+
+    <div class="span4">
+      <section class="widget chat companywall">
+        <header>
+          <legend><h4>
+              Wall 
+          </h4></legend>
+        </header>
+        <div class="body">
+          <div id="chat" class="chat">
+            <div class="row-fluid non-responsive">
+              <% if current_user.id == @team.owner_id || @team.users.where(id: current_user.id) != [] %>
+                <%= render "/comments/new" %>
+              <% end %>
+            </div>
+            <br>
+          </div>
+          <br>
+          <div id="chat-messages" class="chat-messages">
+            <%= render "/comments/each" %>
+            <%= paginate @comments %>
+          </div>
+        </div>
+      </section>
     </div>
+
+    <div class="span4">
+      <section class="widget">
+        <header>
+          <legend><h4>
+            Leaderboard
+          </h4></legend>
+        </header>
+        <div class="body">
+          <%= render 'team_leaderboard' %>
+        </div>
+      </section>
+    </div>
+
   </div>
 </div>
-
-<div class="span4">
-<section class="widget">
-<legend><h4>
-    Challenges
-</h4></legend>
-  <%= render "/challenges/each_challenge" %>
-  </section>
-</div>
-
-
-
-<div class="uploadertest">
-  <%= image_tag @team.avatar_url(:team), :class => "img-circle" %>
-</div>
-
-</section>
 

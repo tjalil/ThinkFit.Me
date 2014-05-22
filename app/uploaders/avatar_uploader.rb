@@ -38,7 +38,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :team do
-    process :resize_to_fill => [200, 200]
+    process :resize_to_fill => [112, 112]
   end
 
   version :banner do
