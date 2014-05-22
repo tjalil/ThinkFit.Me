@@ -40,6 +40,28 @@ class User < ActiveRecord::Base
     end
   end
 
+  def total_points
+    points ||= 0
+    self.goals.each do |goal|
+      goal.activity_logs.each do |log|
+        if log.points != nil
+          points += log.points
+        end
+      end
+    end
+    points
+  end
+
+  def total_activity_logs
+    attendance ||= 0
+    self.goals.each do |goal|
+      if goal.activity_logs != []
+        attendance += goal.count_activity_log
+      end
+    end
+    attendance
+  end
+
   private
 
   def capitalize_name
