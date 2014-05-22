@@ -63,9 +63,6 @@
 	height:780px;
 }
 
-/*<!-- For scrollable -->*/
-
-.chat-messages {
-  height: 300px;
+.pre-select {
+  max-height: 300px;
 }
-
