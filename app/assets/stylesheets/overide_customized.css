@@ -72,3 +72,13 @@
   -o-border-radius: 100%;
   border-radius: 100%;
 }
+
+#team-leaderboard
+{
+  text-align: center;
+}
+
+#team-leaderboard-row
+{
+  border-bottom: 1px solid #e5e5e5;
+}
