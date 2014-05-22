@@ -80,6 +80,9 @@
 
 #landing-log a{
   color: white;
+  font-size: 1.5em;
+  width: 100%;
+  text-decoration: none;
 }
 
 #landing-sign{
@@ -89,4 +92,7 @@
 
 #landing-sign a{
   color: white;
+  font-size: 1.5em;
+  width: 100%;
+  text-decoration: none;
 }
