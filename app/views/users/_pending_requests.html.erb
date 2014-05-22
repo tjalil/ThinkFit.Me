@@ -7,6 +7,15 @@
       </div>
     <% end %>
   <% end %>
-<% else %>
-  You have no pending requests
+<% end %>
+
+<% if current_user.inverse_challenges %>
+  <% current_user.inverse_challenges.each do |challenge| %>
+    <% if current_user.challenges.find_by(defendable_id: challenge.challengeable_id) %>
+    <% else %>
+      <div class="widget">
+        <%= button_to "Pending challenge from " + User.find(challenge.challengeable_id).name, user_challenges_path(current_user), :class => "btn btn-success span12" %>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
