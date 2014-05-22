@@ -7,8 +7,8 @@
           <div class="row-fluid">
             <div class="span4">
               <div class="text-align-center">
-                <img class="img-circle" src="http://placehold.it/112x112" alt="64x64" style="height: 112px; width:112px">
-                <%#= image_tag @team.avatar_url(:team), :class => "img-circle" %>
+                <!-- <img class="img-circle" src="http://placehold.it/112x112" alt="64x64" style="height: 112px; width:112px"> -->
+                <%= image_tag @team.avatar_url(:team), :class => "img-circle" %>
                 <p style="font-style:italic"><%= @team.description %></p>
               </div>
             </div>
@@ -79,8 +79,10 @@
           </div>
           <br>
           <div id="chat-messages" class="chat-messages">
-            <%= render "/comments/each" %>
-            <%= paginate @comments %>
+            <div class="pre-scrollable">
+              <%= render "/comments/each" %>
+              <%= paginate @comments %>
+            </div>
           </div>
         </div>
       </section>
@@ -93,8 +95,10 @@
             Leaderboard
           </h4></legend>
         </header>
-        <div class="body">
-          <%= render 'team_leaderboard' %>
+        <div class="body" id="leaderboard-for-all-teams">
+          <div class="pre-scrollable">
+            <%= render 'team_leaderboard' %>
+          </div>
         </div>
       </section>
     </div>
