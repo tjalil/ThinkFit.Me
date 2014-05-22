@@ -32,7 +32,7 @@ class ActivityLogsController < ApplicationController
   def destroy
     @activity_log = ActivityLog.find(params[:id])
     @activity_log.destroy
-    redirect_to dashboard_user_path(current_user)
+    redirect_to activity_stats_user_path(current_user)
   end
 
   private

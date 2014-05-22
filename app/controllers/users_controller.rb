@@ -22,13 +22,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def activity_stats # Action created to format AJAX request
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
   def dashboard # User's main page. Redirected here after signup/login.
     @comment = @commentable.comments.build
     @comments = @commentable.comments.order('comments.created_at DESC').page params[:page]
