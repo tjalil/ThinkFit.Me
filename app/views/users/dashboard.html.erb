@@ -89,17 +89,19 @@
               <li>
                 <a href="#team" data-toggle="tab">Search for Team</a>
               </li>
-              <li>
-                <a href="#request" data-toggle="tab">
-                  Pending Requests
-                  <% if current_user.count_pending_requests == 0 %>
-                  <% else %>
-                    <span class="count">
-                      <%= current_user.count_pending_requests %>
-                    </span>
-                  <% end %>
-                </a>
-              </li>
+              <% if current_user.id == @user.id %>
+                <li>
+                  <a href="#request" data-toggle="tab">
+                    Pending Requests
+                    <% if current_user.count_pending_requests == 0 %>
+                    <% else %>
+                      <span class="count">
+                        <%= current_user.count_pending_requests %>
+                      </span>
+                    <% end %>
+                  </a>
+                </li>
+              <% end %>
             </ul>
           </header>
           <div class="body tab-content">
