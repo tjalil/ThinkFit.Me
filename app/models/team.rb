@@ -13,6 +13,7 @@ class Team < ActiveRecord::Base
 
   def capitalize_name
     self.name = self.name.split.map(&:capitalize).join(' ')
+    self.description = self.description.capitalize
   end
 
 end
