@@ -1,6 +1,8 @@
-<h1>Compete and Collaborate around your favourite healthy activity!</h1>
-<br>
-<div class="content span12">
+<div class="content">
+	<h1>Compete and Collaborate around your favourite healthy activity!</h1>
+	<br>
+
+<% if !current_user %>
 	<div class="row-fluid">
 		<div class="span5" id="landing-log">
 			<h1><%= link_to "Log In", new_user_session_path %></h1>
@@ -10,3 +12,4 @@
 		</div>
 	</div>  
 </div>
+<% end %>
