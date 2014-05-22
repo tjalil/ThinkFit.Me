@@ -1,3 +1,12 @@
+<% team_members = {} %>
 <% @team.users.each do |member| %>
-  <li>  <%= link_to  member.name, team_path(@team.id)  %></li>
+  <% team_members[member.id] = member.total_points %>
+<% end %>
+
+<% team_members.sort_by{|k,v| v }.reverse.each do |key, value| %>
+  <tr id="team-leaderboard-row">
+    <td><%= link_to User.find(key).name, dashboard_user_path(User.find(key).id) %></td>
+    <td id="team-leaderboard"><%= User.find(key).total_activity_logs %></td>
+    <td id="team-leaderboard"><%= value %></td>
+  </tr>
 <% end %>
