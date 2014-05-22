@@ -106,3 +106,23 @@
 {
   border-bottom: 1px solid #e5e5e5;
 }
+
+
+
+
+/* FOR CHALLENGES WITH OTHER PEOPLE */
+#challenge-time div{
+  display: inline;
+  margin: 5px
+}
+   
+/* CHART */
+#challenge_chart{
+margin: 5px;
+width: 45%;
+} 
+/*End of change */
+
+
+
+
