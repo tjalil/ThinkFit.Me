@@ -101,7 +101,7 @@
                 <%= submit_tag "Search", :class => "btn btn-success offset4" %>
               <% end %>
               <br>
-              <div id="search-answer-user"></div>
+              <div id="search-answer-user" class="pre-scrollable"></div>
             </div>
             <div id="team" class="tab-pane clearfix">
               <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
