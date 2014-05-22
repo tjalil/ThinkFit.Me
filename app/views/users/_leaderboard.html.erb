@@ -1,20 +1,13 @@
-<% leaders = {} %>
+<% user_leaders = {} %>
 <% User.all.each do |user| %>
-  <!-- Get an array of user's points by goal -->
-  <% user_goal_points = [] %>
-  <% user_goal_points = Goal.where(user_id: user.id).map do |goal|  %>
-    <%# goal.id %>
-    <% ActivityLog.where(goal_id: goal.id).sum(:points) %>
-  <% end %>
-  <!-- Total user points from  points array by goal  -->
-  <% score = user_goal_points.inject {|sum, point| sum += point} %>
-  <% leaders[user.id] = score %>
+  <% user_leaders[user.id] = user.total_points %>
 <% end %>
+
 <div id='show-leaderboard'>
   <ol class="users-list">
-    <% leaders.sort_by{|k,v| v }.reverse.each do |key, value| %>
+    <% user_leaders.sort_by{|k,v| v }.reverse.each do |key, value| %>
       <li class="display-position-in-leaderboard">
-        <% if current_user.friendships.find_by(user_id: current_user) || current_user.inverse_friendships.find_by(friend_id: current_user) %>
+        <%# if current_user.friendships.find_by(user_id: current_user) || current_user.inverse_friendships.find_by(friend_id: current_user) %>
           <% if key == current_user.id %> 
             <div class="user-info current-user-in-leaderboard">
               <%= image_tag User.find(key).avatar_url(:thumb), :class => "img-circle" %>
@@ -26,8 +19,8 @@
               <%= link_to User.find(key).name, dashboard_user_path(User.find(key).id) %> - <%= value %>
             </div>
           <% end %>
-        <% else %>
-        <% end %>
+        <%# else %>
+        <%# end %>
       </li>
     <% end%>
   </ol>
