@@ -3,9 +3,6 @@
     <div class="row-fluid">
       <div class="span2">
         <div id="useravatar">
-          <% if @user.avatar_url == nil %>
-              <% @user.avatar = File.open("///Users/iancantor/Bitmaker/ThinkFit.Me/app/assets/images/default-avi.png") %>
-          <% end %>
           <%= image_tag @user.avatar_url(:banner), :class => "img-circle" %>
         </div>
       </div>
@@ -21,7 +18,7 @@
         <% end %>
 
         <% if current_user.challenges.where(defendable_id: @user.id) == [] %>
-          <%= button_to "Challenge #{@user.name}",  user_challenges_path(@user.id), :class => "btn btn-large btn-success span6 offset3" %>
+          <%= button_to "Challenge!",  user_challenges_path(@user.id), :class => "btn btn-large btn-success span6 offset3" %>
         <% end %>
       </div>
     </div>
