@@ -14,8 +14,10 @@ class Team < ActiveRecord::Base
     self.users.each do |user|
       user.goals.each do |goal|
         goal.activity_logs.each do |log|
-          if log.points != nil
-            total_points += log.points
+          if log.created_at >= self.created_at
+            if log.points != nil
+              total_points += log.points
+            end
           end
         end
       end
