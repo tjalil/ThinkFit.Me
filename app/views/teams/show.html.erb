@@ -24,7 +24,7 @@
                 Creation date: <%= @team.created_at.to_s(:just_date) %>
               </address>
               <% if current_user.id != @team.owner_id && @team.users.where(id: current_user.id) == [] %>
-                <%= button_to "Join Team!", team_join_path(@team.id), { :class => "btn btn-success span12", remote: :true} %>
+                <%= button_to "Join Team!", team_join_path(@team.id), :class => "btn btn-success span12" %>
                 <%= button_to "Challenge Team!", team_join_path(@team.id), { :class => "btn btn-success span12", remote: :true} %>
               <% end %>
             </div>
