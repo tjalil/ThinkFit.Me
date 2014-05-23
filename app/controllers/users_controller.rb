@@ -38,6 +38,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    redirect_to dashboard_user_path(@user)
+
   end
 
   def edit
@@ -60,7 +62,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :name, :height, :weight, :gender, :avatar, :remote_avatar_url)
   end
 
-   def load_commentable
+  def load_commentable
     @commentable = User.find(params[:id])
   end
 
