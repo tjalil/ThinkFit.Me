@@ -1,6 +1,7 @@
- <script type="text/javascript" charset="utf-8">
-    $(function () {
-        new Highcharts.Chart({  
+<script type="text/javascript" charset="utf-8">
+
+  $(function () {
+      new Highcharts.Chart({  
 chart: { renderTo: "activity_chart", type: 'area' },
 title: { text: "All Activity Points by Goal" },
 xAxis: { type: "datetime" },
@@ -19,18 +20,21 @@ pointInterval: <%= 1.day * 1000 %>,
 pointStart: <%= 1.weeks.ago.at_midnight.to_i * 1000 %>,
 data: <%= (current_user.created_at.to_date..Date.today).map{|date| ActivityLog.where(goal_id: goal).where("date(created_at) <= ?",date).sum(:points)} %>
 },
-        <% end %>]
-        });
+<% end %>]
 });
+});
+
+
+
+
+
 </script>
 
 
 
 
-
-<div>
-  <div id="activity_chart" style="width: 75%; 400px">
+  <div>
+    <div id="activity_chart" style="width: 80%; ">
+    </div>
   </div>
-</div>
-
 

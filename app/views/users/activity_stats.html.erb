@@ -7,6 +7,9 @@
   <li>
   <a href="#activity-chart" data-toggle="tab">Activity Chart</a>
   </li>
+  <li>
+  <a href="#total-points-chart" data-toggle="tab">Total Points</a>
+  </li>
 </ul>
 </header>
 <div class = "body tab-content">
@@ -16,6 +19,11 @@
   <div id="activity-chart" class="tab-pane clearfix">
     <div class="charts" >
       <%= render 'chart_activity' %>
+    </div>
+  </div>
+  <div id="total-points-chart" class="tab-pane clearfix">
+    <div class="charts" >
+      <%= render 'chart_totalpoints' %>
     </div>
   </div>
 </div>
