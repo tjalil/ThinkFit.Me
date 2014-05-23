@@ -33,7 +33,7 @@
 						<%= f.submit "Yes", :class => "btn btn-success btn-large span12" %>
 					</div>
 					<div class="span4">
-						<%= button_to "No", dashboard_user_path(current_user), :class => "btn btn-danger btn-large span12", :method => :get %>
+						<%= button_to "No", dashboard_user_path(current_user), {:class => "btn btn-danger btn-large span12", :method => :get} %>
 					</div>
 				</div>
 			</div>
