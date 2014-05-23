@@ -5,29 +5,100 @@
   <% user_challenges = current_user.inverse_challenges %>
 <% end %>
 
+<% user_challenges.each do |challenge| %>
+  <% @opponent =  challenge_type == 'friend' ? challenge.challengeable : challenge.defendable  %>
 
-<ul>
-  <% user_challenges.each do |challenge| %>
-    <% @opponent =  challenge_type == 'friend' ? challenge.challengeable : challenge.defendable  %>
-    <li> 
+    <div class="widget span12">
+      <div class="span12">
+        <% if Time.now > challenge.end_date %>
+          <% if challenge.total_points_for_defender > challenge.total_points_for_challenger %>
+            <legend style="text-align:center">
+              <header><h3>
+                <%= @opponent.name %> won this challenge!
+              </h3></header>
+            </legend>
+          <% elsif challenge.total_points_for_defender < challenge.total_points_for_challenger  %>
+            <legend style="text-align:center">
+              <header><h3>
+            <%= current_user.name %> won this challenge!
+              </h3></header>
+            </legend>
+          <% else %>
+            <legend style="text-align:center">
+              <header><h3>
+                This challenge was a tie.
+              </h3></header>
+            </legend>
+          <% end %>
+        <% else %>
+          <% if challenge.total_points_for_defender > challenge.total_points_for_challenger %> 
+            <legend style="text-align:center">
+              <header><h3>
+                <%= @opponent.name %>  is in the lead by <%= challenge.total_points_for_defender - challenge.total_points_for_challenger %> points!
+              </h3></header>
+            </legend>
+          <% elsif challenge.total_points_for_defender < challenge.total_points_for_challenger %>
+            <legend style="text-align:center">
+              <header><h3>
+                You are in the lead by <%= challenge.total_points_for_challenger - challenge.total_points_for_defender %> points!
+             </h3></header>
+            </legend>
+          <% else %>
+            <legend style="text-align:center">
+              <header><h3>
+                <%= challenge.name_of_challenger %> and <%= challenge.name_of_defender %> are tied on points!
+             </h3></header>
+            </legend>
+          <% end %>
+        <% end %>
+      </div>
 
-    <section class="widget">
-    <div id="challenge-time">
-      <h4> <%= @opponent.name %></h4>
+      <div class="span12">
+        <div class="span6">
+          <div class="span4">
+            <%= image_tag User.find(challenge.challengeable).avatar_url(:banner), :class => "img-circle" %>
+          </div>
+          <div class="span8">
+            <h4><%= link_to User.find(challenge.challengeable).name, dashboard_user_path(User.find(challenge.challengeable).id) %></h4>
+            <%= challenge.total_points_for_challenger %> points
+          </div>
+        </div>
 
-      <div><%= link_to @opponent.name,  polymorphic_path(@opponent) %> <%= @opponent.total_points %> points </div>
-      <div><%= link_to current_user.name,  polymorphic_path(@current_user) %> <%= current_user.total_points %> points </div>
-      <div> Ends: <%= challenge.end_date.to_s(:just_date) %></div> 
-      <div> <%= link_to 'Edit' , edit_user_challenge_path(@opponent.id, challenge.id) %> | <%= link_to 'Delete' , user_challenge_path(@opponent.id, challenge.id), action: 'DELETE' %></div> 
+        <div class="span6">
+          <div class="span4">
+            <%= image_tag @opponent.avatar_url(:banner), :class => "img-circle" %>
+          </div>
+          <div class="span8">
+            <h4><%= link_to @opponent.name, dashboard_user_path(@opponent) %></h4> 
+            <%= challenge.total_points_for_defender %> points
+          </div>
+        </div>
+      </div>
+
+      <% if Time.now > challenge.end_date %>
+      <% else %>
+        <div class="control-group no-margin">
+          <div class="control">
+            <div class="row-fluid">
+              <br>
+              <div class="widget" style="text-align:center">
+                <h4><%= ((((challenge.end_date - Time.now)/60)/60)/24).to_i + 1 %> <small>DAYS LEFT</small></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group no-margin">
+          <div class="control">
+            <div class="span6">
+              <%= button_to 'Edit End Date (Default - 10 days)' , edit_user_challenge_path(@opponent.id, challenge.id), {:class => "btn btn-warning span12", method: :get} %>
+            </div>
+            <div class="span6">
+              <%= button_to 'Delete' , user_challenge_path(@opponent.id, challenge.id), {:class => "btn btn-danger span12", method: 'delete', id: challenge.id} %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
     </div>
-    <div id="challenge-lead"> 
-      <% if @opponent.total_points >= current_user.total_points %> 
-        <%= @opponent.name %>  is in the lead 
-      <%  else %>
-        You are in the lead
-      <%  end %>
-    </div>
-
-    </li>
-  <% end %>
-</ul>
+<% end %>
