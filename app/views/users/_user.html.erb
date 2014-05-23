@@ -1,5 +1,8 @@
 <section class="widget">
   <div class="span4">
+    <% if user.avatar_url == nil %>
+      <% user.avatar = File.open("///Users/iancantor/Bitmaker/ThinkFit.Me/app/assets/images/default-avi.png") %>
+    <% end %>
     <%= image_tag user.avatar_url(:banner), :class => "img-circle" %>
   </div>
   <div class="span6">
