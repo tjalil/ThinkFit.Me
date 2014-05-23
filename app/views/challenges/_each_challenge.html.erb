@@ -20,7 +20,7 @@
           <% elsif challenge.total_points_for_defender < challenge.total_points_for_challenger  %>
             <legend style="text-align:center">
               <header><h3>
-            <%= current_user.name %> won this challenge!
+            <%= User.find(challenge.challengeable).name %> won this challenge!
               </h3></header>
             </legend>
           <% else %>
@@ -34,7 +34,7 @@
           <% if challenge.total_points_for_defender > challenge.total_points_for_challenger %> 
             <legend style="text-align:center">
               <header><h3>
-                <%= @opponent.name %>  is in the lead by <%= challenge.total_points_for_defender - challenge.total_points_for_challenger %> points!
+                <%= @opponent.name %> is in the lead by <%= challenge.total_points_for_defender - challenge.total_points_for_challenger %> points!
               </h3></header>
             </legend>
           <% elsif challenge.total_points_for_defender < challenge.total_points_for_challenger %>
@@ -46,7 +46,7 @@
           <% else %>
             <legend style="text-align:center">
               <header><h3>
-                <%= challenge.name_of_challenger %> and <%= challenge.name_of_defender %> are tied on points!
+                <%= User.find(challenge.challengeable).name %> and <%= @opponent.name %> are tied on points!
              </h3></header>
             </legend>
           <% end %>
