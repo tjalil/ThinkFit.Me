@@ -6,7 +6,6 @@ class ChallengesController < ApplicationController
     @challengable = @user.challenges
     @defendable = @user.inverse_challenges
     @points = total_user_points
-
   end
 
 
@@ -26,7 +25,7 @@ class ChallengesController < ApplicationController
       render :edit
     end
   end
-
+  
 
   def create
     @challengeable = current_user
@@ -42,6 +41,12 @@ class ChallengesController < ApplicationController
         format.js {}
       end
     end
+  end
+
+  def destroy
+    @challenge = Challenge.find(params[:id])
+    @challenge.destroy
+    redirect_to dashboard_user_path(current_user)
   end
 
   private
