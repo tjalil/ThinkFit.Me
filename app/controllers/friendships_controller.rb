@@ -11,11 +11,10 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(friend_id: params[:friend_id])
     if @friendship.save
-      flash[:notice] = "Yay, you made a new friend"
+      flash[:notice] = "You're now following #{User.find(params[:friend_id]).name}! You can't see their full page until they follow you!"
       redirect_to friendships_path
     else
-      flash[:alert] = "No friends for you"
-      redirect_to users
+      flash[:alert] = "Sorry, your follow request raised an error..."
     end
   end
 
