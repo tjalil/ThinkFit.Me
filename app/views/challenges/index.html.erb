@@ -1,39 +1,31 @@
-<section class="widget">
-<legend><h4>
-    Challenges
-  </h4>
-  <% if (@user != current_user) %>
-    <!-- If you aren't already in a challenge you --> 
-    <% if (@user.challenges.where(id: current_user.id) == []) %>
-      <%= button_to "Take On #{@user.name}",  user_challenges_path(@user.id), :class => "btn btn-success span6 offset3" %>
-    <% end %>
-  <% end%>
-</legend>
-<div class="body">
-
-
-  <header>
-  <h5>
-    Challenged:
-  </h5>
-  </header>
-
-  <section class="widget">
-  <div id="challengable">
-    <%= render partial: "challenges/each_challenge", locals: {challenge_type: 'challenged'} %>
+<div class="content">
+  <div class="span6">
+    <section class="widget">
+      <legend>
+        <header><h4>
+          Challenges I created
+        </h4></header>
+      </legend>
+      <div class="body">
+        <div class="row-fluid">
+          <%= render partial: "challenges/each_challenge", locals: {challenge_type: 'challenged'} %>
+        </div>
+      </div>
+    </section>
   </div>
-  </section>
 
-  <header>
-  <h5>
-    Fending Off:
-  </h5>
-  </header>
-  <section class="widget">
-  <div id="defendable">
-    <%= render partial: "challenges/each_challenge", locals: {challenge_type: 'defending'} %>
+  <div class="span6">
+    <section class="widget">
+      <legend>
+        <header><h4>
+          Challenges I am defending
+        </h4></header>
+      </legend>
+      <div class="body">
+        <div class="row-fluid">
+          <%= render partial: "challenges/each_challenge", locals: {challenge_type: 'defending'} %>
+        </div>
+      </div>
+    </section>
   </div>
-  </section>
-
 </div>
-</section>
