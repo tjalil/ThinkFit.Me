@@ -89,10 +89,10 @@
           <header>
             <ul class="nav nav-tabs">
               <li class="active">
-                <a href="#user" data-toggle="tab">Search for User</a>
+                <a href="#user" data-toggle="tab">Search Users</a>
               </li>
               <li>
-                <a href="#team" data-toggle="tab">Search for Team</a>
+                <a href="#team" data-toggle="tab">Search Teams</a>
               </li>
               <% if current_user.id == @user.id %>
                 <li>
@@ -112,7 +112,7 @@
           <div class="body tab-content">
             <div id="user" class="tab-pane active clearfix">
               <%= form_tag users_path, method: :get, authentication: false, id: 'search-user' do%>
-                <%= text_field_tag :search_user, params[:search], placeholder: 'Search for User', :class => "span12" %>
+                <%= text_field_tag :search_user, params[:search], placeholder: 'Search for Users', :class => "span12" %>
                 <%= submit_tag "Search", :class => "btn btn-success offset4" %>
               <% end %>
               <br>
@@ -120,7 +120,7 @@
             </div>
             <div id="team" class="tab-pane clearfix">
               <%= form_tag teams_path, method: :get, authentication: false, id: 'search-team' do%>
-                <%= text_field_tag :search_team, params[:search], placeholder: 'Search for Team', :class => "span12" %>
+                <%= text_field_tag :search_team, params[:search], placeholder: 'Search for Teams', :class => "span12" %>
                 <%= submit_tag "Search", :class => "btn btn-success offset4" %>
               <% end %>
               <br>
