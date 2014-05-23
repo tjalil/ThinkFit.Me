@@ -16,7 +16,7 @@ html
 }
 
 .count {
-  position: absolute;
+  /*position: absolute;*/
   top: -5px;
   right: 2px;
   font-size: 1rem;
