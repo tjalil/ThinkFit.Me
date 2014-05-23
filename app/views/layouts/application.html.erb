@@ -16,14 +16,14 @@
       <div class = "container-fluid">
         <div class="row-fluid">
 
-          <div class = "flash">
+          <center><div class = "flash">
             <% if flash[:notice] %>
-              <p id = "notice", style="color:green"><%= flash[:notice] %></p>
+              <div class="alert alert-success" id = "notice"><%= flash[:notice] %></div>
             <% end %>
             <% if flash[:alert] %>
-              <p id = "alert", style="color:red"><%= flash[:alert] %></p>
+              <div class="alert alert-danger" id = "alert"><%= flash[:alert] %></div>
             <% end %>
-          </div>
+          </div></center>
 
           <%= yield %>
 
