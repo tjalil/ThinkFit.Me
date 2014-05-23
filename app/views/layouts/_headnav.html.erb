@@ -24,6 +24,10 @@
           </li>
           <li class="divider"></li>
           <li>
+            <%= link_to "Edit Profile", edit_user_path(current_user) %>
+          </li>
+          <li class="divider"></li>
+          <li>
             <%= link_to "Logout", user_session_path("current"), method: :delete %> 
           </li>
         </ul>
