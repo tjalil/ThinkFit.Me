@@ -44,6 +44,10 @@ group :development, :test do
   gem 'pry'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 # Use sorcery for user model auth
 gem 'sorcery'
 
@@ -56,6 +60,10 @@ gem 'bootstrap-sass'
 
 gem 'carrierwave'
 gem 'rmagick', :require => 'RMagick'
+
+gem "fog", "~> 1.3.1"
+
+gem 'aws-sdk', '~> 1.20.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
