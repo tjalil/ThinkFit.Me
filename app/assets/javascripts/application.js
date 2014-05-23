@@ -10,10 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootstrap
-//= require thinkfitme_specific
 //= require jquery-2.1.1
 //= require jquery_ujs
+//= require bootstrap
+//= require thinkfitme_specific
 //= require cocoon
 //= require_self
 
