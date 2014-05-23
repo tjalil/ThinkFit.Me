@@ -11,19 +11,26 @@
     </div>
   <% end %>
  
- 
-  <div class = "field">
-    <h4> <%= @challenge.defendable.name %> vs. <%= @challenge.challengeable.name %> </h4>
-  </div>
+<section class="widget">
+  <div class="row-fluid">
+    <div class = "field">
+     <legend>
+        <header><h4>
+          <%= @challenge.challengeable.name %> vs. <%= @challenge.defendable.name %>
+        </h4></header>
+      </legend>
+    </div>
 
 
-  <div class = "field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div>
+    <div class="body">
+      <%= f.label :end_date %> 
+      <%= f.date_select :end_date %>
+    </div>
 
-  <div class = "action">
-    <br>
-    <%= f.submit 'Done!'%> 
+    <div class = "action">
+      <%= f.submit 'Done!', :class => "btn btn-success span2" %> 
+    </div>
   </div>
+</section>
+
 <% end %>
