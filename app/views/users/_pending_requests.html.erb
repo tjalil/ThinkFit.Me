@@ -14,7 +14,7 @@
     <% if current_user.challenges.find_by(defendable_id: challenge.challengeable_id) %>
     <% else %>
       <div class="widget">
-        <%= button_to "Pending challenge from " + User.find(challenge.challengeable_id).name, user_challenges_path(current_user), :class => "btn btn-success span12" %>
+        <%= button_to "You have been challenged by " + User.find(challenge.challengeable_id).name, user_challenges_path(current_user), {:class => "btn btn-success span12", method: :get } %>
       </div>
     <% end %>
   <% end %>
