@@ -4,54 +4,40 @@
     <fieldset>
 
       <div class="control-group no-margin">
-        <div class="field">
-          <%= f.label :name %>
-        </div>
         <div class="control">
           <div class="input-prepend input-padding-increased">
             <span class="add-on">
               <i class="eicon-user icon-large"></i>
             </span>
-          <%= f.text_field :name %>
-          </div>
-        </div>
-      </div><br>
-
-      <div class="control-group no-margin">
-        <div class="field">
-          <%= f.label :description %>
-        </div>
-        <div class="control">
-          <div class="input-prepend input-padding-increased">
-          <%= f.text_area :description %>
-          </div>
-        </div>
-      </div><br>
-      
-      <div class="control-group no-margin">
-        <div class="field">
-          <%= f.label :avatar, "Upload your Team's Profile Picture" %>
-          <%= f.file_field :avatar %>
-        </div>
-      </div>
-
-      <div class="control-group no-margin">
-        <div class="field">
-          <%= f.label :remote_avatar_url, "Or a picture's URL:" %>
-        </div>
-        <div class="control">
-          <div class="input-prepend input-padding-increased">
-            <span class="add-on">
-              <i class="eicon-user icon-large"></i>
-            </span>
-          <%= f.text_field :remote_avatar_url %>
+          <%= f.text_field :name, placeholder: "Name" %>
           </div>
         </div>
       </div>
 
-     <div class="form-actions">
-        <div class="span4 offset4">
-          <%= f.submit "Submit!", :class => "btn btn-block btn-success" %>
+      <div class="control-group no-margin">
+        <div class="control">
+          <div class="input-prepend input-padding-increased span12">
+          <%= f.text_area :description, {placeholder: "Write a team description or moto", :class=>"span12"} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-group no-margin">
+        <div class="control">
+          <div class="row-fluid">
+            <div class="widget">
+              <%= f.label :avatar, "Upload your Profile Picture", { style: "text-align:center"} %>
+              <br>
+              <%= f.file_field :avatar, {:class=>"btn btn-transparent span12"} %>
+              <%= f.text_field :remote_avatar_url, {placeholder: "Or Insert a Picture Link", :class => "span12"} %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-group no-margin">
+        <div class="form-actions" style="padding-top:1rem; padding-bottom: 1rem">
+          <%= f.submit 'Submit!', :class => "btn btn-block btn-success btn-large" %>
         </div>
       </div>
 

@@ -1,0 +1,31 @@
+<div class="body pre-scrollable" id="activity-entries">
+  <div id="chat" class="chat">
+    <div id="stat-message" class="stats">
+      <ul>
+        <% current_user.goals.each do |goal| %>
+          <% if goal.activity_logs.empty? %>
+          <% else %>
+            <li><h4><%= goal.name_of_activity_through_goal %></h4></li><br>
+          <% end %>
+          <% goal.activity_logs.each do |log| %>
+            <% if log == nil %>
+            <% else %>
+              <div id="history-log">
+                <li> Duration: <%= log.duration %> minutes</li>
+                <li> Points: <%= log.points %></li>
+                <li> Logged: <%= log.created_at.to_s(:just_date) %></li><br>
+                <% if log == goal.activity_logs.last %>
+                  <div class="action" id="remove-log">
+                    <%= button_to "Remove Log", user_goal_activity_log_path(current_user, goal, log.id), :class => 'btn btn-danger', method: :delete %>
+                  </div><br>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+

@@ -17,10 +17,10 @@ class ActivityLog < ActiveRecord::Base
   end
 
   def show_points
-    if self.intensity
+    if self.intensity && self.distance == nil
       self.calculate_points
 
-    elsif self.distance
+    elsif self.distance && self.intensity
       goal = Goal.find(self.goal_id)
 
       if Activity.find(goal.activity_id).name == "Cycling"

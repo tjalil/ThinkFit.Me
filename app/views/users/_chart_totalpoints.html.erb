@@ -1,0 +1,48 @@
+<script type="text/javascript" charset="utf-8">
+
+$(function () {
+    $('#challenges_chart').highcharts({
+chart: {
+type: 'column'
+},
+title: {
+text: 'Total Points by Goal'
+},
+xAxis: {
+categories: ['<%= current_user.name %>']
+
+},
+yAxis: {
+min: 0,
+title: {
+text: 'Total Points'
+}
+},
+tooltip: {
+pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+shared: true
+},
+plotOptions: {
+column: {
+stacking: 'percent'
+        }
+             },
+series: [
+<% current_user.goals.each do |goal| %>
+  {
+     maxPointWidth: 20,     
+     name: '<%= Activity.find_by(id: goal.activity_id).name %>', 
+     data: [<%= goal.total_points_per_goal %>]
+  },
+<% end %>]
+});
+});
+
+</script>
+
+
+
+<div>
+  <div id="challenges_chart" style="width: 80%; ">
+  </div>
+</div>
