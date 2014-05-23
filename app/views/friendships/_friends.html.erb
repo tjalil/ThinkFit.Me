@@ -12,9 +12,6 @@
   <div class="widget span6">
     <% @friend_type =  person_type == 'friend' ? friend.friend_id : friend.user_id %>
     <div class="span6">
-      <% if User.find_by(id: @friend_type).avatar_url == nil %>
-        <% User.find_by(id: @friend_type).avatar = File.open("///Users/iancantor/Bitmaker/ThinkFit.Me/app/assets/images/default-avi.png") %>
-      <% end %>
       <%= image_tag User.find_by(id: @friend_type).avatar_url(:banner), :class => "img-circle" %>
     </div>
     <div class="span6">

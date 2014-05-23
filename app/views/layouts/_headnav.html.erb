@@ -9,9 +9,6 @@
         </ul>
         <ul class="nav pull-right" style="margin-top: -0.25rem">
           <li style="margin-top: -0.50rem">
-            <% if current_user.avatar_url == nil %>
-              <% current_user.avatar = File.open("///Users/iancantor/Bitmaker/ThinkFit.Me/app/assets/images/default-avi.png") %>
-            <% end %>
             <%= image_tag current_user.avatar_url(:thumb), :class => "img-circle" %>
             <br>
           </li>
