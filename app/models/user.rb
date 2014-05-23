@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  # accepts_nested_attributes_for :authentications
-
   validates_presence_of :name, :gender, :height, :weight 
   validates_presence_of :email, uniqueness: true
   validates_presence_of :password, length: { minimum: 6 }
@@ -28,16 +26,29 @@ class User < ActiveRecord::Base
   before_save :capitalize_name
 
   def count_pending_requests
-    count ||= 0
+    friends_count ||= 0
+    challenges_count ||= 0
+
     if self.inverse_friendships
       self.inverse_friendships.each do |friendship|
         if self.friendships.find_by(friend_id: friendship.user_id)
         else
-          count += 1
+          friends_count += 1
         end
       end
-      return count
+      friends_count
     end
+
+    if self.inverse_challenges
+      self.inverse_challenges.each do |challenge|
+        if self.challenges.find_by(defendable_id: challenge.challengeable_id)
+        else
+          challenges_count += 1
+        end
+      end
+      challenges_count
+    end
+    return friends_count + challenges_count
   end
 
   def total_points
