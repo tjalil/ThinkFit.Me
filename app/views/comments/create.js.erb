@@ -1,3 +1,6 @@
 // This gets fired once the AJAX request is sent
 
 $('#chat-messages').prepend('<%= j(render partial: "comments") %>');
+
+// Remove text from comment box once submited
+$('#comment_comment').val('');
