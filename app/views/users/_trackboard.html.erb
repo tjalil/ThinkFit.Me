@@ -10,7 +10,11 @@
           <h4 class="no-margin"><%= goal.name_of_activity_through_goal %> (<%= goal.total_points_per_goal %>)</h4>
           <br>
           <address>
-            Goal: <%= goal.weekly_goal %> times/week<br>
+            <% if goal.weekly_goal == goal.count_activity_log %>
+             <strong>Weekly Goal Met!</strong><br>
+            <% else %>
+              Goal: <%= goal.weekly_goal %> times/week<br>
+            <% end %>
             Logged: <%= goal.count_activity_log %> times<br>
             Latest Points: 
             <% if ActivityLog.where(goal_id: goal.id).length > 0 %>
