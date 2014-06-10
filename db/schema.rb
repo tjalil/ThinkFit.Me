@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521034829) do
+ActiveRecord::Schema.define(version: 20140610003542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,11 +78,11 @@ ActiveRecord::Schema.define(version: 20140521034829) do
   end
 
   create_table "height_and_weights", force: true do |t|
-    t.decimal  "height",                 precision: 3, scale: 1
-    t.decimal  "ideal_weight_male_kg",   precision: 4, scale: 1
-    t.decimal  "ideal_weight_female_kg", precision: 4, scale: 1
+    t.decimal  "height",                     precision: 3, scale: 1
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "ideal_weight_male_pounds"
+    t.decimal  "ideal_weight_female_pounds"
   end
 
   create_table "teams", force: true do |t|
