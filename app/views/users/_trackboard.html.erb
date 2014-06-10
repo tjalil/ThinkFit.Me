@@ -22,11 +22,16 @@
             <% end %> <br>
             Last Logged: <%= goal.updated_at.to_s(:just_date) %>
           </address>
+          <% if goal.weekly_goal <= goal.count_activity_log %>
+          <%= button_to "Renew This Goal", new_user_goal_path(current_user), :class => "btn btn-success", :method => :get %>
+          <% end %>
         </div>
         <% if @user.id == current_user.id %>
           <div class="span2">
-            <%= button_to "+", new_user_goal_activity_log_path(current_user, goal), :class => "btn btn-success pull-top", :method => :get %>
-            <%= button_to "-", edit_user_goal_path(current_user, goal), :class => "btn btn-danger pull-top", :method => :get %>
+            <% if goal.weekly_goal > goal.count_activity_log %>
+              <%= button_to "+", new_user_goal_activity_log_path(current_user, goal), :class => "btn btn-success pull-top", :method => :get %>
+              <%= button_to "-", edit_user_goal_path(current_user, goal), :class => "btn btn-danger pull-top", :method => :get %>
+            <% end %>
           </div>
         <% end %>
       </div>
