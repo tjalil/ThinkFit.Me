@@ -16,7 +16,7 @@
             <% if ActivityLog.where(goal_id: goal.id).length > 0 %>
               <%= ActivityLog.where(goal_id: goal.id).last.points %>
             <% end %> <br>
-            Last Logged: <%= goal.updated_at.to_s(:just_date) %>
+            Last Logged: <%= ActivityLog.where(goal_id: goal.id).last.updated_at.to_s(:just_date) %>
           </address>
         </div>
         <% if @user.id == current_user.id %>
