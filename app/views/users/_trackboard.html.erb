@@ -18,9 +18,9 @@
             Logged: <%= goal.count_activity_log %> times<br>
             Latest Points: 
             <% if ActivityLog.where(goal_id: goal.id).length > 0 %>
-              <%= ActivityLog.where(goal_id: goal.id).last.points %>
-            <% end %> <br>
-            Last Logged: <%= goal.updated_at.to_s(:just_date) %>
+              <%= ActivityLog.where(goal_id: goal.id).last.points %> <br>
+              Last Logged: <%= ActivityLog.where(goal_id: goal.id).last.updated_at.to_s(:just_date) %>
+            <% end %>
           </address>
           <% if goal.weekly_goal <= goal.count_activity_log %>
           <%= button_to "Renew This Goal", new_user_goal_path(current_user), :class => "btn btn-success", :method => :get %>
