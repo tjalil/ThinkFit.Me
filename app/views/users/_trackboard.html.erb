@@ -23,7 +23,7 @@
             <% end %>
           </address>
           <% if goal.weekly_goal <= goal.count_activity_log %>
-          <%= button_to "Renew This Goal", user_goal_renew_path(current_user,goal), :class => "btn btn-success", :method => :get %>
+          <%= button_to "Renew Goal", edit_user_goal_path(current_user, goal), :class => "btn btn-success", :method => :get %>
           <% end %>
         </div>
         <% if @user.id == current_user.id %>

@@ -1,0 +1,42 @@
+<%= form_for ([current_user, @goal]) do |f| %>
+	<div class="content">
+		<section class="widget span6">
+			<legend>
+				<h3>
+					<small>Activity:</small> <%= @goal.name_of_activity_through_goal %><br>
+					<small>Weekly Goal:</small> <%= @goal.weekly_goal %>
+				</h3>
+			</legend>
+
+			<div class="widget">
+				<h4>This removes the current activity and it's goal from your dashboard. History of this goal is preserved.</h4>
+				<h3>
+					<p>Are you sure you want switch this goal to inactive?</p>
+				</h3>
+
+				<label class="control">
+					<div class="row-fluid">
+						<div class="btn-large btn-transparent span4 offset2">
+							<%= f.label(:status, "Active", :class => "radio inline btn-large") %> 
+							<%= f.radio_button(:status, "active", :class => "btn-large") %>
+						</div>
+
+						<div class="btn-large btn-transparent span4">
+							<%= f.label(:status, "Inactive", :class => "radio inline btn-large") %>
+							<%= f.radio_button(:status, "inactive", :class => "btn-large") %>
+						</div>
+					</div>
+				</label>
+				
+				<div class="form-actions">
+					<div class="span4 offset2">
+						<%= f.submit "Yes", :class => "btn btn-success btn-large span12" %>
+					</div>
+					<div class="span4">
+						<%= button_to "No", dashboard_user_path(current_user), {:class => "btn btn-danger btn-large span12", :method => :get} %>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+<% end %>
