@@ -39,6 +39,11 @@ class Goal < ActiveRecord::Base
     total_points 
   end
 
+  def check_time
+    # Check to see if time elapsed is 7 days worth (in seconds :P)
+    self.status = "inactive" if Time.now - self.updated_at >= 604800
+  end
+
 end
 
 
