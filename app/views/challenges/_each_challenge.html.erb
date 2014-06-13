@@ -40,7 +40,7 @@
           <% elsif challenge.total_points_for_defender < challenge.total_points_for_challenger %>
             <legend style="text-align:center">
               <header><h3>
-                You are in the lead by <%= challenge.total_points_for_challenger - challenge.total_points_for_defender %> points!
+                <%= User.find(challenge.challengeable).name %> is in the lead by <%= challenge.total_points_for_challenger - challenge.total_points_for_defender %> points!
              </h3></header>
             </legend>
           <% else %>

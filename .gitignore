@@ -18,3 +18,8 @@
 
 # Ignore application configuration
 /config/application.yml
+/config/database.yml
+
+# ignore height and weight + met csv files
+/height_and_weight_data.csv
+/met_values_worksheet.csv
