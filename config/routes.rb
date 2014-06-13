@@ -15,6 +15,7 @@ Thinkfitme::Application.routes.draw do
     resources :comments, only: [:new, :create]
 
     resources :goals, only: [:new, :create, :edit, :update] do
+      get 'renew'
       resources :activity_logs, only: [:new, :create, :destroy]
     end
 
