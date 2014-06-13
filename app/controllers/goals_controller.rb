@@ -16,20 +16,6 @@ class GoalsController < ApplicationController
     end
   end 
 
-  def renew
-    @goal= Goal.find(params[:goal_id])
-
-    @goal.status = "inactive"
-
-    @newgoal = Goal.update_attributes({activity_id: @goal.activity_id, weekly_goal: (@goal.weekly_goal * 2) })
-
-    if @newgoal.save
-      redirect_to dashboard_user_path(current_user), notice: "Successfully renewed #{@goal.name_of_activity_through_goal} goal"
-    else
-      render :new
-    end
-  end
-
   def show
   end
 
