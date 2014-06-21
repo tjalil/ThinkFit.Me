@@ -42,6 +42,8 @@ gem 'kaminari'
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'pry'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :production do
@@ -51,19 +53,17 @@ end
 # Use sorcery for user model auth
 gem 'sorcery'
 
-gem 'better_errors'
-gem 'binding_of_caller'
-
 gem 'figaro'
 
 gem 'bootstrap-sass'
 
 gem 'carrierwave'
-gem 'rmagick', :require => 'RMagick'
 
 gem "fog", "~> 1.3.1"
 
 gem 'aws-sdk', '~> 1.20.0'
+
+gem 'mini_magick'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
